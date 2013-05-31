@@ -1,0 +1,34 @@
+<VisualMicro>
+  <Program Name="main" Ext=".ino" Location="C:\Users\developpement\Documents\GitHub\Arduino-Project\Arduino App\main">
+    <Compile CompilerErrors="0" ConfigurationName="Debug" StopOnError="False" OptimiseLibs="True" OptimiseCore="True" BuildPath="C:\Users\developpement\AppData\Local\VMicro\Arduino\Builds\main\mega2560" IncludeDebug="0" IncludesDebug="0" SketchName="main" IsCompiled="1" />
+    <Platform Name="Arduino">
+      <Board Name="mega2560" Description="Arduino Mega 2560 or Mega ADK" CoreFolder="C:\Users\developpement\Documents\arduino-1.0.3\hardware\arduino\cores\arduino" VariantFullPath="C:\Users\developpement\Documents\arduino-1.0.3\hardware\arduino\variants\mega" bootloader.extended_fuses="0xFD" bootloader.file="stk500boot_v2_mega2560.hex" bootloader.high_fuses="0xD8" bootloader.lock_bits="0x0F" bootloader.low_fuses="0xFF" bootloader.path="stk500v2" bootloader.unlock_bits="0x3F" build.core="arduino" build.f_cpu="16000000L" build.mcu="atmega2560" build.variant="mega" build.variant.vmresolved="C:\Users\developpement\Documents\arduino-1.0.3\hardware\arduino\variants\mega" name="Arduino Mega 2560 or Mega ADK" upload.maximum_size="258048" upload.protocol="wiring" upload.speed="115200" />
+    </Platform>
+    <VCCodeModel>
+      <VCCodeMacros>
+        <VCCodeMacro Name="ARDUINO" Value="103" />
+        <VCCodeMacro Name="__AVR_ATmega2560__" Value="" />
+        <VCCodeMacro Name="F_CPU" Value="16000000L" />
+        <VCCodeMacro Name="__AVR__" Value="" />
+        <VCCodeMacro Name="__cplusplus" Value="" />
+        <VCCodeMacro Name="__attribute__" Value="" />
+        <VCCodeMacro Name="__inline__" Value="" />
+        <VCCodeMacro Name="__asm__" Value="" />
+        <VCCodeMacro Name="__extension__" Value="" />
+        <VCCodeMacro Name="__ATTR_PURE__" Value="" />
+        <VCCodeMacro Name="__ATTR_CONST__" Value="" />
+        <VCCodeMacro Name="__inline__" Value="" />
+        <VCCodeMacro Name="__asm__" Value="" />
+        <VCCodeMacro Name="__volatile__" Value="" />
+        <VCCodeMacro Name="__builtin_va_list" Value="" />
+        <VCCodeMacro Name="__builtin_va_start" Value="" />
+        <VCCodeMacro Name="__builtin_va_end" Value="" />
+        <VCCodeMacro Name="__DOXYGEN__" Value="" />
+        <VCCodeMacro Name="prog_void" Value="" />
+        <VCCodeMacro Name="PGM_VOID_P" Value="int" />
+        <VCCodeMacro Name="NOINLINE" Value="__attribute__((noinline))" />
+      </VCCodeMacros>
+      <VCCodeVariables />
+    </VCCodeModel>
+  </Program>
+</VisualMicro>
