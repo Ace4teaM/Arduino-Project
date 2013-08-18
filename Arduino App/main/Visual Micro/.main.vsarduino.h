@@ -1,8 +1,10 @@
+#ifndef _VSARDUINO_H_
+#define _VSARDUINO_H_
 //Board = Arduino Mega 2560 or Mega ADK
-#define ARDUINO 103
 #define __AVR_ATmega2560__
-#define F_CPU 16000000L
+#define ARDUINO 105
 #define __AVR__
+#define F_CPU 16000000L
 #define __cplusplus
 #define __attribute__(x)
 #define __inline__
@@ -22,11 +24,18 @@
 #define NOINLINE __attribute__((noinline))
 
 typedef unsigned char byte;
-extern "C" void __cxa_pure_virtual() {}
+extern "C" void __cxa_pure_virtual() {;}
 
-//already defined in arduno.h
-//already defined in arduno.h
+//
+//
+bool RESULT_OK();
+bool RESULT(const char* context, const char* code);
 
-#include "C:\Users\developpement\Documents\arduino-1.0.3\hardware\arduino\variants\mega\pins_arduino.h" 
-#include "C:\Users\developpement\Documents\arduino-1.0.3\hardware\arduino\cores\arduino\arduino.h"
-#include "C:\Users\developpement\Documents\GitHub\Arduino-Project\Arduino App\main\main.ino"
+#include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega\pins_arduino.h" 
+#include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
+#include "C:\Users\AceTeaM\Documents\GitHub\Arduino-Project\Arduino App\main\main.ino"
+#include "C:\Users\AceTeaM\Documents\GitHub\Arduino-Project\Arduino App\main\NetworkServer.cpp"
+#include "C:\Users\AceTeaM\Documents\GitHub\Arduino-Project\Arduino App\main\NetworkServer.h"
+#include "C:\Users\AceTeaM\Documents\GitHub\Arduino-Project\Arduino App\main\result.cpp"
+#include "C:\Users\AceTeaM\Documents\GitHub\Arduino-Project\Arduino App\main\result.h"
+#endif
