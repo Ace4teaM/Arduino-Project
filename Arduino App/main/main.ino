@@ -27,9 +27,8 @@ bool RESULT(const char* context, const char* code);
 /*-------------------------------------------------------------------------------
  NetworkServer
  -------------------------------------------------------------------------------*/
-#define WIFI_PORT 45454
+#define WIFI_PORT 2390
 
-#pragma once
 class NetworkServer
 {
 public:
@@ -127,7 +126,7 @@ bool RESULT_OK(){
 bool RESULT(const char* context, const char* code){
 	g_result_context=context;
 	g_result_code=code;
-	if(strcmp(context,"ERR_OK") == 0)
+	if(strcmp(context,ERR_OK) == 0)
 		return true;
 	Serial.print("context: ");
 	Serial.print(context);
@@ -154,8 +153,8 @@ NetworkServer::~NetworkServer(void)
 bool NetworkServer::connect(){
 	Serial.println("Connect to network...");
 
-	char ssid[] = "AceTeaM";     //  your network SSID (name) 
-	char pass[] = "emyleplusbeaudesbebes";  // your network password
+	char ssid[] = "SFR_3D30";     //  your network SSID (name) 
+	char pass[] = "canfeityrivenc4ticat";  // your network password
 	int status = WL_IDLE_STATUS;
 
 	// check for the presence of the shield:
@@ -186,7 +185,9 @@ bool NetworkServer::connect(){
 bool NetworkServer::initHost(){
 	Serial.println("Init Host...");
 	if(!udp.begin(WIFI_PORT))
-		return RESULT(ERR_FAILED,Err_BeginSocket);
+	    Serial.println(" error!!!!!!!!!!!!!!!!!!!!!!!!");
+		//return RESULT(ERR_FAILED,Err_BeginSocket);
+	else Serial.println(" OKKKKKKKKKKKKKKKKKKK");
 	return RESULT_OK();
 }
 
@@ -194,14 +195,19 @@ bool NetworkServer::initHost(){
 bool NetworkServer::readCommand(){
 	char buf[UDP_TX_PACKET_MAX_SIZE];
 	int length=0;
-	Serial.print("Read Cmd...");
+	static int cnt=0;
+	cnt++;
+	Serial.print("Read Cmd ");
+	Serial.print(cnt);
+	Serial.print("...");
 	length = udp.parsePacket();
 	if(length){
+		   
 	    Serial.print(length);
 	    Serial.println(" bytes");
 		udp.read(buf,length);
 		Serial.println(buf);
-		
+
 		// send a reply, to the IP address and port that sent us the packet we received
 		/*udp.beginPacket(udp.remoteIP(), udp.remotePort());
 		udp.write(buf);

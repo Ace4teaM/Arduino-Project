@@ -17,6 +17,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     bool FindNetwork();
+    bool isConnected();
     
 private slots:
     void on_pushButton_connect_clicked();

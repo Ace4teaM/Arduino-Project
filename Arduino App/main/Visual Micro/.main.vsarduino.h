@@ -34,8 +34,4 @@ bool RESULT(const char* context, const char* code);
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega\pins_arduino.h" 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
 #include "C:\Users\AceTeaM\Documents\GitHub\Arduino-Project\Arduino App\main\main.ino"
-#include "C:\Users\AceTeaM\Documents\GitHub\Arduino-Project\Arduino App\main\NetworkServer.cpp"
-#include "C:\Users\AceTeaM\Documents\GitHub\Arduino-Project\Arduino App\main\NetworkServer.h"
-#include "C:\Users\AceTeaM\Documents\GitHub\Arduino-Project\Arduino App\main\result.cpp"
-#include "C:\Users\AceTeaM\Documents\GitHub\Arduino-Project\Arduino App\main\result.h"
 #endif

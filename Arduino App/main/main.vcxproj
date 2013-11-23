@@ -69,7 +69,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="NetworkServer.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="result.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="Visual Micro\.main.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NetworkServer.cpp" />
+    <ClCompile Include="result.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
