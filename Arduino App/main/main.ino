@@ -24,6 +24,29 @@ extern const char* g_result_code;
 bool RESULT_OK();
 bool RESULT(const char* context, const char* code);
 
+/**
+ * Equipment Item structure
+*/
+#define ITEM_TYPE_SWITCHER 2 // intensite
+#define ITEM_TYPE_LED     3 // LED
+#define ITEM_TYPE_HEATER  ITEM_TYPE_SWITCHER // CHAUFFAGE
+#define ITEM_TYPE_SHUTTER ITEM_TYPE_SWITCHER // VOLET roulant
+
+typedef struct _ITEM{
+	int id; // identificateur
+	char type; // Type d'item
+	char room_num; // Numï¿½ro de piï¿½ce
+	char used_pins[8]; // Broches arduino utilisï¿½es
+}ITEM;
+
+typedef struct _item_switcher{
+	unsigned int intensity;
+}item_switcher;
+
+typedef struct _item_led{
+	unsigned char r,g,b;
+}item_led;
+
 /*-------------------------------------------------------------------------------
  NetworkServer
  -------------------------------------------------------------------------------*/
@@ -44,35 +67,29 @@ private:
 };
 
 
+class IClientCom
+{
+public:
+        virtual bool check()=0;
+	virtual bool read(ITEM* pitem)=0;
+	virtual bool write(const ITEM* pitem)=0;
+};
+
+
+class SerialClientCom : public IClientCom
+{
+public:
+        bool check();
+	bool read(ITEM* pitem);
+	bool write(const ITEM* pitem);
+};
+
 
 
 /**
- * Port wifi utilisé pour les transactions avec les applications clientes
+ * Port wifi utilise pour les transactions avec les applications clientes
  */
 NetworkServer net;
-
-/**
- * Equipment Item structure
-*/
-#define ITEM_TYPE_SWITCHER 2 // intensite
-#define ITEM_TYPE_LED     3 // LED
-#define ITEM_TYPE_HEATER  ITEM_TYPE_SWITCHER // CHAUFFAGE
-#define ITEM_TYPE_SHUTTER ITEM_TYPE_SWITCHER // VOLET roulant
-
-typedef struct _item{
-	int id; // identificateur
-	char type; // Type d'item
-	char room_num; // Numéro de pièce
-	char used_pins[8]; // Broches arduino utilisées
-}item;
-
-typedef struct _item_switcher{
-	unsigned int intensity;
-}item_switcher;
-
-typedef struct _item_led{
-	unsigned char r,g,b;
-}item_led;
 
 /**
  * Client request structure
@@ -153,8 +170,15 @@ NetworkServer::~NetworkServer(void)
 bool NetworkServer::connect(){
 	Serial.println("Connect to network...");
 
-	char ssid[] = "SFR_3D30";     //  your network SSID (name) 
+        //maison
+        
+        char ssid[] = "AceTeaM";     //  Broadcasted SSID 
+        char pass[] = "emyleplusbeaudesbebes";  // your network password
+        
+        //TOURLA
+	/*char ssid[] = "SFR_3D30";     //  your network SSID (name) 
 	char pass[] = "canfeityrivenc4ticat";  // your network password
+*/
 	int status = WL_IDLE_STATUS;
 
 	// check for the presence of the shield:
@@ -273,3 +297,15 @@ void NetworkServer::printNetAddress() {
   Serial.println(encryption,HEX);
   Serial.println();
 }
+
+
+/*-------------------------------------------------------------------------------
+ SerialClientCom
+ -------------------------------------------------------------------------------*/
+
+
+bool SerialClientCom::check(){return false;}
+bool SerialClientCom::read(ITEM* pitem){return false;}
+bool SerialClientCom::write(const ITEM* pitem){return false;}
+
+
