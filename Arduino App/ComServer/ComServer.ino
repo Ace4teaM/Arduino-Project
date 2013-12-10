@@ -19,6 +19,9 @@ along with WebFrameWork.  If not, see <http://www.gnu.org/licenses/>.
 ---------------------------------------------------------------------------------------------------------------------------------------
 */
 
+#define WIFI
+#define ARDUINO
+
 /*
 
 Test d'interface de communication réseau (client/Serveur)
@@ -27,27 +30,41 @@ Exemple de commande transmisible par paquet UDP (active la pin 9):  "cmd=on;pin=
 */
 
 #include <SPI.h>
+#ifdef WIFI
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <WiFiServer.h>
+#include <WiFiUdp.h>
+#else
 #include <Ethernet.h>
 #include <EthernetUdp.h>
+#endif
 #include <result.h>
 #include <xarg.h>
 
-
 //Adresse Physique de l'arduino (voir etiquette sur la carte)
 byte mac[] = {  0x90, 0xA2, 0xDA, 0x0D, 0xB8, 0xE1 };
-//Adresse IP fixe assigné à l'arduino (suivant de la paserelle)
+//Adresse IP fixe assigné à l'arduino (suivant de la passerelle)
 IPAddress ip(192,168,1,177);
 
-#define COM_PORT 8888 // HTTP
+#define INPUT_PORT 8888
+#define OUTPUT_PORT 12345
 #define USE_DHCP 1
 #define UDP_TX_PACKET_MAX_SIZE 200
 
 // buffers for receiving and sending data
 char packetBuffer[UDP_TX_PACKET_MAX_SIZE]; //buffer to hold incoming packet,
-char ReplyBuffer[] = "acknowledged";       // a string to send back
+char replyBuffer[UDP_TX_PACKET_MAX_SIZE];       // a string to send back
 
+#ifdef WIFI
+int status = WL_IDLE_STATUS;
+char ssid[] = "AceTeaM"; //  your network SSID (name) 
+char pass[] = "emyleplusbeaudesbebes";    // your network password (use for WPA, or use as key for WEP)
+WiFiUDP Udp;
+#else
 // An EthernetUDP instance to let us send and receive packets over UDP
 EthernetUDP Udp;
+#endif
 
 void setup() {
 	// Open serial communications and wait for port to open:
@@ -58,23 +75,53 @@ void setup() {
 
 
 	// start the Ethernet connection and the server:
-#ifndef USE_DHCP
-	Ethernet.begin(mac, ip);
-#else
+#ifdef WIFI
+        // check for the presence of the shield:
+        if (WiFi.status() == WL_NO_SHIELD) {
+          Serial.println("WiFi shield not present"); 
+          // don't continue:
+          while(true);
+        } 
+  
+        // attempt to connect to Wifi network:
+        while ( status != WL_CONNECTED) { 
+          Serial.print("Attempting to connect to SSID: ");
+          Serial.println(ssid);
+          // Connect to WPA/WPA2 network. Change this line if using open or WEP network:    
+          status = WiFi.begin(ssid,pass);
+        
+          // wait 10 seconds for connection:
+          delay(10000);
+        } 
+        
+        long rssi = WiFi.RSSI();
+        Serial.print("signal strength (RSSI):");
+        Serial.print(rssi);
+        Serial.println(" dBm");
+        
+	// print local IP address:
+	Serial.print("My IP address: ");
+	Serial.println(WiFi.localIP());
+#elif defined USE_DHCP
 	if (Ethernet.begin(mac) == 0) {
 		Serial.println("Failed to configure Ethernet using DHCP");
 		// no point in carrying on, so do nothing forevermore:
 		for(;;)
 			;
 	}
-#endif
-
 	// print local IP address:
 	Serial.print("My IP address: ");
 	Serial.println(Ethernet.localIP());
+#else
+	Ethernet.begin(mac, ip);
+	// print local IP address:
+	Serial.print("My IP address: ");
+	Serial.println(Ethernet.localIP());
+#endif
+
 
 	//init server
-	Udp.begin(COM_PORT);
+	Udp.begin(INPUT_PORT);
 }
 
 #define CMD_TYPE_NOP 0
@@ -93,6 +140,7 @@ typedef struct _EQUIPMENT{
 
 
 void loop() {
+  char * buf;
 	// if there's data available, read a packet
 	int packetSize = Udp.parsePacket();
 	if(packetSize)
@@ -160,15 +208,22 @@ void loop() {
 		case CMD_TYPE_SWITCH:
 			pinMode(cmd.pin, OUTPUT);
 			digitalWrite(cmd.pin,(cmd.val ? HIGH : LOW));
+                        //resultat
+                        buf=replyBuffer;
+                        buf=xarg_encode_field(buf,"error","ERR_OK");
+                        buf=xarg_encode_field(buf,"msg","SUCCESS");
 			break;
 		default:
-			Serial.println("unknown command");
+                        //resultat
+                        buf=replyBuffer;
+                        buf=xarg_encode_field(buf,"error","ERR_FAILED");
+                        buf=xarg_encode_field(buf,"msg","UNKNOWN_CMD");
 			break;
 		}
 
 		// send a reply, to the IP address and port that sent us the packet we received
-		Udp.beginPacket(Udp.remoteIP(), Udp.remotePort());
-		Udp.write(ReplyBuffer);
+		Udp.beginPacket(Udp.remoteIP(), OUTPUT_PORT /*Udp.remotePort()*/);
+		Udp.write(replyBuffer);
 		Udp.endPacket();
 
 	}
