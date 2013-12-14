@@ -1,3 +1,5 @@
+
+
 /*
 ---------------------------------------------------------------------------------------------------------------------------------------
 (C)2013 Thomas AUGUEY <contact@aceteam.org>
@@ -39,8 +41,11 @@ Exemple de commande transmisible par paquet UDP (active la pin 9):  "cmd=on;pin=
 #include <Ethernet.h>
 #include <EthernetUdp.h>
 #endif
+//NPLIB1
 #include <result.h>
 #include <xarg.h>
+#include <str.h>
+
 
 //Adresse Physique de l'arduino (voir etiquette sur la carte)
 byte mac[] = {  0x90, 0xA2, 0xDA, 0x0D, 0xB8, 0xE1 };
@@ -180,9 +185,13 @@ void loop() {
 		const char* text=(const char*)packetBuffer;
 		char name[80];
 		char value[80];
+                char *pname=name,*pvalue=value;
 		while(*text != '\0'){
 			text = xarg_decode_field(text,name,value);
-
+                        // supprime les eventuels Retour-Chariot '\r' ou saut de ligne '\n'
+                        str_trimz(&pname,pname+strlen(pname));
+                        str_trimz(&pvalue,pvalue+strlen(pvalue));
+                        //
 			if(strcmp(name,"cmd")==0){
 				if(strcmp(value,"on")==0){
 					cmd.type = CMD_TYPE_SWITCH;
