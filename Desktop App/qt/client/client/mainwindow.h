@@ -2,8 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtWidgets>
 #include <QtNetwork>
+
+#include <l1/result.h>
+#include <l1/xarg.h>
+#include <l1/str.h>
 
 namespace Ui {
 class MainWindow;

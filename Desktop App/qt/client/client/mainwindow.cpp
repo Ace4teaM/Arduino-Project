@@ -1,6 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <l1/result.cpp>
+#include <l1/xarg.cpp>
+#include <l1/str.cpp>
+#include <l2/cxarg.cpp>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -40,3 +45,27 @@ void MainWindow::on_pushButton_connect_clicked()
 {
     FindNetwork();
 }
+/*
+void Server::initSocket()
+{
+    udpSocket = new QUdpSocket(this);
+    udpSocket->bind(QHostAddress::LocalHost, 7755);
+
+    connect(udpSocket, SIGNAL(readyRead()),
+            this, SLOT(readPendingDatagrams()));
+}
+
+void Server::readPendingDatagrams()
+{
+    while (udpSocket->hasPendingDatagrams()) {
+        QByteArray datagram;
+        datagram.resize(udpSocket->pendingDatagramSize());
+        QHostAddress sender;
+        quint16 senderPort;
+
+        udpSocket->readDatagram(datagram.data(), datagram.size(),
+                                &sender, &senderPort);
+
+        processTheDatagram(datagram);
+    }
+}*/

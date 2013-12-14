@@ -1,0 +1,60 @@
+<?xml version='1.0'?>
+<config>
+  <database>
+    <host_name>127.0.0.1</host_name>
+    <database_name>quertech_dev</database_name>
+    <user_name>root</user_name>
+    <password/>
+  </database>
+  <ongletutilisateur>
+    <CB_diametreFaisceau>40</CB_diametreFaisceau>
+    <CB_modeExecution>VIRTUEL</CB_modeExecution>
+    <CB_typeIons>AZOTE</CB_typeIons>
+    <LE_accelerationCalculee>32000</LE_accelerationCalculee>
+    <LE_amplitudeX>0</LE_amplitudeX>
+    <LE_amplitudeY>0</LE_amplitudeY>
+    <LE_doseRequise>275</LE_doseRequise>
+    <LE_intensiteFaisceau>3.1</LE_intensiteFaisceau>
+    <LE_nombrePasses>683</LE_nombrePasses>
+    <LE_offsetAngleRotation>0</LE_offsetAngleRotation>
+    <LE_offsetTX>0</LE_offsetTX>
+    <LE_offsetTY>0</LE_offsetTY>
+    <LE_pasAvancementExact>19.9836</LE_pasAvancementExact>
+    <LE_tempsExposition>213.613</LE_tempsExposition>
+    <LE_vitesse>40000</LE_vitesse>
+    <SB_pasAvancementSouhaite>20 %</SB_pasAvancementSouhaite>
+    <qt_spinbox_lineedit>20 %</qt_spinbox_lineedit>
+  </ongletutilisateur>
+  <ongletadministrateur>
+    <CB_modeCentrage>Automatique</CB_modeCentrage>
+    <CB_passes>XY</CB_passes>
+    <LE_amplitudeMaxX>800</LE_amplitudeMaxX>
+    <LE_amplitudeMaxY>400</LE_amplitudeMaxY>
+    <LE_amplitudeXContour>700</LE_amplitudeXContour>
+    <LE_amplitudeYContour>300</LE_amplitudeYContour>
+    <LE_compriseEntreTX>400</LE_compriseEntreTX>
+    <LE_compriseEntreTY>200</LE_compriseEntreTY>
+    <LE_defautContourVitesse>40000</LE_defautContourVitesse>
+    <LE_distanceAccelerationDeceleration>2</LE_distanceAccelerationDeceleration>
+    <LE_inferieureAPasAvancement>100</LE_inferieureAPasAvancement>
+    <LE_valeurDefautPasAvancement>30</LE_valeurDefautPasAvancement>
+    <LE_valeurDefautTX>0</LE_valeurDefautTX>
+    <LE_valeurDefautTY>0</LE_valeurDefautTY>
+    <LE_vitesseMax>200000</LE_vitesseMax>
+    <LE_typeTable>Grandes Tables</LE_typeTable>
+  </ongletadministrateur>
+  <directories>
+    <export>export</export>
+    <resultats>resultats</resultats>
+    <traitements>traitements</traitements>
+  </directories>
+  <type_ion>
+    <HELIUM>HELIUM</HELIUM>
+    <AZOTE>AZOTE</AZOTE>
+    <ARGON>ARGON</ARGON>
+  </type_ion>
+  <diametre_faisceau>
+    <A>40</A>
+    <B>22.5</B>
+  </diametre_faisceau>
+</config>
