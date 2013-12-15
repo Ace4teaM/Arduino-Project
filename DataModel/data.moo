@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{90807F7B-0090-4209-BF2C-793E128296C0}" Label="" LastModificationDate="1387131240" Name="data" Objects="261" Symbols="18" Target="C++" TargetLink="Local" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{90807F7B-0090-4209-BF2C-793E128296C0}" Label="" LastModificationDate="1387134149" Name="data" Objects="259" Symbols="7" Target="C++" TargetLink="Local" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -4727,11 +4727,13 @@ public %Interface.qualifiedCode%
 %CurrentLine%
 .next(&quot;\n *    &quot;)
  ***********************************************************************/
-</a:TemplateTargetItem.Value>
+
+#include &lt;QString&gt;
+#include &lt;QSqlQuery&gt;</a:TemplateTargetItem.Value>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
-<a:ModificationDate>0</a:ModificationDate>
-<a:Modifier/>
+<a:ModificationDate>1387134093</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 </o:TemplateTargetItem>
 <o:TemplateTargetItem Id="o192">
@@ -4756,8 +4758,8 @@ public %Interface.qualifiedCode%
 </a:TemplateTargetItem.Value>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
-<a:ModificationDate>0</a:ModificationDate>
-<a:Modifier/>
+<a:ModificationDate>1387133807</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 </o:TemplateTargetItem>
 <o:TemplateTargetItem Id="o193">
@@ -4796,6 +4798,8 @@ public %Interface.qualifiedCode%
 <a:Name>Source</a:Name>
 <a:TemplateTargetItem.Value>%fileHeader_cpp%
 
+#include &quot;%Code%.h&quot;
+
 void %Code%::bind(QSqlQuery &amp; query){
        .foreach_item(Attributes, &quot;\n&quot;)
        query.bindValue(&quot;
@@ -4812,28 +4816,27 @@ void %Code%::bind(QSqlQuery &amp; query){
 void %Code%::bound(QSqlQuery &amp; query){
        .foreach_item(Attributes, &quot;\n&quot;)
        .if (%DataType% == &quot;int&quot;)
-       this-&gt;%Code% = DataBase::getQueryInt(&quot;
+       this-&gt;%Code% = DataBase::getQueryInt(query,&quot;
 .convert_name(%Name%,&quot;_&quot;,&quot; &quot;)
 &quot;);
        .endif
        .if (%DataType% == &quot;QString&quot;)
-       this-&gt;%Code% = DataBase::getQueryString(&quot;
+       this-&gt;%Code% = DataBase::getQueryString(query,&quot;
 .convert_name(%Name%,&quot;_&quot;,&quot; &quot;)
 &quot;);
        .endif
        .if (%DataType% == &quot;bool&quot;)
-       this-&gt;%Code% = (bool)DataBase::getQueryInt(&quot;
+       this-&gt;%Code% = (bool)DataBase::getQueryInt(query,&quot;
 .convert_name(%Name%,&quot;_&quot;,&quot; &quot;)
 &quot;);
        .endif
        .next(&quot;\n&quot;)
        \n
-
- }
+}
 </a:TemplateTargetItem.Value>
 <a:CreationDate>1387110917</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1387131240</a:ModificationDate>
+<a:ModificationDate>1387134149</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:FileType>.cpp</a:FileType>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
@@ -6347,7 +6350,7 @@ Shadow=0
 <a:PaperSource>276</a:PaperSource>
 <c:Symbols>
 <o:AssociationSymbol Id="o239">
-<a:Rect>((3299,11984), (30261,26107))</a:Rect>
+<a:Rect>((3299,11984), (30224,26107))</a:Rect>
 <a:ListOfPoints>((30224,11984),(30224,25033),(3299,25033))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
@@ -6366,7 +6369,7 @@ MULA 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o243">
-<a:Rect>((-18450,14641), (3299,26107))</a:Rect>
+<a:Rect>((-18488,14641), (3299,26107))</a:Rect>
 <a:ListOfPoints>((-15338,14641),(-15338,25033),(3299,25033))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
@@ -6385,8 +6388,8 @@ MULA 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o246">
-<a:Rect>((-14625,14641), (5661,25183))</a:Rect>
-<a:ListOfPoints>((-12413,14641),(-12413,21808),(3449,21808),(3449,25183))</a:ListOfPoints>
+<a:Rect>((-14663,14641), (3449,26257))</a:Rect>
+<a:ListOfPoints>((-12413,14641),(-12413,25183),(3449,25183))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -6426,7 +6429,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o241">
-<a:ModificationDate>1387131240</a:ModificationDate>
+<a:ModificationDate>1387134149</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-1206,22149), (7804,27917))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -6448,7 +6451,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o240">
-<a:ModificationDate>1387131240</a:ModificationDate>
+<a:ModificationDate>1387134149</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((24560,9587), (35888,14381))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -6470,7 +6473,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o251">
-<a:ModificationDate>1387131240</a:ModificationDate>
+<a:ModificationDate>1387134149</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-20264,-2637), (-10636,2157))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -6585,14 +6588,15 @@ DAT 1387130780</a:History>
 <a:Code>Pin</a:Code>
 <a:CreationDate>1387130934</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1387130934</a:ModificationDate>
+<a:ModificationDate>1387133876</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:History>ORG {C661DAFF-B36C-40BD-8D9F-243815DC3AAB}
 DAT 1387130934
 ORG {2A939B9B-FB10-464A-A169-EF119DC1D95F}
 DAT 1387130926
 ORG {51110138-3EAF-46AE-9D60-2EBE628ADFA4}
-DAT 1387130780</a:History>
+DAT 1387130780
+ATT STRN</a:History>
 <a:UseParentNamespace>0</a:UseParentNamespace>
 <a:PersistentCode>PIN</a:PersistentCode>
 <c:Attributes>
