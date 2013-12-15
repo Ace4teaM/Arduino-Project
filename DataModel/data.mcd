@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{4B4F63AF-64B6-404F-ABFE-6D6EA041C5B8}" Label="" LastModificationDate="1386426698" Name="Données conceptuelles_1" Objects="37" Symbols="13" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{4B4F63AF-64B6-404F-ABFE-6D6EA041C5B8}" Label="" LastModificationDate="1387130806" Name="data" Objects="41" Symbols="13" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -8,12 +8,12 @@
 <c:Children>
 <o:Model Id="o2">
 <a:ObjectID>4B4F63AF-64B6-404F-ABFE-6D6EA041C5B8</a:ObjectID>
-<a:Name>Données conceptuelles_1</a:Name>
-<a:Code>DONNEES_CONCEPTUELLES_1</a:Code>
+<a:Name>data</a:Name>
+<a:Code>DATA</a:Code>
 <a:CreationDate>1386424979</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386426651</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1387130670</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:PackageOptionsText>[FolderOptions]
 
 [FolderOptions\Conceptual Data Objects]
@@ -780,7 +780,7 @@ NameToCode=Yes
 CheckModel=Yes
 SaveLinks=Yes
 NameToCode=No
-PreserveMode=Yes
+PreserveMode=No
 EnableTransformations=No</a:ModelOptionsText>
 <c:GeneratedModels>
 <o:Shortcut Id="o3">
@@ -803,8 +803,8 @@ EnableTransformations=No</a:ModelOptionsText>
 <a:Code>DIAGRAMME_1</a:Code>
 <a:CreationDate>1386424980</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386426278</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1387103765</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:DisplayPreferences>[DisplayPreferences]
 
 [DisplayPreferences\CDM]
@@ -1173,8 +1173,8 @@ Shadow=0</a:DisplayPreferences>
 <o:AssociationLinkSymbol Id="o5">
 <a:CreationDate>1386425193</a:CreationDate>
 <a:ModificationDate>1386426651</a:ModificationDate>
-<a:Rect>((-17137,15284), (-12038,24209))</a:Rect>
-<a:ListOfPoints>((-15375,15284),(-15375,20229),(-12038,20229),(-12038,24209))</a:ListOfPoints>
+<a:Rect>((-17137,15284), (-12040,24209))</a:Rect>
+<a:ListOfPoints>((-15375,15284),(-15375,20229),(-12040,20229),(-12040,24209))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1194,8 +1194,8 @@ CARD 0 Arial,8,N</a:FontList>
 <o:AssociationLinkSymbol Id="o9">
 <a:CreationDate>1386425193</a:CreationDate>
 <a:ModificationDate>1386425194</a:ModificationDate>
-<a:Rect>((-12038,22997), (-1006,24271))</a:Rect>
-<a:ListOfPoints>((-1006,24171),(-12038,24171))</a:ListOfPoints>
+<a:Rect>((-12040,22996), (-1006,25416))</a:Rect>
+<a:ListOfPoints>((-1006,24170),(-12040,24170))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1213,10 +1213,10 @@ CARD 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:AssociationLinkSymbol>
 <o:AssociationLinkSymbol Id="o12">
-<a:CreationDate>1386425604</a:CreationDate>
-<a:ModificationDate>1386425613</a:ModificationDate>
-<a:Rect>((-19537,15884), (-17775,28784))</a:Rect>
-<a:ListOfPoints>((-17775,15884),(-17775,22516),(-17925,22516),(-17925,28784))</a:ListOfPoints>
+<a:CreationDate>1386425980</a:CreationDate>
+<a:ModificationDate>1387130672</a:ModificationDate>
+<a:Rect>((16388,13153), (24941,19634))</a:Rect>
+<a:ListOfPoints>((24941,13153),(24941,19634),(16388,19634))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1224,20 +1224,20 @@ CARD 0 Arial,8,N</a:FontList>
 <a:FontList>ROLE 0 Arial,8,N
 CARD 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:EntitySymbol Ref="o6"/>
+<o:EntitySymbol Ref="o13"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:AssociationSymbol Ref="o13"/>
+<o:AssociationSymbol Ref="o14"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:AssociationLink Ref="o14"/>
+<o:AssociationLink Ref="o15"/>
 </c:Object>
 </o:AssociationLinkSymbol>
-<o:AssociationLinkSymbol Id="o15">
-<a:CreationDate>1386425604</a:CreationDate>
-<a:ModificationDate>1386425606</a:ModificationDate>
-<a:Rect>((-17925,24584), (1650,30290))</a:Rect>
-<a:ListOfPoints>((1650,24584),(1650,28784),(-17925,28784))</a:ListOfPoints>
+<o:AssociationLinkSymbol Id="o16">
+<a:CreationDate>1386425980</a:CreationDate>
+<a:ModificationDate>1386425980</a:ModificationDate>
+<a:Rect>((8175,19634), (16388,24134))</a:Rect>
+<a:ListOfPoints>((8175,24134),(8175,19634),(16388,19634))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1248,17 +1248,17 @@ CARD 0 Arial,8,N</a:FontList>
 <o:EntitySymbol Ref="o10"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:AssociationSymbol Ref="o13"/>
+<o:AssociationSymbol Ref="o14"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:AssociationLink Ref="o16"/>
+<o:AssociationLink Ref="o17"/>
 </c:Object>
 </o:AssociationLinkSymbol>
-<o:AssociationLinkSymbol Id="o17">
-<a:CreationDate>1386425980</a:CreationDate>
-<a:ModificationDate>1386425980</a:ModificationDate>
-<a:Rect>((16388,15134), (24600,19634))</a:Rect>
-<a:ListOfPoints>((24600,15134),(24600,19634),(16388,19634))</a:ListOfPoints>
+<o:AssociationLinkSymbol Id="o18">
+<a:CreationDate>1387103765</a:CreationDate>
+<a:ModificationDate>1387130690</a:ModificationDate>
+<a:Rect>((-8390,13876), (1931,16213))</a:Rect>
+<a:ListOfPoints>((-8390,15039),(-6167,15039),(-6167,15206),(1931,15206))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1266,7 +1266,7 @@ CARD 0 Arial,8,N</a:FontList>
 <a:FontList>ROLE 0 Arial,8,N
 CARD 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:EntitySymbol Ref="o18"/>
+<o:EntitySymbol Ref="o6"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
 <o:AssociationSymbol Ref="o19"/>
@@ -1276,10 +1276,10 @@ CARD 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:AssociationLinkSymbol>
 <o:AssociationLinkSymbol Id="o21">
-<a:CreationDate>1386425980</a:CreationDate>
-<a:ModificationDate>1386425980</a:ModificationDate>
-<a:Rect>((8175,19634), (16388,24134))</a:Rect>
-<a:ListOfPoints>((8175,24134),(8175,19634),(16388,19634))</a:ListOfPoints>
+<a:CreationDate>1387103765</a:CreationDate>
+<a:ModificationDate>1387130690</a:ModificationDate>
+<a:Rect>((671,15206), (3423,23719))</a:Rect>
+<a:ListOfPoints>((1661,23719),(1661,19915),(1931,19915),(1931,15206))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1321,7 +1321,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 </o:EntitySymbol>
 <o:EntitySymbol Id="o10">
 <a:CreationDate>1386425059</a:CreationDate>
-<a:ModificationDate>1386426651</a:ModificationDate>
+<a:ModificationDate>1387101127</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-3009,22150), (9607,27916))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -1343,7 +1343,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o7">
 <a:CreationDate>1386425193</a:CreationDate>
 <a:ModificationDate>1386425194</a:ModificationDate>
-<a:Rect>((-14439,22449), (-9638,25968))</a:Rect>
+<a:Rect>((-14441,22449), (-9640,25968))</a:Rect>
 <a:LineColor>16744576</a:LineColor>
 <a:FillColor>16765136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1358,29 +1358,11 @@ LABL 0 Arial,8,N</a:FontList>
 <o:Association Ref="o25"/>
 </c:Object>
 </o:AssociationSymbol>
-<o:AssociationSymbol Id="o13">
-<a:CreationDate>1386425604</a:CreationDate>
-<a:ModificationDate>1386425606</a:ModificationDate>
-<a:Rect>((-20326,27024), (-15525,30543))</a:Rect>
-<a:LineColor>16744576</a:LineColor>
-<a:FillColor>16765136</a:FillColor>
-<a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>STRN 0 Arial,8,N
-DISPNAME 0 Arial,8,N
-Attributes 0 Arial,8,N
-LABL 0 Arial,8,N</a:FontList>
-<a:BrushStyle>6</a:BrushStyle>
-<a:GradientFillMode>65</a:GradientFillMode>
-<a:GradientEndColor>16777215</a:GradientEndColor>
-<c:Object>
-<o:Association Ref="o26"/>
-</c:Object>
-</o:AssociationSymbol>
-<o:EntitySymbol Id="o18">
+<o:EntitySymbol Id="o13">
 <a:CreationDate>1386425928</a:CreationDate>
-<a:ModificationDate>1386426651</a:ModificationDate>
+<a:ModificationDate>1387130672</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((21546,12159), (34702,16158))</a:Rect>
+<a:Rect>((20363,9587), (40085,14380))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1394,10 +1376,10 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Entity Ref="o27"/>
+<o:Entity Ref="o26"/>
 </c:Object>
 </o:EntitySymbol>
-<o:AssociationSymbol Id="o19">
+<o:AssociationSymbol Id="o14">
 <a:CreationDate>1386425980</a:CreationDate>
 <a:ModificationDate>1386425980</a:ModificationDate>
 <a:Rect>((13988,17874), (18788,21393))</a:Rect>
@@ -1412,12 +1394,12 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Association Ref="o28"/>
+<o:Association Ref="o27"/>
 </c:Object>
 </o:AssociationSymbol>
-<o:EntitySymbol Id="o29">
+<o:EntitySymbol Id="o28">
 <a:CreationDate>1386426278</a:CreationDate>
-<a:ModificationDate>1386426651</a:ModificationDate>
+<a:ModificationDate>1387101127</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-22607,-2638), (-8293,2156))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -1433,9 +1415,27 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Entity Ref="o30"/>
+<o:Entity Ref="o29"/>
 </c:Object>
 </o:EntitySymbol>
+<o:AssociationSymbol Id="o19">
+<a:CreationDate>1387103765</a:CreationDate>
+<a:ModificationDate>1387130690</a:ModificationDate>
+<a:Rect>((-470,13446), (4331,16965))</a:Rect>
+<a:LineColor>16744576</a:LineColor>
+<a:FillColor>16765136</a:FillColor>
+<a:ShadowColor>12632256</a:ShadowColor>
+<a:FontList>STRN 0 Arial,8,N
+DISPNAME 0 Arial,8,N
+Attributes 0 Arial,8,N
+LABL 0 Arial,8,N</a:FontList>
+<a:BrushStyle>6</a:BrushStyle>
+<a:GradientFillMode>65</a:GradientFillMode>
+<a:GradientEndColor>16777215</a:GradientEndColor>
+<c:Object>
+<o:Association Ref="o30"/>
+</c:Object>
+</o:AssociationSymbol>
 </c:Symbols>
 </o:ConceptualDiagram>
 </c:ConceptualDiagrams>
@@ -1449,8 +1449,8 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:Code>CONTROLEUR</a:Code>
 <a:CreationDate>1386424986</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386425571</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1387130775</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <c:Identifiers>
 <o:Identifier Id="o31">
 <a:ObjectID>F8767366-21B8-480C-B289-646CFE255DEB</a:ObjectID>
@@ -1499,8 +1499,8 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:Code>PIN</a:Code>
 <a:CreationDate>1386425059</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386425868</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1387130806</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <c:Identifiers>
 <o:Identifier Id="o36">
 <a:ObjectID>F978E4F5-FF9A-4956-B343-56449A8082EE</a:ObjectID>
@@ -1554,14 +1554,14 @@ Identifiers 0 Arial,8,N</a:FontList>
 </o:EntityAttribute>
 </c:Attributes>
 </o:Entity>
-<o:Entity Id="o27">
+<o:Entity Id="o26">
 <a:ObjectID>1DB8CDE1-B619-49E9-A6B9-EE54EF1CB6E7</a:ObjectID>
 <a:Name>Equipement</a:Name>
 <a:Code>EQUIPEMENT</a:Code>
 <a:CreationDate>1386425928</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386425970</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1387130670</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <c:Identifiers>
 <o:Identifier Id="o43">
 <a:ObjectID>F43C7D45-4EDC-45A8-AA3C-EA0045F78642</a:ObjectID>
@@ -1591,9 +1591,20 @@ Identifiers 0 Arial,8,N</a:FontList>
 <o:DataItem Ref="o45"/>
 </c:DataItem>
 </o:EntityAttribute>
+<o:EntityAttribute Id="o46">
+<a:ObjectID>4FE6D12C-EB2D-40DD-A13C-4E9242C74DEA</a:ObjectID>
+<a:CreationDate>1387130652</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1387130670</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
+<c:DataItem>
+<o:DataItem Ref="o47"/>
+</c:DataItem>
+</o:EntityAttribute>
 </c:Attributes>
 </o:Entity>
-<o:Entity Id="o30">
+<o:Entity Id="o29">
 <a:ObjectID>E2A6EB0C-5A6D-43F6-B128-B5114B1AAC18</a:ObjectID>
 <a:Name>Client</a:Name>
 <a:Code>CLIENT</a:Code>
@@ -1602,7 +1613,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1386426322</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 <c:Identifiers>
-<o:Identifier Id="o46">
+<o:Identifier Id="o48">
 <a:ObjectID>7078D025-DD9E-47CE-8F79-FE48230A7A4C</a:ObjectID>
 <a:Name>Identifiant_1</a:Name>
 <a:Code>IDENTIFIANT_1</a:Code>
@@ -1611,15 +1622,15 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1386426311</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 <c:Identifier.Attributes>
-<o:EntityAttribute Ref="o47"/>
+<o:EntityAttribute Ref="o49"/>
 </c:Identifier.Attributes>
 </o:Identifier>
 </c:Identifiers>
 <c:PrimaryIdentifier>
-<o:Identifier Ref="o46"/>
+<o:Identifier Ref="o48"/>
 </c:PrimaryIdentifier>
 <c:Attributes>
-<o:EntityAttribute Id="o47">
+<o:EntityAttribute Id="o49">
 <a:ObjectID>121845F5-ECA4-4CDA-B6C5-16177EDC7863</a:ObjectID>
 <a:CreationDate>1386426279</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
@@ -1627,10 +1638,10 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:Modifier>AceTeaM</a:Modifier>
 <a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
 <c:DataItem>
-<o:DataItem Ref="o48"/>
+<o:DataItem Ref="o50"/>
 </c:DataItem>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o49">
+<o:EntityAttribute Id="o51">
 <a:ObjectID>B684F4FA-0D23-49D0-B3E8-EC6A8694F798</a:ObjectID>
 <a:CreationDate>1386426279</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
@@ -1678,7 +1689,7 @@ D	Digital</a:ListOfValues>
 <a:DataType>A1</a:DataType>
 <a:Length>1</a:Length>
 <c:Domain>
-<o:Domain Ref="o50"/>
+<o:Domain Ref="o52"/>
 </c:Domain>
 </o:DataItem>
 <o:DataItem Id="o42">
@@ -1712,7 +1723,7 @@ D	Digital</a:ListOfValues>
 <a:Modifier>AceTeaM</a:Modifier>
 <a:DataType>I</a:DataType>
 </o:DataItem>
-<o:DataItem Id="o48">
+<o:DataItem Id="o50">
 <a:ObjectID>95609442-CB1C-4039-A27F-42E9A11A5215</a:ObjectID>
 <a:Name>client_id</a:Name>
 <a:Code>CLIENT_ID</a:Code>
@@ -1722,9 +1733,30 @@ D	Digital</a:ListOfValues>
 <a:Modifier>AceTeaM</a:Modifier>
 <a:DataType>I</a:DataType>
 </o:DataItem>
+<o:DataItem Id="o53">
+<a:ObjectID>095604CF-14DF-4BE3-B23C-1A46235346EA</a:ObjectID>
+<a:Name>libre</a:Name>
+<a:Code>LIBRE</a:Code>
+<a:CreationDate>1387101030</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1387130696</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:DataType>BL</a:DataType>
+</o:DataItem>
+<o:DataItem Id="o47">
+<a:ObjectID>DAD9F96D-BAB2-4088-B3F3-817A9083DD00</a:ObjectID>
+<a:Name>name</a:Name>
+<a:Code>NAME</a:Code>
+<a:CreationDate>1387130652</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1387130670</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:DataType>VA128</a:DataType>
+<a:Length>128</a:Length>
+</o:DataItem>
 </c:DataItems>
 <c:Domains>
-<o:Domain Id="o50">
+<o:Domain Id="o52">
 <a:ObjectID>DFB1B0E8-2F87-4C53-9837-E74E90036E34</a:ObjectID>
 <a:Name>PIN_TYPE</a:Name>
 <a:Code>PIN_TYPE</a:Code>
@@ -1745,19 +1777,10 @@ D	Digital</a:ListOfValues>
 <a:Code>RESERVE</a:Code>
 <a:CreationDate>1386425193</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386425321</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1387130806</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 </o:Association>
-<o:Association Id="o26">
-<a:ObjectID>4E0939FA-CD57-46BC-8CF6-EDE0AF3E09C1</a:ObjectID>
-<a:Name>Libre</a:Name>
-<a:Code>LIBRE</a:Code>
-<a:CreationDate>1386425604</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386425868</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-</o:Association>
-<o:Association Id="o28">
+<o:Association Id="o27">
 <a:ObjectID>F1173EDC-16BE-4C7B-B7DD-F34A0894DC46</a:ObjectID>
 <a:Name>Requis</a:Name>
 <a:Code>REQUIS</a:Code>
@@ -1766,14 +1789,24 @@ D	Digital</a:ListOfValues>
 <a:ModificationDate>1386425986</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 </o:Association>
+<o:Association Id="o30">
+<a:ObjectID>C3D6A836-253A-438D-A30D-BCC496F88793</a:ObjectID>
+<a:Name>libre</a:Name>
+<a:Code>LIBRE</a:Code>
+<a:CreationDate>1387103765</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1387130768</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+</o:Association>
 </c:Associations>
 <c:AssociationsLinks>
 <o:AssociationLink Id="o8">
 <a:ObjectID>841B5422-920F-4A68-AA67-A2B9DBF79B67</a:ObjectID>
 <a:CreationDate>1386425193</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386425193</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1387130775</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:Role>reserve</a:Role>
 <a:Cardinality>0,n</a:Cardinality>
 <c:Object1>
 <o:Association Ref="o25"/>
@@ -1786,8 +1819,9 @@ D	Digital</a:ListOfValues>
 <a:ObjectID>87B018FB-6362-48C0-977B-C79B01B6B9DC</a:ObjectID>
 <a:CreationDate>1386425193</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386425321</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1387130806</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:Role>reserve</a:Role>
 <a:Cardinality>1,1</a:Cardinality>
 <c:Object1>
 <o:Association Ref="o25"/>
@@ -1796,35 +1830,7 @@ D	Digital</a:ListOfValues>
 <o:Entity Ref="o24"/>
 </c:Object2>
 </o:AssociationLink>
-<o:AssociationLink Id="o14">
-<a:ObjectID>264262F4-EEC8-4472-9632-2DF83F147D40</a:ObjectID>
-<a:CreationDate>1386425604</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386425604</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:Cardinality>0,n</a:Cardinality>
-<c:Object1>
-<o:Association Ref="o26"/>
-</c:Object1>
-<c:Object2>
-<o:Entity Ref="o23"/>
-</c:Object2>
-</o:AssociationLink>
-<o:AssociationLink Id="o16">
-<a:ObjectID>36534A43-4F06-4ADB-A2B1-9F4B924E7DD0</a:ObjectID>
-<a:CreationDate>1386425604</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1386425868</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:Cardinality>1,1</a:Cardinality>
-<c:Object1>
-<o:Association Ref="o26"/>
-</c:Object1>
-<c:Object2>
-<o:Entity Ref="o24"/>
-</c:Object2>
-</o:AssociationLink>
-<o:AssociationLink Id="o20">
+<o:AssociationLink Id="o15">
 <a:ObjectID>AC27C214-4F01-4C2A-B037-06DE1CB61743</a:ObjectID>
 <a:CreationDate>1386425980</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
@@ -1832,13 +1838,13 @@ D	Digital</a:ListOfValues>
 <a:Modifier>AceTeaM</a:Modifier>
 <a:Cardinality>0,n</a:Cardinality>
 <c:Object1>
-<o:Association Ref="o28"/>
+<o:Association Ref="o27"/>
 </c:Object1>
 <c:Object2>
-<o:Entity Ref="o27"/>
+<o:Entity Ref="o26"/>
 </c:Object2>
 </o:AssociationLink>
-<o:AssociationLink Id="o22">
+<o:AssociationLink Id="o17">
 <a:ObjectID>887CEC86-6076-4A20-8175-6871EC719A6A</a:ObjectID>
 <a:CreationDate>1386425980</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
@@ -1846,7 +1852,37 @@ D	Digital</a:ListOfValues>
 <a:Modifier>AceTeaM</a:Modifier>
 <a:Cardinality>0,n</a:Cardinality>
 <c:Object1>
-<o:Association Ref="o28"/>
+<o:Association Ref="o27"/>
+</c:Object1>
+<c:Object2>
+<o:Entity Ref="o24"/>
+</c:Object2>
+</o:AssociationLink>
+<o:AssociationLink Id="o20">
+<a:ObjectID>65C70731-6721-4EBD-89AA-52DC44ED8423</a:ObjectID>
+<a:CreationDate>1387103765</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1387130768</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:Role>libre</a:Role>
+<a:Cardinality>0,n</a:Cardinality>
+<c:Object1>
+<o:Association Ref="o30"/>
+</c:Object1>
+<c:Object2>
+<o:Entity Ref="o23"/>
+</c:Object2>
+</o:AssociationLink>
+<o:AssociationLink Id="o22">
+<a:ObjectID>3AFBBB65-D39B-4D52-86CA-498052105480</a:ObjectID>
+<a:CreationDate>1387103765</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1387130764</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:Role>libre</a:Role>
+<a:Cardinality>1,1</a:Cardinality>
+<c:Object1>
+<o:Association Ref="o30"/>
 </c:Object1>
 <c:Object2>
 <o:Entity Ref="o24"/>
@@ -1854,7 +1890,7 @@ D	Digital</a:ListOfValues>
 </o:AssociationLink>
 </c:AssociationsLinks>
 <c:TargetModels>
-<o:TargetModel Id="o51">
+<o:TargetModel Id="o54">
 <a:ObjectID>32B78B65-0D6A-473F-804A-DA5409399EDE</a:ObjectID>
 <a:Name>data</a:Name>
 <a:Code>DATA</a:Code>
@@ -1862,7 +1898,7 @@ D	Digital</a:ListOfValues>
 <a:Creator>AceTeaM</a:Creator>
 <a:ModificationDate>1386426698</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
-<a:TargetModelURL>file:///C|/Users/AceTeaM/Documents/GitHub/Arduino-Project/DataModel/data.mld</a:TargetModelURL>
+<a:TargetModelURL>file:///C|/Users/developpement/Documents/GitHub/Arduino-Project/DataModel/data.mld</a:TargetModelURL>
 <a:TargetModelID>4874968A-B496-4F8C-A4FB-C80F414F7983</a:TargetModelID>
 <a:TargetModelClassID>5F45F978-C4F3-4E35-A3FC-AF3318663A0F</a:TargetModelClassID>
 <c:SessionShortcuts>
