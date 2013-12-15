@@ -5,6 +5,8 @@
  * Purpose: Implementation of the class Controleur
  ***********************************************************************/
 
+#include "Controleur.h"
+
 void Controleur::bind(QSqlQuery & query){
        query.bindValue("controleur_id",QVariant(this->controleurId));
        query.bindValue("adresse_ip",QVariant(this->adresseIp));       

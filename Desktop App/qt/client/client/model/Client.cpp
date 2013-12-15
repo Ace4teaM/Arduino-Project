@@ -5,6 +5,8 @@
  * Purpose: Implementation of the class Client
  ***********************************************************************/
 
+#include "Client.h"
+
 void Client::bind(QSqlQuery & query){
        query.bindValue("client_id",QVariant(this->clientId));
        query.bindValue("adresse_ip",QVariant(this->adresseIp));       

@@ -21,7 +21,8 @@ SOURCES += main.cpp\
         app/application.cpp \
         app/qassoclist.cpp \
         app/database.cpp \
-        app/qdelay.cpp
+        app/qdelay.cpp \
+        model/Client.cpp
 
 HEADERS  += mainwindow.h\
         result.h\
@@ -33,7 +34,8 @@ HEADERS  += mainwindow.h\
         app/qassoclist.h \
         app/database.h \
         app/qdelay.h \
-        app/iapplicationevent.h
+        app/iapplicationevent.h \
+        model/Client.h
 
 FORMS    += mainwindow.ui \
     arduino_server_choice.ui

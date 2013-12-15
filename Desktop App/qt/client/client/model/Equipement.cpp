@@ -5,6 +5,8 @@
  * Purpose: Implementation of the class Equipement
  ***********************************************************************/
 
+#include "Equipement.h"
+
 void Equipement::bind(QSqlQuery & query){
        query.bindValue("equipement_id",QVariant(this->equipementId));
        query.bindValue("name",QVariant(this->name));       

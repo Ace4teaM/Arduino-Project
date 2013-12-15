@@ -5,14 +5,14 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
+/*
     ArduinoServerChoice* arduinoServerChoice = new ArduinoServerChoice();
 
     if(arduinoServerChoice->exec() == QDialog::Rejected){
         a.quit();
         return Result::getLast()->getCode();
     }
-
+*/
     MainWindow w;
     w.show();
 

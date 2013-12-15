@@ -5,6 +5,8 @@
  * Purpose: Implementation of the class Pin
  ***********************************************************************/
 
+#include "Pin.h"
+
 void Pin::bind(QSqlQuery & query){
        query.bindValue("pin_id",QVariant(this->pinId));
        query.bindValue("pin_type",QVariant(this->pinType));
