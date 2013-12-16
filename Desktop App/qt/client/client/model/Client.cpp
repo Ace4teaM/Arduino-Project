@@ -18,8 +18,7 @@ void Client::bind(QSqlQuery & query){
    @param query Query instance
 */
 void Client::bound(QSqlQuery & query){
-       this->clientId = DataBase::getQueryInt("client_id");
-       this->adresseIp = DataBase::getQueryString("adresse_ip");       
+       this->clientId = DataBase::getQueryInt(query,"client_id");
+       this->adresseIp = DataBase::getQueryString(query,"adresse_ip");       
 
-
- }
+}

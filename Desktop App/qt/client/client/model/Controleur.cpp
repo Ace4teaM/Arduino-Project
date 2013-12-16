@@ -18,8 +18,7 @@ void Controleur::bind(QSqlQuery & query){
    @param query Query instance
 */
 void Controleur::bound(QSqlQuery & query){
-       this->controleurId = DataBase::getQueryInt("controleur_id");
-       this->adresseIp = DataBase::getQueryString("adresse_ip");       
+       this->controleurId = DataBase::getQueryInt(query,"controleur_id");
+       this->adresseIp = DataBase::getQueryString(query,"adresse_ip");       
 
-
- }
+}

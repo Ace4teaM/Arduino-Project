@@ -5,6 +5,13 @@
  * Purpose: Declaration of the class Controleur
  ***********************************************************************/
 
+#include <QString>
+#include <QSqlQuery>
+#include <QVariant>
+#include "../app/DataBase.h"
+
+class DataBase;
+
 #if !defined(__DATA_Controleur_h)
 #define __DATA_Controleur_h
 
@@ -19,6 +26,9 @@ public:
    Pin** reserve;
    Pin** libre;
 
+   //SQL
+   void bind(QSqlQuery & query);
+   void bound(QSqlQuery & query);
 protected:
 private:
 

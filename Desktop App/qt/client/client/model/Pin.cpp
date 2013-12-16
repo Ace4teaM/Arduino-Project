@@ -1,7 +1,7 @@
 ﻿/***********************************************************************
  * Module:  Pin.cpp
  * Author:  developpement
- * Modified: dimanche 15 décembre 2013 19:08:54
+ * Modified: dimanche 15 décembre 2013 19:57:56
  * Purpose: Implementation of the class Pin
  ***********************************************************************/
 
@@ -19,9 +19,8 @@ void Pin::bind(QSqlQuery & query){
    @param query Query instance
 */
 void Pin::bound(QSqlQuery & query){
-       this->pinId = DataBase::getQueryInt("pin_id");
-       this->pinType = DataBase::getQueryString("pin_type");
-       this->pinNum = DataBase::getQueryInt("pin_num");       
+       this->pinId = DataBase::getQueryInt(query,"pin_id");
+       this->pinType = DataBase::getQueryString(query,"pin_type");
+       this->pinNum = DataBase::getQueryInt(query,"pin_num");       
 
-
- }
+}

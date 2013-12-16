@@ -18,8 +18,7 @@ void Equipement::bind(QSqlQuery & query){
    @param query Query instance
 */
 void Equipement::bound(QSqlQuery & query){
-       this->equipementId = DataBase::getQueryInt("equipement_id");
-       this->name = DataBase::getQueryString("name");       
+       this->equipementId = DataBase::getQueryInt(query,"equipement_id");
+       this->name = DataBase::getQueryString(query,"name");       
 
-
- }
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{90807F7B-0090-4209-BF2C-793E128296C0}" Label="" LastModificationDate="1387134149" Name="data" Objects="259" Symbols="7" Target="C++" TargetLink="Local" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{90807F7B-0090-4209-BF2C-793E128296C0}" Label="" LastModificationDate="1387177599" Name="data" Objects="260" Symbols="7" Target="C++" TargetLink="Local" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -4160,8 +4160,8 @@ class %Code%;
 .next</a:TemplateTargetItem.Value>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
-<a:ModificationDate>0</a:ModificationDate>
-<a:Modifier/>
+<a:ModificationDate>1387176745</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 </o:TemplateTargetItem>
 <o:TemplateTargetItem Id="o157">
@@ -4217,6 +4217,9 @@ public:
 [   %innerClassifiers_h%\n\n]\
 [   %operations_h(+)%\n\n]\
 [   %attributes_h(+)%\n\n]\
+   //SQL
+   void bind(QSqlQuery &amp; query);
+   void bound(QSqlQuery &amp; query);
 protected:
 [   %operations_h(#)%\n\n]\
 [   %attributes_h(#)%\n\n]\
@@ -4229,8 +4232,8 @@ private:
 </a:TemplateTargetItem.Value>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
-<a:ModificationDate>0</a:ModificationDate>
-<a:Modifier/>
+<a:ModificationDate>1387176896</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 </o:TemplateTargetItem>
 <o:TemplateTargetItem Id="o161">
@@ -4326,8 +4329,8 @@ public[%virtual%? virtual] %ParentObject.qualifiedCode%
 .endunique</a:TemplateTargetItem.Value>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
-<a:ModificationDate>0</a:ModificationDate>
-<a:Modifier/>
+<a:ModificationDate>1387176794</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 </o:TemplateTargetItem>
 <o:TemplateTargetItem Id="o165">
@@ -4343,11 +4346,19 @@ public[%virtual%? virtual] %ParentObject.qualifiedCode%
 %CurrentLine%
 .next(&quot;\n *    &quot;)
  ***********************************************************************/
+
+#include &lt;QString&gt;
+#include &lt;QSqlQuery&gt;
+#include &lt;QVariant&gt;
+#include &quot;../app/DataBase.h&quot;
+
+class DataBase;
+
 %Header%</a:TemplateTargetItem.Value>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
-<a:ModificationDate>0</a:ModificationDate>
-<a:Modifier/>
+<a:ModificationDate>1387177599</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 </o:TemplateTargetItem>
 <o:TemplateTargetItem Id="o166">
@@ -4372,8 +4383,8 @@ public[%virtual%? virtual] %ParentObject.qualifiedCode%
 .next</a:TemplateTargetItem.Value>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
-<a:ModificationDate>0</a:ModificationDate>
-<a:Modifier/>
+<a:ModificationDate>1387176783</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:Comment>@1 : visibility filter (INPUT PARAM, values = {+,#,-} )</a:Comment>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 </o:TemplateTargetItem>
@@ -4727,12 +4738,10 @@ public %Interface.qualifiedCode%
 %CurrentLine%
 .next(&quot;\n *    &quot;)
  ***********************************************************************/
-
-#include &lt;QString&gt;
-#include &lt;QSqlQuery&gt;</a:TemplateTargetItem.Value>
+</a:TemplateTargetItem.Value>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
-<a:ModificationDate>1387134093</a:ModificationDate>
+<a:ModificationDate>1387176567</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 </o:TemplateTargetItem>
@@ -4789,7 +4798,7 @@ public %Interface.qualifiedCode%
 <a:Name>Generated Files</a:Name>
 <a:CreationDate>1387110917</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1387123510</a:ModificationDate>
+<a:ModificationDate>1387176567</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 <c:Categories>
@@ -6429,7 +6438,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o241">
-<a:ModificationDate>1387134149</a:ModificationDate>
+<a:ModificationDate>1387177599</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-1206,22149), (7804,27917))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -6451,7 +6460,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o240">
-<a:ModificationDate>1387134149</a:ModificationDate>
+<a:ModificationDate>1387177599</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((24560,9587), (35888,14381))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -6473,7 +6482,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o251">
-<a:ModificationDate>1387134149</a:ModificationDate>
+<a:ModificationDate>1387177599</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-20264,-2637), (-10636,2157))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
