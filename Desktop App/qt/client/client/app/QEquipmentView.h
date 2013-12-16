@@ -8,6 +8,7 @@
 class QEquipmentView : public QGraphicsView{
 public:
     QEquipmentView(QWidget *parent);
+    QGraphicsScene scene;
 //protected:
 //    QGraphicsScene scene;
 };
