@@ -42,7 +42,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QGraphicsView" name="graphicsView"/>
+     <widget class="QEquipmentView" name="graphicsView"/>
     </item>
    </layout>
   </widget>
@@ -70,6 +70,13 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QEquipmentView</class>
+   <extends>QGraphicsView</extends>
+   <header>app/QEquipmentView.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

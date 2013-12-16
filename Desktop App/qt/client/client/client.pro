@@ -24,7 +24,8 @@ SOURCES += main.cpp\
         app/qdelay.cpp \
         model/Client.cpp \
         model/Equipement.cpp \
-        model/Pin.cpp
+        model/Pin.cpp \
+    app/QEquipmentView.cpp
 
 HEADERS  += mainwindow.h\
         result.h\
@@ -39,7 +40,8 @@ HEADERS  += mainwindow.h\
         app/iapplicationevent.h \
         model/Client.h \
         model/Equipement.h \
-        model/Pin.h
+        model/Pin.h \
+    app/QEquipmentView.h
 
 FORMS    += mainwindow.ui \
     arduino_server_choice.ui
