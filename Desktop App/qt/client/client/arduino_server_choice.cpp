@@ -29,12 +29,12 @@ bool ArduinoServerChoice::configUpdate(ConfigParamList& list){
 
     Configurable::configToWidget(this,list);
 
-    return RESULT_OK;
+    return QRESULT_OK;
 }
 
 bool ArduinoServerChoice::configRead(ConfigParamList& list){
 
     Configurable::configFromWidget(this,list);
 
-    return RESULT_OK;
+    return QRESULT_OK;
 }

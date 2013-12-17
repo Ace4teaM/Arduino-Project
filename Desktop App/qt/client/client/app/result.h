@@ -5,19 +5,26 @@
 #include <stdio.h>
 
 //Result macro
-#define RESULT(c)           Result::last(new Result(c))
-#define RESULT_DESC(c,t)    Result::last(new Result(c,t))
+#define QRESULT(c)          Result::last(new Result(c))
+#define QRESULT_DESC(c,t)   Result::last(new Result(c,t))
 #define IS_FAILED(c)        Result::is_last_failed()
-#define RESULT_OK           Result::last(new Result(Result::EC_OK))
+#define QRESULT_OK          Result::last(new Result(Result::EC_OK))
 
 //Stdout macro
 #ifdef _DEBUG
 #define PRINT(m)            puts(m);\
                             fflush(stdout)
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
 #define QPRINT(m)           puts((m).toAscii().data());\
                             fflush(stdout)
 #define QPRINT_PTR(m)       puts((m)->toAscii().data());\
                             fflush(stdout)
+#else
+#define QPRINT(m)           puts((m).toLocal8Bit().data());\
+                            fflush(stdout)
+#define QPRINT_PTR(m)       puts((m)->toLocal8Bit().data());\
+                            fflush(stdout)
+#endif
 #else
 #define PRINT(m)            ;
 #define QPRINT(m)           ;

@@ -42,7 +42,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QEquipmentView" name="graphicsView_2"/>
+     <widget class="QEquipmentView" name="graphicsView"/>
     </item>
    </layout>
   </widget>
@@ -52,7 +52,7 @@
      <x>0</x>
      <y>0</y>
      <width>684</width>
-     <height>18</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -81,7 +81,7 @@ bool ConfigXmlFile::save(const QString& filename,Configurable* config){
     QDomDocument doc;
     QFile f(filename);
     if(!f.open(QIODevice::ReadOnly)){
-        return RESULT_DESC(Result::EC_OPEN_CFG_FILE,f.errorString());
+        return QRESULT_DESC(Result::EC_OPEN_CFG_FILE,f.errorString());
     }
     doc.setContent(&f);
 
@@ -97,7 +97,7 @@ bool ConfigXmlFile::save(const QString& filename,Configurable* config){
             doc.documentElement().appendChild(root);
     }
     if(root.isNull())
-        return RESULT_DESC(Result::EC_XML_FILE_EDIT,"Création du noeud "+config->getConfigName());
+        return QRESULT_DESC(Result::EC_XML_FILE_EDIT,"Création du noeud "+config->getConfigName());
 
     //noeuds enfants
     ConfigParamList list;
@@ -115,7 +115,7 @@ bool ConfigXmlFile::save(const QString& filename,Configurable* config){
         if(!child.isNull())
             root.appendChild(child);
         if(child.isNull())
-            return RESULT_DESC(Result::EC_XML_FILE_EDIT,"Création du noeud "+name);
+            return QRESULT_DESC(Result::EC_XML_FILE_EDIT,"Création du noeud "+name);
 
         //définit le texte
         QDomText text = doc.createTextNode(cur->second->getValue());
@@ -132,7 +132,7 @@ bool ConfigXmlFile::save(const QString& filename,Configurable* config){
     QTextStream sortie;
     f.setFileName(filename);
     if(!f.open(QIODevice::WriteOnly)){
-        return RESULT_DESC(Result::EC_OPEN_CFG_FILE,f.errorString());
+        return QRESULT_DESC(Result::EC_OPEN_CFG_FILE,f.errorString());
     }
     sortie.setDevice(&f); // association du flux au fichier
 
@@ -143,7 +143,7 @@ bool ConfigXmlFile::save(const QString& filename,Configurable* config){
     doc.save(sortie, 2);
     f.close();
 
-    return RESULT_OK;
+    return QRESULT_OK;
 }
 
 /**
@@ -157,7 +157,7 @@ bool ConfigXmlFile::load(const QString& filename,Configurable* config,ConfigPara
     QDomDocument doc;
     QFile f(filename);
     if(!f.open(QIODevice::ReadOnly)){
-        return RESULT_DESC(Result::EC_OPEN_CFG_FILE,f.errorString());
+        return QRESULT_DESC(Result::EC_OPEN_CFG_FILE,f.errorString());
     }
     doc.setContent(&f);
 
@@ -197,7 +197,7 @@ bool ConfigXmlFile::load(const QString& filename,const QString& section_name,Con
     QDomDocument doc;
     QFile f(filename);
     if(!f.open(QIODevice::ReadOnly)){
-        return RESULT_DESC(Result::EC_OPEN_CFG_FILE,f.errorString());
+        return QRESULT_DESC(Result::EC_OPEN_CFG_FILE,f.errorString());
     }
     doc.setContent(&f);
 
@@ -242,7 +242,7 @@ bool ConfigXmlFile::load(const QString& filename,const QString& section_name,QAs
     if(!f.open(QIODevice::ReadOnly)){
         QPRINT(QDir::currentPath());
         QPRINT(filename);
-        return RESULT_DESC(Result::EC_OPEN_CFG_FILE,f.errorString());
+        return QRESULT_DESC(Result::EC_OPEN_CFG_FILE,f.errorString());
     }
     doc.setContent(&f);
 

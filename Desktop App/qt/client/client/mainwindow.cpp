@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     udpSocket = new QUdpSocket(this);
     ui->setupUi(this);
+
+    ui->toolBar->addAction("Add Equipement", this, SLOT(tbAddEquipement()));
 }
 
 MainWindow::~MainWindow()
@@ -23,7 +25,7 @@ bool MainWindow::isConnected()
 {
     QTcpSocket socket;
     socket.connectToHost("www.google.com", 80);
-    // Renvoie false si pas connectÃ©, ou si google ne marche pas
+    // Renvoie false si pas connectée, ou si google ne marche pas
     return socket.waitForConnected(1000);
 }
 
@@ -45,6 +47,13 @@ void MainWindow::on_pushButton_connect_clicked()
 {
     FindNetwork();
 }
+
+void MainWindow::tbAddEquipement()
+{
+    PRINT("addEquipement");
+    this->ui->graphicsView->addEquipement(NULL);
+}
+
 /*
 void Server::initSocket()
 {

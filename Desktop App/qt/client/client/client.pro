@@ -11,6 +11,10 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = client
 TEMPLATE = app
 
+# Ajoute les fonctions de debogage
+Debug:DEFINES += _DEBUG
+
+# Include pour la librairie NP
 win32:INCLUDEPATH += "../../../../../nplib/src"
 
 SOURCES += main.cpp\
