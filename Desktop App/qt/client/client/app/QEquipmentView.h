@@ -2,6 +2,7 @@
 #define QEQUIPMENTVIEW_H
 
 #include "result.h"
+#include "qequipementitem.h"
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
@@ -15,7 +16,7 @@ class QEquipmentView : public QGraphicsView{
 public:
     QEquipmentView(QWidget *parent);
     QGraphicsScene scene;
-    bool addEquipement(Equipement* equip);
+    QEquipementItem* addEquipement(const Equipement & equip);
 private slots:
     void onContextMenu(const QPoint & point);
     void scnSelectionChanged();

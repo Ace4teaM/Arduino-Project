@@ -50,8 +50,10 @@ void MainWindow::on_pushButton_connect_clicked()
 
 void MainWindow::tbAddEquipement()
 {
-    PRINT("addEquipement");
-    this->ui->graphicsView->addEquipement(NULL);
+    Equipement equipement;
+    equipement.type = QString("light");
+    equipement.name = QString("Lumiere Salon");
+    this->ui->graphicsView->addEquipement(equipement);
 }
 
 /*

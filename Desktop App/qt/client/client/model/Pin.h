@@ -1,7 +1,7 @@
 /***********************************************************************
  * Module:  Pin.h
  * Author:  developpement
- * Modified: dimanche 15 décembre 2013 19:57:56
+ * Modified: mercredi 18 décembre 2013 07:44:09
  * Purpose: Declaration of the class Pin
  ***********************************************************************/
 
@@ -15,8 +15,8 @@ class DataBase;
 #if !defined(__DATA_Pin_h)
 #define __DATA_Pin_h
 
-class Equipement;
 class Controleur;
+class Equipement;
 
 class Pin
 {
@@ -25,9 +25,9 @@ public:
    QString pinType;
    int pinNum;
    
+   Controleur** reserve;
    Equipement** Requis;
-   Controleur* reserve;
-   Controleur* libre;
+   Controleur** libre;
 
    //SQL
    void bind(QSqlQuery & query);

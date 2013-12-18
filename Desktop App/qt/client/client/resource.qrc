@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/equipement">
+        <file alias="circuit">rc/equipement/circuit.png</file>
+        <file alias="light">rc/equipement/light.png</file>
+    </qresource>
+</RCC>

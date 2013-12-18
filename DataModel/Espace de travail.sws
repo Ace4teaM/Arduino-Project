@@ -4,10 +4,10 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{4B4F63AF-64B6-404F-ABFE-6D6EA041C5B8}" Loaded="No" Name="data" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="data.mcd"/>
-		<Model Expanded="Yes" ID="{4874968A-B496-4F8C-A4FB-C80F414F7983}" Loaded="No" Name="data" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="data.mld"/>
-		<Model Expanded="Yes" ID="{AD0049D6-F84A-44F9-8216-A3E7F91D298A}" Loaded="No" Name="data" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="data.mpd"/>
-		<Model Expanded="Yes" ID="{90807F7B-0090-4209-BF2C-793E128296C0}" Name="data" Selected="Yes" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="data.moo"/>
+		<Model Expanded="Yes" ID="{4B4F63AF-64B6-404F-ABFE-6D6EA041C5B8}" Name="data" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="data.mcd"/>
+		<Model Expanded="Yes" ID="{4874968A-B496-4F8C-A4FB-C80F414F7983}" Name="data" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="data.mld"/>
+		<Model Expanded="Yes" ID="{AD0049D6-F84A-44F9-8216-A3E7F91D298A}" Name="data" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="data.mpd"/>
+		<Model Expanded="Yes" ID="{90807F7B-0090-4209-BF2C-793E128296C0}" Name="data" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="data.moo"/>
 	</Local>
 	<BrowserModule Name="Référentiel"/>
 </Workspace>

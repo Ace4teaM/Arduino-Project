@@ -29,7 +29,8 @@ SOURCES += main.cpp\
         model/Client.cpp \
         model/Equipement.cpp \
         model/Pin.cpp \
-    app/QEquipmentView.cpp
+        app/QEquipmentView.cpp \
+        app/qequipementitem.cpp
 
 HEADERS  += mainwindow.h\
         result.h\
@@ -45,10 +46,14 @@ HEADERS  += mainwindow.h\
         model/Client.h \
         model/Equipement.h \
         model/Pin.h \
-    app/QEquipmentView.h
+        app/QEquipmentView.h \
+        app/qequipementitem.h
 
 FORMS    += mainwindow.ui \
     arduino_server_choice.ui
+
+RESOURCES += \
+    resource.qrc
 
 
 

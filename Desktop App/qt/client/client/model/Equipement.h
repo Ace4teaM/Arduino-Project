@@ -1,7 +1,7 @@
 /***********************************************************************
  * Module:  Equipement.h
  * Author:  developpement
- * Modified: dimanche 15 décembre 2013 19:08:54
+ * Modified: mercredi 18 décembre 2013 07:44:09
  * Purpose: Declaration of the class Equipement
  ***********************************************************************/
 
@@ -22,6 +22,7 @@ class Equipement
 public:
    int equipementId;
    QString name;
+   QString type;
    
    Pin** Requis;
 
