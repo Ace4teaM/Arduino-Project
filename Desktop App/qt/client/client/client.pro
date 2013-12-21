@@ -20,6 +20,7 @@ win32:INCLUDEPATH += "../../../../../nplib/src"
 SOURCES += main.cpp\
         mainwindow.cpp \
         arduino_server_choice.cpp \
+        newequipementdialog.cpp \
         app/result.cpp \
         app/configurable.cpp \
         app/application.cpp \
@@ -36,6 +37,7 @@ HEADERS  += mainwindow.h\
         result.h\
         xarg.h \
         arduino_server_choice.h \
+        newequipementdialog.h \
         app/result.h \
         app/configurable.h \
         app/application.h \
@@ -50,7 +52,8 @@ HEADERS  += mainwindow.h\
         app/qequipementitem.h
 
 FORMS    += mainwindow.ui \
-    arduino_server_choice.ui
+    arduino_server_choice.ui \
+    newequipementdialog.ui
 
 RESOURCES += \
     resource.qrc

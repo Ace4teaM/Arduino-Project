@@ -44,9 +44,9 @@ bool DataBase::open(const QString& hostname,const QString& database_name,const Q
     this->db.setPassword(password);
 
     if(!this->db.open())
-        return QRESULT_DESC(Result::EC_DATA_BASE_CONNECT,this->db.lastError().text());
+        return QRESULT_DESC(Result::SqlConnectionFailed,this->db.lastError().text());
 
-    return QRESULT_OK;
+    return QRESULT_OK();
 }
 
 //ferme la connexion
@@ -61,7 +61,7 @@ QSqlQuery* DataBase::query(const QString query_str){
     query->clear();
     if(!query->prepare(query_str))
     {
-        QRESULT_DESC(Result::EC_SQL_QUERY, query->lastError().text());
+        QRESULT_DESC(Result::SqlCreatQueryFailed, query->lastError().text());
         return 0;
     }
 
@@ -211,9 +211,9 @@ bool DataBase::configUpdate(ConfigParamList& list){
     this->db.setPassword(Configurable::get(list,"password"));
 
     if(!this->db.open())
-        return QRESULT_DESC(Result::EC_DATA_BASE_CONNECT,this->db.lastError().text());
+        return QRESULT_DESC(Result::SqlConnectionFailed,this->db.lastError().text());
 
-    return QRESULT_OK;
+    return QRESULT_OK();
 }
 
 bool DataBase::configRead(ConfigParamList& list){

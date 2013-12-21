@@ -13,7 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     udpSocket = new QUdpSocket(this);
     ui->setupUi(this);
 
-    ui->toolBar->addAction("Add Equipement", this, SLOT(tbAddEquipement()));
+    ui->toolBar->addAction("Ajouter Equipement", this, SLOT(tbAddEquipement()));
+    ui->toolBar->addAction("Arranger", this, SLOT(tbRearrange()));
 }
 
 MainWindow::~MainWindow()
@@ -51,10 +52,72 @@ void MainWindow::on_pushButton_connect_clicked()
 void MainWindow::tbAddEquipement()
 {
     Equipement equipement;
+    equipement.equipementId   = 100;
     equipement.type = QString("light");
     equipement.name = QString("Lumiere Salon");
     this->ui->graphicsView->addEquipement(equipement);
 }
+
+void MainWindow::tbRearrange()
+{
+    this->ui->graphicsView->rearrangeView();
+}
+
+void MainWindow::on_btnSaveConfig_clicked()
+{
+    //obtient le fichier de destination
+    QString filename = QFileDialog::getSaveFileName(this, QString(), QString(), tr("Fichier XML (*.xml)"));
+    if(filename.isNull()){
+        QRESULT_OK();
+        return;
+    }
+
+    //crée le fichier
+    QFile outFile( filename );
+    if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) ){
+        QRESULT(Result::CantSaveFile);
+        return;
+    }
+
+    //génère le document
+    QDomDocument dom;
+    dom.appendChild(dom.createElement("root"));
+    this->ui->graphicsView->toXML(dom);
+
+    //sauvegarde le fichier
+    QTextStream stream( &outFile );
+    stream << dom.toString();
+
+    outFile.close();
+    QRESULT_OK();
+}
+
+
+void MainWindow::on_btnLoadConfig_clicked()
+{
+    //obtient le fichier de destination
+    QString filename = QFileDialog::getOpenFileName(this, QString(), QString(), tr("Fichier XML (*.xml)"));
+    if(filename.isNull()){
+        QRESULT_OK();
+        return;
+    }
+
+    //ouvre le fichier
+    QFile fp( filename );
+    if( !fp.open( QIODevice::ReadOnly | QIODevice::Text ) ){
+        QRESULT(Result::CantReadFile);
+        return;
+    }
+
+    //charge le document
+    QDomDocument dom;
+    dom.setContent(fp.readAll());
+    this->ui->graphicsView->fromXML(dom);
+
+    fp.close();
+    QRESULT_OK();
+}
+
 
 /*
 void Server::initSocket()

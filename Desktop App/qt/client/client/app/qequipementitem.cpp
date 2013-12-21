@@ -27,3 +27,8 @@ void QEquipementItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
     painter->drawText(rect,this->equipement.name,QTextOption(Qt::AlignCenter));
 
 }
+
+Equipement & QEquipementItem::getEquipement()
+{
+    return this->equipement;
+}

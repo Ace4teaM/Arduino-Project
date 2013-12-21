@@ -7,8 +7,8 @@
 //Result macro
 #define QRESULT(c)          Result::last(new Result(c))
 #define QRESULT_DESC(c,t)   Result::last(new Result(c,t))
-#define IS_FAILED(c)        Result::is_last_failed()
-#define QRESULT_OK          Result::last(new Result(Result::EC_OK))
+#define IS_FAILED()         Result::is_last_failed()
+#define QRESULT_OK()        Result::last(new Result("ERR_OK"))
 
 //Stdout macro
 #ifdef _DEBUG
@@ -34,10 +34,11 @@
 class Result
 {
 public:
-    Result(int code);
-    Result(int code,const QString* desc);
-    Result(int code,const QString& desc);
-    Result(int code,const char* desc);
+    Result(const QString& code);
+   /* Result(const QString* code,const QString* desc);
+    Result(const QString& code,const QString& desc);*/
+    Result(const QString code,const QString desc);
+    Result(const char* code,const char* desc);
 
     //last
     static bool last(Result* last);
@@ -48,7 +49,7 @@ public:
     static void print(Result* last);
 
     //current
-    int getCode();
+    const QString* getCode();
     bool is_failed();
     const QString* getMsg();
     const QString* getDesc();
@@ -56,22 +57,20 @@ public:
     const char* getDescA();
 
     /** @brief Codes d'erreurs de l'application */
-    enum EC {
-        EC_OK,
-        EC_DATA_BASE_CONNECT,
-        EC_OPEN_CFG_FILE,
-        EC_SQL_QUERY,
-        EC_APP_INIT,
-        EC_SQL_NO_RESULT,
-        EC_FEATURE_NOT_IMPLEMENTED,
-        EC_XML_FILE_EDIT,
-        EC_ACTION
-    };
-    /** @brief Textes des codes d'erreurs */
-    static const QString* EM[];
+    static const QString OK;
+    static const QString Failed;
+    static const QString SqlConnectionFailed;
+    static const QString CantOpenFile;
+    static const QString SqlCreatQueryFailed;
+    static const QString ApplicationInitFailed;
+    static const QString SqlEmptyResult;
+    static const QString AppUnimplementedFeature;
+    static const QString CantSaveFile;
+    static const QString CantReadFile;
+    static const QString CantEditXmlFile;
 private:
-    int code;
-    const QString* desc;
+    QString code;
+    QString desc;
     static Result* plast;
 };
 

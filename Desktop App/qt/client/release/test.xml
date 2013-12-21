@@ -1,0 +1,17 @@
+<root>
+ <light id="100">
+  <equipement_id>100</equipement_id>
+  <name>Lumiere Salon</name>
+  <type>light</type>
+ </light>
+ <light id="100">
+  <equipement_id>100</equipement_id>
+  <name>Lumiere Salon</name>
+  <type>light</type>
+ </light>
+ <circuit id="1">
+  <equipement_id>1</equipement_id>
+  <name>Arduino MEGA</name>
+  <type>circuit</type>
+ </circuit>
+</root>

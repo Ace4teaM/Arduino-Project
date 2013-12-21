@@ -57,4 +57,17 @@
     <A>40</A>
     <B>22.5</B>
   </diametre_faisceau>
+  <result lang="fr">
+    <code>
+        <ERR_OK>Aucune erreur</ERR_OK>
+        <SQL_CONNECTION_FAILED>Connexion à la base de données impossible</SQL_CONNECTION_FAILED>
+        <CANT_OPEN_FILE>Impossible d'ouvrir le fichier</CANT_OPEN_FILE>
+        <SQL_CREATE_REQUEST>Impossible de créer la requête SQL</SQL_CREATE_REQUEST>
+        <APP_INIT_FAILED>Echec lors de l'initialisation de l'application</APP_INIT_FAILED>
+        <SQL_EMPTY_RESULT>La requête SQL ne retourne pas de résultat</SQL_EMPTY_RESULT>
+        <APP_UNIMPLEMENTED_FEATURE>Fonctionnalité non implentée</APP_UNIMPLEMENTED_FEATURE>
+        <CANT_SAVE_FILE>Impossible de sauvegarder le fichier</CANT_SAVE_FILE>
+    </code>
+    <message></message>
+  </result>
 </config>

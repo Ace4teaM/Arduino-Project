@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtNetwork>
+#include <QFileDialog>
 
 #include <l1/result.h>
 #include <l1/xarg.h>
@@ -23,8 +24,13 @@ public:
     bool isConnected();
     
 private slots:
+    //auto slot connect
     void on_pushButton_connect_clicked();
+    void on_btnSaveConfig_clicked();
+    void on_btnLoadConfig_clicked();
+    //toolbar
     void tbAddEquipement();
+    void tbRearrange();
 
 private:
     QUdpSocket *udpSocket;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{90807F7B-0090-4209-BF2C-793E128296C0}" Label="" LastModificationDate="1387349050" Name="data" Objects="261" Symbols="10" Target="C++" TargetLink="Local" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{90807F7B-0090-4209-BF2C-793E128296C0}" Label="" LastModificationDate="1387625572" Name="data" Objects="261" Symbols="10" Target="C++" TargetLink="Local" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -4242,6 +4242,9 @@ public:
    //SQL
    void bind(QSqlQuery &amp; query);
    void bound(QSqlQuery &amp; query);
+   //XML
+   void boundXML(QDomElement &amp; parent);
+   void bindXML(QDomElement &amp; parent);
 protected:
 [   %operations_h(#)%\n\n]\
 [   %attributes_h(#)%\n\n]\
@@ -4254,7 +4257,7 @@ private:
 </a:TemplateTargetItem.Value>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
-<a:ModificationDate>1387176896</a:ModificationDate>
+<a:ModificationDate>1387625485</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 </o:TemplateTargetItem>
@@ -4864,10 +4867,51 @@ void %Code%::bound(QSqlQuery &amp; query){
        .next(&quot;\n&quot;)
        \n
 }
+
+/*
+   @brief Put data to DomElement
+   @param dom QDomElement Parent Element
+*/
+void %Code%::bindXML(QDomElement &amp; parent){
+   QDomDocument dom = parent.ownerDocument();
+   QDomElement el;
+    .foreach_item(Attributes, &quot;\n&quot;)
+    el = dom.createElement(&quot;
+.convert_name(%Name%,&quot;_&quot;,&quot; &quot;)
+&quot;);
+   el.appendChild(dom.createTextNode(QString(this-&gt;%Code%)));
+   parent.appendChild(el);
+    .next(&quot;\n&quot;)
+    \n
+ }
+
+/*
+   @brief Get data form DomElement
+   @param dom QDomElement Parent Element
+*/
+void %Code%::boundXML(QDomElement &amp; parent){
+   QDomDocument dom = parent.ownerDocument();
+   QDomNodeList list;
+    .foreach_item(Attributes, &quot;\n&quot;)
+   if((list = dom.elementsByTagName(&quot;%Name%&quot;)).length())
+   {
+    .if (%DataType% == &quot;int&quot;)
+    this-&gt;%Code% = list.at(0).toElement().text().toInt();
+    .endif
+    .if (%DataType% == &quot;QString&quot;)
+    this-&gt;%Code% = list.at(0).toElement().text();
+    .endif
+    .if (%DataType% == &quot;bool&quot;)
+    this-&gt;%Code% = QVariant(list.at(0).text()).toBool();
+    .endif
+    }
+    .next(&quot;\n&quot;)
+    \n
+}
 </a:TemplateTargetItem.Value>
 <a:CreationDate>1387110917</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1387134149</a:ModificationDate>
+<a:ModificationDate>1387625549</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:FileType>.cpp</a:FileType>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
@@ -6460,6 +6504,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o241">
+<a:ModificationDate>1387625572</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-1206,22149), (7804,27917))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -6481,6 +6526,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o244">
+<a:ModificationDate>1387625572</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((24560,9100), (35888,14868))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -6502,6 +6548,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o251">
+<a:ModificationDate>1387625572</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-20264,-2637), (-10636,2157))</a:Rect>
 <a:LineColor>11184640</a:LineColor>

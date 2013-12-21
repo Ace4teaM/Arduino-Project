@@ -29,6 +29,9 @@ public:
    //SQL
    void bind(QSqlQuery & query);
    void bound(QSqlQuery & query);
+   //XML
+   void boundXML(QDomElement & parent);
+   void bindXML(QDomElement & parent);
 protected:
 private:
 

@@ -10,10 +10,11 @@ class QEquipementItem : public QGraphicsRectItem
 public:
     QEquipementItem(const Equipement & equipement,QGraphicsItem* parent=0);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    Equipement & getEquipement();
 signals:
 
 public slots:
-private:
+protected:
     Equipement equipement;
     QPixmap image;
 };
