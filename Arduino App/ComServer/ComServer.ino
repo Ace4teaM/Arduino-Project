@@ -42,6 +42,7 @@ Exemple de commande transmisible par paquet UDP (active la pin 9):  "cmd=on;pin=
 #include <EthernetUdp.h>
 #endif
 //NPLIB1
+
 #include <result.h>
 #include <xarg.h>
 #include <str.h>
@@ -182,15 +183,14 @@ void loop() {
 		//parse la commande
 		CMD cmd;
 		memset(&cmd,0,sizeof(CMD));
-		const char* text=(const char*)packetBuffer;
-		char name[80];
-		char value[80];
-                char *pname=name,*pvalue=value;
-		while(*text != '\0'){
-			text = xarg_decode_field(text,name,value);
+                PTR mem = {packetBuffer,packetBuffer+sizeof(packetBuffer),packetBuffer};
+		char name[80],*pname;
+		char value[80],*pvalue;
+		while(*mem.ptr != '\0'){
+			xarg_decode_field(&mem,name,value);
                         // supprime les eventuels Retour-Chariot '\r' ou saut de ligne '\n'
-                        str_trimz(&pname,pname+strlen(pname));
-                        str_trimz(&pvalue,pvalue+strlen(pvalue));
+                        pname = str_trimz(name);
+                        pvalue = str_trimz(value);
                         //
 			if(strcmp(name,"cmd")==0){
 				if(strcmp(value,"on")==0){
@@ -218,15 +218,15 @@ void loop() {
 			pinMode(cmd.pin, OUTPUT);
 			digitalWrite(cmd.pin,(cmd.val ? HIGH : LOW));
                         //resultat
-                        buf=replyBuffer;
-                        buf=xarg_encode_field(buf,"error","ERR_OK");
-                        buf=xarg_encode_field(buf,"msg","SUCCESS");
+                        bptr(&mem,replyBuffer,sizeof(replyBuffer));
+                        xarg_encode_field(&mem,"error","ERR_OK");
+                        xarg_encode_field(&mem,"msg","SUCCESS");
 			break;
 		default:
                         //resultat
-                        buf=replyBuffer;
-                        buf=xarg_encode_field(buf,"error","ERR_FAILED");
-                        buf=xarg_encode_field(buf,"msg","UNKNOWN_CMD");
+                        bptr(&mem,replyBuffer,sizeof(replyBuffer));
+                        xarg_encode_field(&mem,"error","ERR_FAILED");
+                        xarg_encode_field(&mem,"msg","UNKNOWN_CMD");
 			break;
 		}
 
