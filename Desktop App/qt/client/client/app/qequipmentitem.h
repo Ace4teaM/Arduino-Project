@@ -3,19 +3,19 @@
 
 #include <QGraphicsItem>
 #include <QPainter>
-#include "../model/Equipement.h"
+#include "../model/Equipment.h"
 
-class QEquipementItem : public QGraphicsRectItem
+class QEquipmentItem : public QGraphicsRectItem
 {
 public:
-    QEquipementItem(const Equipement & equipement,QGraphicsItem* parent=0);
+    QEquipmentItem(const Equipment & equipment,QGraphicsItem* parent=0);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-    Equipement & getEquipement();
+    Equipment & getEquipment();
 signals:
 
 public slots:
 protected:
-    Equipement equipement;
+    Equipment equipment;
     QPixmap image;
 };
 

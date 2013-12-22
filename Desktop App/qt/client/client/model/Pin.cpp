@@ -1,7 +1,7 @@
 ﻿/***********************************************************************
  * Module:  Pin.cpp
  * Author:  developpement
- * Modified: mercredi 18 décembre 2013 07:44:09
+ * Modified: dimanche 22 décembre 2013 09:19:05
  * Purpose: Implementation of the class Pin
  ***********************************************************************/
 

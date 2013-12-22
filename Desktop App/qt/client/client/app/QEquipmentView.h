@@ -6,7 +6,7 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
-#include "../model/Equipement.h"
+#include "../model/Equipment.h"
 #include "../model/Client.h"
 #include "../model/Pin.h"
 
@@ -16,9 +16,9 @@ class QEquipmentView : public QGraphicsView{
 public:
     QEquipmentView(QWidget *parent);
     QGraphicsScene scene;
-    QEquipementItem* addEquipement(const Equipement & equip);
+    QEquipmentItem* addEquipment(const Equipment & equip);
     bool rearrangeView();
-    QEquipementItem* getCircuit();
+    QEquipmentItem* getCircuit();
     /**
       @brief Sauvegarde le schema dans un document XML
       @param dom Document XML

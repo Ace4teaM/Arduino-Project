@@ -7,11 +7,11 @@ QEquipmentView::QEquipmentView(QWidget *parent) : QGraphicsView(parent)
     scene.setSceneRect( -100.0, -100.0, 200.0, 200.0 );
 
     // ajoute le circuit arduino
-    Equipement arduinoEquipement;
-    arduinoEquipement.equipementId = 1;
-    arduinoEquipement.name = "Arduino MEGA";
-    arduinoEquipement.type = "circuit";
-    QEquipementItem* item = this->addEquipement(arduinoEquipement);
+    Equipment arduinoEquipment;
+    arduinoEquipment.equipmentId = 1;
+    arduinoEquipment.name = "Arduino MEGA";
+    arduinoEquipment.type = "circuit";
+    QEquipmentItem* item = this->addEquipment(arduinoEquipment);
     //item->setRect( -50.0, -50.0, 100.0, 100.0 );
 
     //ajoute un rectangle
@@ -46,10 +46,10 @@ void QEquipmentView::onContextMenu(const QPoint & point)
     PRINT("m");
 }
 
-QEquipementItem* QEquipmentView::addEquipement(const Equipement & equipement)
+QEquipmentItem* QEquipmentView::addEquipment(const Equipment & equipment)
 {
     //ajoute une image
-    QEquipementItem *item = new QEquipementItem(equipement);
+    QEquipmentItem *item = new QEquipmentItem(equipment);
     item->setRect( -50.0, -50.0, 50.0, 50.0 );
     item->setFlag(QGraphicsItem::ItemIsSelectable, true);
     item->setFlag(QGraphicsItem::ItemIsMovable, true);
@@ -67,11 +67,11 @@ bool QEquipmentView::toXML(QDomDocument & dom)
     QList<QGraphicsItem*> list = scene.items();
     QList<QGraphicsItem*>::iterator i;
     for (i = list.begin(); i != list.end(); ++i){
-        QEquipementItem* item = (QEquipementItem*)*i;
+        QEquipmentItem* item = (QEquipmentItem*)*i;
         //crée l'élément XML
-        QDomElement el = dom.createElement(item->getEquipement().type);
-        el.setAttribute("id",item->getEquipement().equipementId);
-        item->getEquipement().bindXML(el);
+        QDomElement el = dom.createElement(item->getEquipment().type);
+        el.setAttribute("id",item->getEquipment().equipmentId);
+        item->getEquipment().bindXML(el);
         dom.documentElement().appendChild(el);
     }
     return QRESULT_OK();
@@ -85,9 +85,9 @@ bool QEquipmentView::fromXML(QDomDocument & dom)
     //charge le contenu
     QDomElement el = dom.documentElement().firstChildElement();
     while(!el.isNull()){
-        Equipement equip;
+        Equipment equip;
         equip.boundXML(el);
-        this->addEquipement(equip);
+        this->addEquipment(equip);
         el = el.nextSiblingElement();
     }
     return QRESULT_OK();
@@ -98,7 +98,7 @@ bool QEquipmentView::rearrangeView()
     QList<QGraphicsItem*> list = scene.items();
     QList<QGraphicsItem*>::iterator i;
 
-    QEquipementItem* circuit = this->getCircuit();
+    QEquipmentItem* circuit = this->getCircuit();
     if(!circuit)
         return QRESULT_DESC(Result::Failed,"CIRCUIT_NOT_FOUND");
 
@@ -109,8 +109,8 @@ bool QEquipmentView::rearrangeView()
     //placement
     int x=0;
     for (i = list.begin(); i != list.end(); ++i){
-        QEquipementItem* item = (QEquipementItem*)*i;
-        if(item->getEquipement().type != "circuit")
+        QEquipmentItem* item = (QEquipmentItem*)*i;
+        if(item->getEquipment().type != "circuit")
         {
             item->setPos(circuit->pos().rx() + (dist*cos((2*M_PI)*((1.0/max)*x))),circuit->pos().ry() + (dist*sin((2*M_PI)*((1.0/max)*x))));
             x++;
@@ -120,13 +120,13 @@ bool QEquipmentView::rearrangeView()
     return QRESULT_OK();
 }
 
-QEquipementItem* QEquipmentView::getCircuit()
+QEquipmentItem* QEquipmentView::getCircuit()
 {
     QList<QGraphicsItem*> list = scene.items();
     QList<QGraphicsItem*>::iterator i;
     for (i = list.begin(); i != list.end(); ++i){
-        QEquipementItem* item = (QEquipementItem*)*i;
-        if(item->getEquipement().type == "circuit")
+        QEquipmentItem* item = (QEquipmentItem*)*i;
+        if(item->getEquipment().type == "circuit")
         {
             return item;
         }

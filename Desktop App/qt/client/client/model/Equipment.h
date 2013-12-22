@@ -1,8 +1,8 @@
 /***********************************************************************
- * Module:  Pin.h
+ * Module:  Equipment.h
  * Author:  developpement
  * Modified: dimanche 22 décembre 2013 09:19:05
- * Purpose: Declaration of the class Pin
+ * Purpose: Declaration of the class Equipment
  ***********************************************************************/
 
 #include <QString>
@@ -12,22 +12,26 @@
 
 class DataBase;
 
-#if !defined(__DATA_Pin_h)
-#define __DATA_Pin_h
+#if !defined(__DATA_Equipment_h)
+#define __DATA_Equipment_h
 
-class Controler;
-class Equipment;
+class Pin;
+class Switcher;
+class LedControler;
 
-class Pin
+class Equipment
 {
 public:
-   int pinId;
-   QString pinType;
-   int pinNum;
+   int equipmentId;
+   QString name;
+   QString type;
+   float posX;
+   float posY;
+   float posZ;
    
-   Controler** reserve;
-   Equipment** Requis;
-   Controler** libre;
+   Pin** Requis;
+   Switcher** switcher;
+   LedControler** ledControler;
 
    //SQL
    void bind(QSqlQuery & query);

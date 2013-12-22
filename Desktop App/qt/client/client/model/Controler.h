@@ -1,8 +1,8 @@
 /***********************************************************************
- * Module:  Equipement.h
+ * Module:  Controler.h
  * Author:  developpement
- * Modified: mercredi 18 décembre 2013 07:44:09
- * Purpose: Declaration of the class Equipement
+ * Modified: dimanche 22 décembre 2013 09:19:05
+ * Purpose: Declaration of the class Controler
  ***********************************************************************/
 
 #include <QString>
@@ -12,19 +12,20 @@
 
 class DataBase;
 
-#if !defined(__DATA_Equipement_h)
-#define __DATA_Equipement_h
+#if !defined(__DATA_Controler_h)
+#define __DATA_Controler_h
 
 class Pin;
 
-class Equipement
+class Controler
 {
 public:
-   int equipementId;
-   QString name;
-   QString type;
+   int controlerId;
+   QString ip;
+   QString mac;
    
-   Pin** Requis;
+   Pin** reserve;
+   Pin** libre;
 
    //SQL
    void bind(QSqlQuery & query);

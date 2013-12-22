@@ -28,10 +28,12 @@ SOURCES += main.cpp\
         app/database.cpp \
         app/qdelay.cpp \
         model/Client.cpp \
-        model/Equipement.cpp \
+        model/Equipment.cpp \
         model/Pin.cpp \
+        model/LedControler.cpp \
+        model/Switcher.cpp \
         app/QEquipmentView.cpp \
-        app/qequipementitem.cpp
+    app/qequipmentitem.cpp
 
 HEADERS  += mainwindow.h\
         result.h\
@@ -46,10 +48,12 @@ HEADERS  += mainwindow.h\
         app/qdelay.h \
         app/iapplicationevent.h \
         model/Client.h \
-        model/Equipement.h \
+        model/Equipment.h \
         model/Pin.h \
+        model/LedControler.h \
+        model/Switcher.h \
         app/QEquipmentView.h \
-        app/qequipementitem.h
+    app/qequipmentitem.h
 
 FORMS    += mainwindow.ui \
     arduino_server_choice.ui \

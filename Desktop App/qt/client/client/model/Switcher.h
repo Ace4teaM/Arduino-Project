@@ -1,8 +1,8 @@
 /***********************************************************************
- * Module:  Pin.h
+ * Module:  Switcher.h
  * Author:  developpement
  * Modified: dimanche 22 décembre 2013 09:19:05
- * Purpose: Declaration of the class Pin
+ * Purpose: Declaration of the class Switcher
  ***********************************************************************/
 
 #include <QString>
@@ -12,22 +12,18 @@
 
 class DataBase;
 
-#if !defined(__DATA_Pin_h)
-#define __DATA_Pin_h
+#if !defined(__DATA_Switcher_h)
+#define __DATA_Switcher_h
 
-class Controler;
 class Equipment;
 
-class Pin
+class Switcher
 {
 public:
-   int pinId;
-   QString pinType;
-   int pinNum;
+   int switcherId;
+   bool on;
    
-   Controler** reserve;
-   Equipment** Requis;
-   Controler** libre;
+   Equipment* equipment;
 
    //SQL
    void bind(QSqlQuery & query);

@@ -1,7 +1,7 @@
 /***********************************************************************
  * Module:  Client.h
  * Author:  developpement
- * Modified: mercredi 18 décembre 2013 07:44:09
+ * Modified: dimanche 22 décembre 2013 09:19:05
  * Purpose: Declaration of the class Client
  ***********************************************************************/
 
@@ -19,7 +19,7 @@ class Client
 {
 public:
    int clientId;
-   QString adresseIp;
+   QString ip;
 
    //SQL
    void bind(QSqlQuery & query);

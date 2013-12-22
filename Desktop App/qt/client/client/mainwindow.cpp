@@ -51,11 +51,11 @@ void MainWindow::on_pushButton_connect_clicked()
 
 void MainWindow::tbAddEquipement()
 {
-    Equipement equipement;
-    equipement.equipementId   = 100;
-    equipement.type = QString("light");
-    equipement.name = QString("Lumiere Salon");
-    this->ui->graphicsView->addEquipement(equipement);
+    Equipment equipment;
+    equipment.equipmentId   = 100;
+    equipment.type = QString("light");
+    equipment.name = QString("Lumiere Salon");
+    this->ui->graphicsView->addEquipment(equipment);
 }
 
 void MainWindow::tbRearrange()

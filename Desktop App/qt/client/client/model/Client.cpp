@@ -1,7 +1,7 @@
 ﻿/***********************************************************************
  * Module:  Client.cpp
  * Author:  developpement
- * Modified: mercredi 18 décembre 2013 07:44:09
+ * Modified: dimanche 22 décembre 2013 09:19:05
  * Purpose: Implementation of the class Client
  ***********************************************************************/
 
@@ -13,7 +13,7 @@
 */
 void Client::bind(QSqlQuery & query){
        query.bindValue("client_id",QVariant(this->clientId));
-       query.bindValue("adresse_ip",QVariant(this->adresseIp));       
+       query.bindValue("ip",QVariant(this->ip));       
 
  }
 
@@ -23,7 +23,7 @@ void Client::bind(QSqlQuery & query){
 */
 void Client::bound(QSqlQuery & query){
        this->clientId = DataBase::getQueryInt(query,"client_id");
-       this->adresseIp = DataBase::getQueryString(query,"adresse_ip");       
+       this->ip = DataBase::getQueryString(query,"ip");       
 
 }
 
@@ -37,8 +37,8 @@ void Client::bindXML(QDomElement & parent){
     el = dom.createElement("client_id");
    el.appendChild(dom.createTextNode(QVariant(this->clientId).toString()));
    parent.appendChild(el);
-    el = dom.createElement("adresse_ip");
-   el.appendChild(dom.createTextNode(QVariant(this->adresseIp).toString()));
+    el = dom.createElement("ip");
+   el.appendChild(dom.createTextNode(QVariant(this->ip).toString()));
    parent.appendChild(el);    
 
  }
@@ -51,7 +51,7 @@ void Client::boundXML(QDomElement & parent){
    QDomNodeList list;
    if((list = parent.elementsByTagName("client_id")).length())
    {    this->clientId = list.at(0).toElement().text().toInt();    }
-   if((list = parent.elementsByTagName("adresse_ip")).length())
-   {    this->adresseIp = list.at(0).toElement().text();    }    
+   if((list = parent.elementsByTagName("ip")).length())
+   {    this->ip = list.at(0).toElement().text();    }    
 
 }
