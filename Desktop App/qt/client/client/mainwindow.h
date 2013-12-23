@@ -29,7 +29,7 @@ private slots:
     void on_btnSaveConfig_clicked();
     void on_btnLoadConfig_clicked();
     //menu
-    void on_actionSauvegarder_sous_clicked();
+    void actionSauvegarder_sous();
     //toolbar
     void tbAddEquipement();
     void tbRearrange();

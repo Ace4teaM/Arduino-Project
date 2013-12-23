@@ -1,17 +1,42 @@
 <root>
  <light id="100">
-  <equipement_id>100</equipement_id>
+  <equipment_id>100</equipment_id>
   <name>Lumiere Salon</name>
   <type>light</type>
+  <pos_x>2.0337e-38</pos_x>
+  <pos_y>1.18656e-32</pos_y>
+  <pos_z>3.7452e-39</pos_z>
  </light>
  <light id="100">
-  <equipement_id>100</equipement_id>
+  <equipment_id>100</equipment_id>
   <name>Lumiere Salon</name>
   <type>light</type>
+  <pos_x>2.0337e-38</pos_x>
+  <pos_y>1.18656e-32</pos_y>
+  <pos_z>3.7452e-39</pos_z>
+ </light>
+ <light id="100">
+  <equipment_id>100</equipment_id>
+  <name>Lumiere Salon</name>
+  <type>light</type>
+  <pos_x>8.96831e-44</pos_x>
+  <pos_y>3.16154e+33</pos_y>
+  <pos_z>3.7452e-39</pos_z>
+ </light>
+ <light id="100">
+  <equipment_id>100</equipment_id>
+  <name>Lumiere Salon</name>
+  <type>light</type>
+  <pos_x>1.9654e-38</pos_x>
+  <pos_y>3.16154e+33</pos_y>
+  <pos_z>3.7452e-39</pos_z>
  </light>
  <circuit id="1">
-  <equipement_id>1</equipement_id>
+  <equipment_id>1</equipment_id>
   <name>Arduino MEGA</name>
   <type>circuit</type>
+  <pos_x>1.80544e-38</pos_x>
+  <pos_y>4.48416e-44</pos_y>
+  <pos_z>3.76465e-39</pos_z>
  </circuit>
 </root>

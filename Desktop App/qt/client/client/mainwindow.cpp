@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->toolBar->addAction("Ajouter Equipement", this, SLOT(tbAddEquipement()));
     ui->toolBar->addAction("Arranger", this, SLOT(tbRearrange()));
+
+    connect( ui->actionSauvegrader_sous, SIGNAL(triggered()), this,SLOT(actionSauvegarder_sous()));
 }
 
 MainWindow::~MainWindow()
@@ -88,14 +90,27 @@ void MainWindow::on_btnSaveConfig_clicked()
     QRESULT_OK();
 }
 
-void MainWindow::on_actionSauvegarder_sous_clicked()
+void MainWindow::actionSauvegarder_sous()
 {
+    QFileDialog dialog(this, QString(), QString());
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    QStringList filters;
+    filters << "Fichier XML (*.xml)" << "Fichier RIFF (*.riff)";
+    dialog.setNameFilters(filters);
+    if (dialog.exec() != QDialog::Accepted)
+        return;
+    QString selectedFilter = dialog.selectedNameFilter();
+    QString filename = dialog.selectedFiles()[0];
+
+    QPRINT(selectedFilter);
+
+    /*
     //obtient le fichier de destination
-    QString filename = QFileDialog::getSaveFileName(this, QString(), QString(), tr("Fichier XML (*.xml)"));
+    QString filename = QFileDialog::getSaveFileName(this, QString(), QString(), tr("Fichier XML (*.xml);;Fichier RIFF (*.riff)"));
     if(filename.isNull()){
         QRESULT_OK();
         return;
-    }
+    }*/
 
     //crée le fichier
     QFile outFile( filename );
@@ -104,10 +119,25 @@ void MainWindow::on_actionSauvegarder_sous_clicked()
         return;
     }
 
-    //génère le document
-    char buf[1024*10];
-    PTR mem={buf,buf+sizeof(buf),buf};
-    this->ui->graphicsView->toRIFF(&mem);
+    //sauvegarde le fichier
+
+    //RIFF
+    if(selectedFilter.contains(".riff")){
+        QDataStream stream( &outFile );
+        //génère le document
+        char buf[1024*10];
+        PTR mem={buf,buf+sizeof(buf),buf};
+        this->ui->graphicsView->toRIFF(&mem);
+        stream.writeBytes(mem.up,(uint)(mem.down-mem.up));
+    }
+    //XML
+    else if(selectedFilter.contains(".xml")){
+        QTextStream stream( &outFile );
+        QDomDocument dom;
+        dom.appendChild(dom.createElement("root"));
+        this->ui->graphicsView->toXML(dom);
+        stream << dom.toString();
+    }
 
     outFile.close();
     QRESULT_OK();
