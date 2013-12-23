@@ -128,7 +128,7 @@ void MainWindow::actionSauvegarder_sous()
         char buf[1024*10];
         PTR mem={buf,buf+sizeof(buf),buf};
         this->ui->graphicsView->toRIFF(&mem);
-        stream.writeBytes(mem.up,(uint)(mem.down-mem.up));
+        stream.writeBytes(mem.up,(uint)(mem.ptr-mem.up));
     }
     //XML
     else if(selectedFilter.contains(".xml")){
