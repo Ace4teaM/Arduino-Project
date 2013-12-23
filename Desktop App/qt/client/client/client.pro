@@ -64,5 +64,18 @@ RESOURCES += \
 
 
 
+#nplib
 
 
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../nplib/build-nplib-Desktop_Qt_5_2_0_MinGW_32bit-Debug/release/ -lnplib
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../nplib/build-nplib-Desktop_Qt_5_2_0_MinGW_32bit-Debug/debug/ -lnplib
+else:unix: LIBS += -L$$PWD/../../nplib/build-nplib-Desktop_Qt_5_2_0_MinGW_32bit-Debug/ -lnplib
+
+INCLUDEPATH += $$PWD/../../nplib/build-nplib-Desktop_Qt_5_2_0_MinGW_32bit-Debug/debug
+DEPENDPATH += $$PWD/../../nplib/build-nplib-Desktop_Qt_5_2_0_MinGW_32bit-Debug/debug
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../nplib/build-nplib-Desktop_Qt_5_2_0_MinGW_32bit-Debug/release/libnplib.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../nplib/build-nplib-Desktop_Qt_5_2_0_MinGW_32bit-Debug/debug/libnplib.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../nplib/build-nplib-Desktop_Qt_5_2_0_MinGW_32bit-Debug/release/nplib.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../nplib/build-nplib-Desktop_Qt_5_2_0_MinGW_32bit-Debug/debug/nplib.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../../nplib/build-nplib-Desktop_Qt_5_2_0_MinGW_32bit-Debug/libnplib.a

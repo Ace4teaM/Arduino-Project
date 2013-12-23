@@ -2,13 +2,15 @@
 #define QEQUIPMENTVIEW_H
 
 #include "result.h"
-#include "qequipementitem.h"
+#include "qequipmentitem.h"
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
 #include "../model/Equipment.h"
 #include "../model/Client.h"
 #include "../model/Pin.h"
+#include <l1/riff.h>
+#include <l1/memory.h>
 
 class QEquipmentView : public QGraphicsView{
     Q_OBJECT
@@ -31,6 +33,12 @@ public:
       @return Résultat de procèdure
     */
     bool fromXML(QDomDocument & dom);
+    /**
+      @brief Sauvegarde le schema dans un fichier RIFF
+      @param mem Tampon mémoire
+      @return Résultat de procèdure
+    */
+    bool toRIFF(PTR* mem);
 private slots:
     void onContextMenu(const QPoint & point);
     void scnSelectionChanged();

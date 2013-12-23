@@ -1,6 +1,6 @@
 
 #include "QEquipmentView.h"
-#include "QEquipementItem.h"
+#include "QEquipmentItem.h"
 
 QEquipmentView::QEquipmentView(QWidget *parent) : QGraphicsView(parent)
 {
@@ -90,6 +90,40 @@ bool QEquipmentView::fromXML(QDomDocument & dom)
         this->addEquipment(equip);
         el = el.nextSiblingElement();
     }
+    return QRESULT_OK();
+}
+
+typedef struct _RIFF_EQUIP{
+    int id;
+    char name[64];
+}RIFF_EQUIP;
+
+
+bool QEquipmentView::toRIFF(PTR* mem)
+{
+    RIFF riff = {{'R','I','F','F'},sizeof(RIFF_HEADER)};
+
+    QList<QGraphicsItem*> list = scene.items();
+    QList<QGraphicsItem*>::iterator i;
+
+    //ecrit les données
+    if(!riff_write(mem,&riff))
+        return false;
+    for (i = list.begin(); i != list.end(); ++i){
+        QEquipmentItem* item = (QEquipmentItem*)*i;
+        //initialise la structure de l'item
+        RIFF_EQUIP equip;
+        equip.id = item->getEquipment().equipmentId;
+        strcpy(equip.name,item->getEquipment().name.toLatin1().data());
+        //ecrit en mémoire
+        if(!riff_write_tag(mem,"EQUI",sizeof(RIFF_EQUIP)))
+            return false;
+        if(!itob(mem,equip.id))
+            return false;
+        if(!bwrite(mem,equip.name,sizeof(equip.name)))
+            return false;
+    }
+
     return QRESULT_OK();
 }
 

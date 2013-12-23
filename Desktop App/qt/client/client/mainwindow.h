@@ -28,6 +28,8 @@ private slots:
     void on_pushButton_connect_clicked();
     void on_btnSaveConfig_clicked();
     void on_btnLoadConfig_clicked();
+    //menu
+    void on_actionSauvegarder_sous_clicked();
     //toolbar
     void tbAddEquipement();
     void tbRearrange();

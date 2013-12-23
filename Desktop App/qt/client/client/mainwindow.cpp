@@ -1,10 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <l1/result.cpp>
-#include <l1/xarg.cpp>
-#include <l1/str.cpp>
-#include <l2/cxarg.cpp>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -87,6 +83,31 @@ void MainWindow::on_btnSaveConfig_clicked()
     //sauvegarde le fichier
     QTextStream stream( &outFile );
     stream << dom.toString();
+
+    outFile.close();
+    QRESULT_OK();
+}
+
+void MainWindow::on_actionSauvegarder_sous_clicked()
+{
+    //obtient le fichier de destination
+    QString filename = QFileDialog::getSaveFileName(this, QString(), QString(), tr("Fichier XML (*.xml)"));
+    if(filename.isNull()){
+        QRESULT_OK();
+        return;
+    }
+
+    //crée le fichier
+    QFile outFile( filename );
+    if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) ){
+        QRESULT(Result::CantSaveFile);
+        return;
+    }
+
+    //génère le document
+    char buf[1024*10];
+    PTR mem={buf,buf+sizeof(buf),buf};
+    this->ui->graphicsView->toRIFF(&mem);
 
     outFile.close();
     QRESULT_OK();
