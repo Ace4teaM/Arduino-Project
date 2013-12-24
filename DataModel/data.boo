@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{90807F7B-0090-4209-BF2C-793E128296C0}" Label="" LastModificationDate="1387700351" Name="data" Objects="275" Symbols="17" Target="C++" TargetLink="Local" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{90807F7B-0090-4209-BF2C-793E128296C0}" Label="" LastModificationDate="1387700796" Name="data" Objects="275" Symbols="17" Target="C++" TargetLink="Local" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -4928,7 +4928,7 @@ void %Code%::boundXML(QDomElement &amp; parent){
     this-&gt;%Code% = list.at(0).toElement().text();
     .endif
     .if (%DataType% == &quot;bool&quot;)
-    this-&gt;%Code% = QVariant(list.at(0).text()).toBool();
+    this-&gt;%Code% = QVariant(list.at(0).toElement().text()).toBool();
     .endif
     }
     .next(&quot;\n&quot;)
@@ -4937,7 +4937,7 @@ void %Code%::boundXML(QDomElement &amp; parent){
 </a:TemplateTargetItem.Value>
 <a:CreationDate>1387110917</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1387636101</a:ModificationDate>
+<a:ModificationDate>1387700794</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:FileType>.cpp</a:FileType>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
@@ -6569,6 +6569,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o241">
+<a:ModificationDate>1387700796</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-1206,22149), (7804,27917))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -6590,6 +6591,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o244">
+<a:ModificationDate>1387700796</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((24792,7639), (35656,16328))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -6611,6 +6613,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o257">
+<a:ModificationDate>1387700796</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-19917,-2637), (-10983,2157))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -6632,7 +6635,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ClassSymbol>
 <o:ClassSymbol Id="o249">
-<a:ModificationDate>1387700351</a:ModificationDate>
+<a:ModificationDate>1387700796</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((58545,14929), (67169,19723))</a:Rect>
 <a:LineColor>11184640</a:LineColor>

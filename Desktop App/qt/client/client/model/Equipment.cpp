@@ -28,7 +28,10 @@ void Equipment::bind(QSqlQuery & query){
 void Equipment::bound(QSqlQuery & query){
        this->equipmentId = DataBase::getQueryInt(query,"equipment_id");
        this->name = DataBase::getQueryString(query,"name");
-       this->type = DataBase::getQueryString(query,"type");       
+       this->type = DataBase::getQueryString(query,"type");
+       this->posX = DataBase::getQueryFloat(query,"pos_x");
+       this->posY = DataBase::getQueryFloat(query,"pos_y");
+       this->posZ = DataBase::getQueryFloat(query,"pos_z");       
 
 }
 
@@ -73,10 +76,10 @@ void Equipment::boundXML(QDomElement & parent){
    if((list = parent.elementsByTagName("type")).length())
    {    this->type = list.at(0).toElement().text();    }
    if((list = parent.elementsByTagName("pos_x")).length())
-   {    }
+   {    this->posX = QVariant(list.at(0).toElement().text()).toFloat();    }
    if((list = parent.elementsByTagName("pos_y")).length())
-   {    }
+   {    this->posY = QVariant(list.at(0).toElement().text()).toFloat();    }
    if((list = parent.elementsByTagName("pos_z")).length())
-   {    }    
+   {    this->posZ = QVariant(list.at(0).toElement().text()).toFloat();    }    
 
 }

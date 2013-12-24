@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" Code="C++" Family="C++" ID="{22FB523D-7E45-430F-8069-3A702CF3BE3C}" LastModificationDate="1387624048" Name="C++" Objects="261" SubFamily="C++" Symbols="10" Type="{1811206C-1A4B-11D1-83D9-444553540000}" signature="XOL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" Code="C++" Family="C++" ID="{22FB523D-7E45-430F-8069-3A702CF3BE3C}" LastModificationDate="1387900092" Name="C++" Objects="275" SubFamily="C++" Symbols="17" Type="{1811206C-1A4B-11D1-83D9-444553540000}" signature="XOL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <DVTL xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -2080,6 +2080,9 @@ public:
    //SQL
    void bind(QSqlQuery &amp; query);
    void bound(QSqlQuery &amp; query);
+   //XML
+   void boundXML(QDomElement &amp; parent);
+   void bindXML(QDomElement &amp; parent);
 protected:
 [   %operations_h(#)%\n\n]\
 [   %attributes_h(#)%\n\n]\
@@ -2092,7 +2095,7 @@ private:
 </a:TemplateTargetItem.Value>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
-<a:ModificationDate>1387176896</a:ModificationDate>
+<a:ModificationDate>1387625485</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
 </o:TemplateTargetItem>
@@ -2669,6 +2672,10 @@ public %Interface.qualifiedCode%
 
 #include &quot;%Code%.h&quot;
 
+/*
+   @brief Put data current SQL query
+   @param query Query instance
+*/
 void %Code%::bind(QSqlQuery &amp; query){
        .foreach_item(Attributes, &quot;\n&quot;)
        query.bindValue(&quot;
@@ -2699,6 +2706,11 @@ void %Code%::bound(QSqlQuery &amp; query){
 .convert_name(%Name%,&quot;_&quot;,&quot; &quot;)
 &quot;);
        .endif
+       .if (%DataType% == &quot;float&quot;)
+       this-&gt;%Code% = DataBase::getQueryFloat(query,&quot;
+.convert_name(%Name%,&quot;_&quot;,&quot; &quot;)
+&quot;);
+       .endif
        .next(&quot;\n&quot;)
        \n
 }
@@ -2714,7 +2726,7 @@ void %Code%::bindXML(QDomElement &amp; parent){
     el = dom.createElement(&quot;
 .convert_name(%Name%,&quot;_&quot;,&quot; &quot;)
 &quot;);
-   el.appendChild(dom.createTextNode(QString(this-&gt;%Code%)));
+   el.appendChild(dom.createTextNode(QVariant(this-&gt;%Code%).toString()));
    parent.appendChild(el);
     .next(&quot;\n&quot;)
     \n
@@ -2725,10 +2737,9 @@ void %Code%::bindXML(QDomElement &amp; parent){
    @param dom QDomElement Parent Element
 */
 void %Code%::boundXML(QDomElement &amp; parent){
-   QDomDocument dom = parent.ownerDocument();
    QDomNodeList list;
     .foreach_item(Attributes, &quot;\n&quot;)
-   if((list = dom.elementsByTagName(&quot;%Code%&quot;)).length())
+   if((list = parent.elementsByTagName(&quot;%Name%&quot;)).length())
    {
     .if (%DataType% == &quot;int&quot;)
     this-&gt;%Code% = list.at(0).toElement().text().toInt();
@@ -2737,7 +2748,10 @@ void %Code%::boundXML(QDomElement &amp; parent){
     this-&gt;%Code% = list.at(0).toElement().text();
     .endif
     .if (%DataType% == &quot;bool&quot;)
-    this-&gt;%Code% = QVariant(list.at(0).text()).toBool();
+    this-&gt;%Code% = QVariant(list.at(0).toElement().text()).toBool();
+    .endif
+    .if (%DataType% == &quot;float&quot;)
+    this-&gt;%Code% = QVariant(list.at(0).toElement().text()).toFloat();
     .endif
     }
     .next(&quot;\n&quot;)
@@ -2746,7 +2760,7 @@ void %Code%::boundXML(QDomElement &amp; parent){
 </a:TemplateTargetItem.Value>
 <a:CreationDate>1387110917</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1387624048</a:ModificationDate>
+<a:ModificationDate>1387900092</a:ModificationDate>
 <a:Modifier>developpement</a:Modifier>
 <a:FileType>.cpp</a:FileType>
 <a:TargetCategory.Type>1</a:TargetCategory.Type>
