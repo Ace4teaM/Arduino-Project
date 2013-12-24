@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>684</width>
-    <height>489</height>
+    <height>662</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,6 +17,12 @@
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QFrame" name="frame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -24,10 +30,20 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout">
+       <item row="2" column="1">
+        <widget class="QListWidget" name="listWidget">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>80</height>
+          </size>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="1">
-        <widget class="QLabel" name="label_connection_status">
-         <property name="text">
-          <string>TextLabel</string>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="placeholderText">
+          <string>Arduino IP (ex: 191.1.1.25)</string>
          </property>
         </widget>
        </item>
@@ -38,72 +54,19 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="btnReceiveConfig">
-         <property name="text">
-          <string>Recevoir la configuration...</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
-        <widget class="QPushButton" name="btnSendConfig">
+        <widget class="QPushButton" name="pushButton_findArduino">
          <property name="text">
-          <string>Envoyer la configuration...</string>
+          <string>Rechercher</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="btnLoadConfig">
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_connection_status">
          <property name="text">
-          <string>Charger une configuration...</string>
+          <string>Cliquez pour rechercher sur le réseau</string>
          </property>
         </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="btnSaveConfig">
-         <property name="text">
-          <string>Sauvegarder la configuration...</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QFrame" name="frame_2">
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QToolButton" name="tbEquipDelete">
-         <property name="text">
-          <string>Suppr</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="tbEquipProperty">
-         <property name="text">
-          <string>Prop</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </widget>
@@ -138,10 +101,19 @@
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="actionOuvrir"/>
     <addaction name="actionSauvegrader_sous"/>
+    <addaction name="separator"/>
     <addaction name="actionQuitter"/>
    </widget>
+   <widget class="QMenu" name="menuEdition">
+    <property name="title">
+     <string>Edition</string>
+    </property>
+    <addaction name="actionSupprimer"/>
+   </widget>
    <addaction name="menuFichier"/>
+   <addaction name="menuEdition"/>
   </widget>
   <action name="actionSauvegrader_sous">
    <property name="text">
@@ -151,6 +123,16 @@
   <action name="actionQuitter">
    <property name="text">
     <string>Quitter</string>
+   </property>
+  </action>
+  <action name="actionOuvrir">
+   <property name="text">
+    <string>Ouvrir...</string>
+   </property>
+  </action>
+  <action name="actionSupprimer">
+   <property name="text">
+    <string>Supprimer</string>
    </property>
   </action>
  </widget>

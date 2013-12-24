@@ -1,4 +1,4 @@
-#ifndef QEQUIPMENTVIEW_H
+Ôªø#ifndef QEQUIPMENTVIEW_H
 #define QEQUIPMENTVIEW_H
 
 #include "result.h"
@@ -24,19 +24,25 @@ public:
     /**
       @brief Sauvegarde le schema dans un document XML
       @param dom Document XML
-      @return RÈsultat de procËdure
+      @return R√©sultat de proc√®dure
     */
     bool toXML(QDomDocument & dom);
     /**
       @brief Charge un schema depuis un document XML
       @param dom Document XML
-      @return RÈsultat de procËdure
+      @return R√©sultat de proc√®dure
     */
     bool fromXML(QDomDocument & dom);
     /**
+      @brief Charge un schema depuis un fichier RIFF
+      @param mem Tampon m√©moire
+      @return R√©sultat de proc√®dure
+    */
+    bool fromRIFF(PTR* mem);
+    /**
       @brief Sauvegarde le schema dans un fichier RIFF
-      @param mem Tampon mÈmoire
-      @return RÈsultat de procËdure
+      @param mem Tampon m√©moire
+      @return R√©sultat de proc√®dure
     */
     bool toRIFF(PTR* mem);
 private slots:
@@ -45,5 +51,10 @@ private slots:
 //protected:
 //    QGraphicsScene scene;
 };
+
+typedef struct _RIFF_EQUIP{
+    int id;
+    char name[64];
+}RIFF_EQUIP;
 
 #endif // QEQUIPMENTVIEW_H

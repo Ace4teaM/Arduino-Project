@@ -3,4 +3,7 @@
         <file alias="circuit">rc/equipement/circuit.png</file>
         <file alias="light">rc/equipement/light.png</file>
     </qresource>
+    <qresource prefix="/application">
+        <file alias="app_icon">rc/app_icon.jpg</file>
+    </qresource>
 </RCC>

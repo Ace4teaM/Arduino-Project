@@ -119,3 +119,5 @@ const QString Result::AppUnimplementedFeature = "APP_UNIMPLEMENTED_FEATURE";
 const QString Result::CantSaveFile            = "CANT_SAVE_FILE";
 const QString Result::CantEditXmlFile         = "CANT_EDIT_XML_FILE";
 const QString Result::CantReadFile            = "CANT_READ_FILE";
+const QString Result::RiffInvalidHeader       = "RIFF_INVALID_HEADER";
+const QString Result::RiffInvalidTagSize      = "RIFF_INVALID_TAG_SIZE";

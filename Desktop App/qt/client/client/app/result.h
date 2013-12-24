@@ -68,6 +68,8 @@ public:
     static const QString CantSaveFile;
     static const QString CantReadFile;
     static const QString CantEditXmlFile;
+    static const QString RiffInvalidHeader;
+    static const QString RiffInvalidTagSize;
 private:
     QString code;
     QString desc;

@@ -67,6 +67,7 @@
         <SQL_EMPTY_RESULT>La requête SQL ne retourne pas de résultat</SQL_EMPTY_RESULT>
         <APP_UNIMPLEMENTED_FEATURE>Fonctionnalité non implentée</APP_UNIMPLEMENTED_FEATURE>
         <CANT_SAVE_FILE>Impossible de sauvegarder le fichier</CANT_SAVE_FILE>
+        <RIFF_INVALID_HEADER>L'en-tête du fichier RIFF est incorrecte</RIFF_INVALID_HEADER>
     </code>
     <message></message>
   </result>

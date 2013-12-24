@@ -20,19 +20,22 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    bool FindNetwork();
+    bool findNetwork();
     bool isConnected();
+    bool findArduino();
     
 private slots:
-    //auto slot connect
+    //auto-connect
     void on_pushButton_connect_clicked();
-    void on_btnSaveConfig_clicked();
-    void on_btnLoadConfig_clicked();
+    void on_pushButton_findArduino_clicked();
     //menu
     void actionSauvegarder_sous();
+    void actionOuvrir();
     //toolbar
     void tbAddEquipement();
     void tbRearrange();
+    //autres
+    void on_findArduinoResponse();
 
 private:
     QUdpSocket *udpSocket;

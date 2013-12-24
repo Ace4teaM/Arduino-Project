@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+ï»¿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 
@@ -8,11 +8,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     udpSocket = new QUdpSocket(this);
     ui->setupUi(this);
+    this->setWindowIcon(QIcon(":application/app_icon"));
 
+    // initialise la barre d'outils
     ui->toolBar->addAction("Ajouter Equipement", this, SLOT(tbAddEquipement()));
     ui->toolBar->addAction("Arranger", this, SLOT(tbRearrange()));
 
+    // initialise le menu principale
     connect( ui->actionSauvegrader_sous, SIGNAL(triggered()), this,SLOT(actionSauvegarder_sous()));
+    connect( ui->actionOuvrir, SIGNAL(triggered()), this,SLOT(actionOuvrir()));
 }
 
 MainWindow::~MainWindow()
@@ -24,27 +28,82 @@ bool MainWindow::isConnected()
 {
     QTcpSocket socket;
     socket.connectToHost("www.google.com", 80);
-    // Renvoie false si pas connectée, ou si google ne marche pas
+    // Renvoie false si pas connectÃ©e, ou si google ne marche pas
     return socket.waitForConnected(1000);
 }
 
-bool MainWindow::FindNetwork(){
-    static int cnt=0;
-    cnt++;
-    QHostAddress adr("192.168.1.64");
-    ui->label_connection_status->setText(tr("Connecting to ")+adr.toString());
-    QByteArray datagram = "Hello World\0";
-    if(!udpSocket->writeDatagram(datagram.data(), datagram.size(), adr, 45454)){
-        ui->label_connection_status->setText(tr("Failed to send !"));
-        return false;
+bool MainWindow::findNetwork(){
+    QList<QNetworkInterface> ifaces = QNetworkInterface::allInterfaces();
+    if ( !ifaces.isEmpty() )
+    {
+      for(int i=0; i < ifaces.size(); i++)
+      {
+        qDebug() << "Interface: " << ifaces[i].humanReadableName();
+        qDebug() << "   MAC:" << ifaces[i].hardwareAddress();
+
+        unsigned int flags = ifaces[i].flags();
+        bool isLoopback = (bool)(flags & QNetworkInterface::IsLoopBack);
+        bool isP2P = (bool)(flags & QNetworkInterface::IsPointToPoint);
+        bool isRunning = (bool)(flags & QNetworkInterface::IsRunning);
+
+        // If this interface isn't running, we don't care about it
+        if ( !isRunning ) continue;
+
+        // We only want valid interfaces that aren't loopback/virtual and not point to point
+        if ( !ifaces[i].isValid() || isLoopback || isP2P ) continue;
+
+        // Obtient l'IP
+        QList<QHostAddress> addresses = ifaces[i].allAddresses();
+        for(int a=0; a < addresses.size(); a++)
+        {
+          // Ignore local host
+          if ( addresses[a] == QHostAddress::LocalHost ) continue;
+
+          // Ignore non-ipv4 addresses
+          if ( !addresses[a].toIPv4Address() ) continue;
+
+          // Obtient L'IP
+          QString ip = addresses[a].toString();
+          qDebug() << "   IP: " << ip;
+        }
+      }
     }
-    ui->label_connection_status->setText(tr("Sended ")+QString::number(cnt));
     return true;
+}
+
+bool MainWindow::findArduino(){
+    udpSocket->bind(QHostAddress::Broadcast, 7755);
+
+    connect(udpSocket, SIGNAL(readyRead()), this, SLOT(on_findArduinoResponse()));
+    return true;
+}
+
+/*--------------------------------------------------------------------------------------
+ *  SLOT
+ *--------------------------------------------------------------------------------------*/
+
+void MainWindow::on_findArduinoResponse(){
+    ui->label_connection_status->setText("Recherche...Response");
+    while (udpSocket->hasPendingDatagrams()) {
+        QByteArray datagram;
+        datagram.resize(udpSocket->pendingDatagramSize());
+        QHostAddress sender;
+        quint16 senderPort;
+
+        udpSocket->readDatagram(datagram.data(), datagram.size(), &sender, &senderPort);
+
+        //processTheDatagram(datagram);
+    }
+}
+
+void MainWindow::on_pushButton_findArduino_clicked(){
+    findArduino();
+    ui->label_connection_status->setText("Recherche...");
 }
 
 void MainWindow::on_pushButton_connect_clicked()
 {
-    FindNetwork();
+    findNetwork();
 }
 
 void MainWindow::tbAddEquipement()
@@ -53,6 +112,9 @@ void MainWindow::tbAddEquipement()
     equipment.equipmentId   = 100;
     equipment.type = QString("light");
     equipment.name = QString("Lumiere Salon");
+    equipment.posX = 0;
+    equipment.posY = 0;
+    equipment.posZ = 0;
     this->ui->graphicsView->addEquipment(equipment);
 }
 
@@ -61,35 +123,66 @@ void MainWindow::tbRearrange()
     this->ui->graphicsView->rearrangeView();
 }
 
-void MainWindow::on_btnSaveConfig_clicked()
+
+/*
+ * ACTION MENU
+ * Ouvrir ...
+*/
+void MainWindow::actionOuvrir()
 {
-    //obtient le fichier de destination
-    QString filename = QFileDialog::getSaveFileName(this, QString(), QString(), tr("Fichier XML (*.xml)"));
-    if(filename.isNull()){
-        QRESULT_OK();
+    // Ouvre le document
+    QFileDialog dialog(this, QString(), QString());
+    dialog.setAcceptMode(QFileDialog::AcceptOpen);
+    QStringList filters;
+    filters << "Fichier XML (*.xml)" << "Fichier RIFF (*.riff)";
+    dialog.setNameFilters(filters);
+    if (dialog.exec() != QDialog::Accepted)
         return;
+    QString selectedFilter = dialog.selectedNameFilter();
+    QString filename = dialog.selectedFiles()[0];
+
+    //RIFF
+    if(selectedFilter.contains(".riff")){
+        //ouvre le fichier
+        QFile fp( filename );
+        if( !fp.open( QIODevice::ReadOnly ) ){
+            QRESULT(Result::CantOpenFile);
+            return;
+        }
+
+        //obtient les donnÃ©es
+        char* data = fp.readAll().data();
+        PTR ptr = {data,data+fp.size(),data};
+
+        //charge le document
+        this->ui->graphicsView->fromRIFF(&ptr);
+
+        fp.close();
+    }
+    //XML
+    else if(selectedFilter.contains(".xml")){
+        //ouvre le fichier
+        QFile fp( filename );
+        if( !fp.open( QIODevice::ReadOnly | QIODevice::Text ) ){
+            QRESULT(Result::CantOpenFile);
+            return;
+        }
+
+        //charge le document
+        QDomDocument dom;
+        dom.setContent(fp.readAll());
+        this->ui->graphicsView->fromXML(dom);
+
+        fp.close();
     }
 
-    //crée le fichier
-    QFile outFile( filename );
-    if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) ){
-        QRESULT(Result::CantSaveFile);
-        return;
-    }
-
-    //génère le document
-    QDomDocument dom;
-    dom.appendChild(dom.createElement("root"));
-    this->ui->graphicsView->toXML(dom);
-
-    //sauvegarde le fichier
-    QTextStream stream( &outFile );
-    stream << dom.toString();
-
-    outFile.close();
     QRESULT_OK();
 }
 
+/*
+ * ACTION MENU
+ * Sauvegarder sous ...
+*/
 void MainWindow::actionSauvegarder_sous()
 {
     QFileDialog dialog(this, QString(), QString());
@@ -102,70 +195,46 @@ void MainWindow::actionSauvegarder_sous()
     QString selectedFilter = dialog.selectedNameFilter();
     QString filename = dialog.selectedFiles()[0];
 
-    QPRINT(selectedFilter);
-
-    /*
-    //obtient le fichier de destination
-    QString filename = QFileDialog::getSaveFileName(this, QString(), QString(), tr("Fichier XML (*.xml);;Fichier RIFF (*.riff)"));
-    if(filename.isNull()){
-        QRESULT_OK();
-        return;
-    }*/
-
-    //crée le fichier
-    QFile outFile( filename );
-    if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) ){
-        QRESULT(Result::CantSaveFile);
-        return;
-    }
-
     //sauvegarde le fichier
 
     //RIFF
     if(selectedFilter.contains(".riff")){
+        //crÃ©e le fichier
+        QFile outFile( filename );
+        if( !outFile.open( QIODevice::WriteOnly | QIODevice::Truncate ) ){
+            QRESULT(Result::CantSaveFile);
+            return;
+        }
+
         QDataStream stream( &outFile );
-        //génère le document
+        stream.setByteOrder(QDataStream::LittleEndian);
+
+        //gÃ©nÃ¨re le document
         char buf[1024*10];
         PTR mem={buf,buf+sizeof(buf),buf};
         this->ui->graphicsView->toRIFF(&mem);
-        stream.writeBytes(mem.up,(uint)(mem.ptr-mem.up));
+        stream.writeRawData(mem.up,(uint)(mem.ptr-mem.up));
+
+        outFile.close();
     }
     //XML
     else if(selectedFilter.contains(".xml")){
+        //crÃ©e le fichier
+        QFile outFile( filename );
+        if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate ) ){
+            QRESULT(Result::CantSaveFile);
+            return;
+        }
+
         QTextStream stream( &outFile );
         QDomDocument dom;
         dom.appendChild(dom.createElement("root"));
         this->ui->graphicsView->toXML(dom);
         stream << dom.toString();
+
+        outFile.close();
     }
 
-    outFile.close();
-    QRESULT_OK();
-}
-
-
-void MainWindow::on_btnLoadConfig_clicked()
-{
-    //obtient le fichier de destination
-    QString filename = QFileDialog::getOpenFileName(this, QString(), QString(), tr("Fichier XML (*.xml)"));
-    if(filename.isNull()){
-        QRESULT_OK();
-        return;
-    }
-
-    //ouvre le fichier
-    QFile fp( filename );
-    if( !fp.open( QIODevice::ReadOnly | QIODevice::Text ) ){
-        QRESULT(Result::CantReadFile);
-        return;
-    }
-
-    //charge le document
-    QDomDocument dom;
-    dom.setContent(fp.readAll());
-    this->ui->graphicsView->fromXML(dom);
-
-    fp.close();
     QRESULT_OK();
 }
 

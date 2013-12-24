@@ -1,4 +1,4 @@
-
+﻿
 #include "QEquipmentView.h"
 #include "QEquipmentItem.h"
 
@@ -11,21 +11,11 @@ QEquipmentView::QEquipmentView(QWidget *parent) : QGraphicsView(parent)
     arduinoEquipment.equipmentId = 1;
     arduinoEquipment.name = "Arduino MEGA";
     arduinoEquipment.type = "circuit";
+    arduinoEquipment.posX = 0;
+    arduinoEquipment.posY = 0;
+    arduinoEquipment.posZ = 0;
     QEquipmentItem* item = this->addEquipment(arduinoEquipment);
-    //item->setRect( -50.0, -50.0, 100.0, 100.0 );
 
-    //ajoute un rectangle
-/*    QGraphicsRectItem *item = new QGraphicsRectItem();
-    item->setRect( -50.0, -50.0, 100.0, 100.0 );
-    item->setRotation(160);
-    item->setFlag(QGraphicsItem::ItemIsSelectable, true);
-    item->setFlag(QGraphicsItem::ItemIsMovable, true);
-
-    //ajoute une image
-    QGraphicsPixmapItem *pixItem = scene.addPixmap(QPixmap(":/equipement/light"));
-    pixItem->setFlag(QGraphicsItem::ItemIsSelectable, true);
-    pixItem->setFlag(QGraphicsItem::ItemIsMovable, true);
-*/
     //initialise la scene
     this->setScene(&scene);
     this->setRenderHints( QPainter::Antialiasing );
@@ -53,6 +43,7 @@ QEquipmentItem* QEquipmentView::addEquipment(const Equipment & equipment)
     item->setRect( -50.0, -50.0, 50.0, 50.0 );
     item->setFlag(QGraphicsItem::ItemIsSelectable, true);
     item->setFlag(QGraphicsItem::ItemIsMovable, true);
+    item->setPos(equipment.posX,equipment.posY);
 
     scene.addItem( item );
     return item;
@@ -68,7 +59,7 @@ bool QEquipmentView::toXML(QDomDocument & dom)
     QList<QGraphicsItem*>::iterator i;
     for (i = list.begin(); i != list.end(); ++i){
         QEquipmentItem* item = (QEquipmentItem*)*i;
-        //cr�e l'�l�ment XML
+        //crée l'élément XML
         QDomElement el = dom.createElement(item->getEquipment().type);
         el.setAttribute("id",item->getEquipment().equipmentId);
         item->getEquipment().bindXML(el);
@@ -93,12 +84,63 @@ bool QEquipmentView::fromXML(QDomDocument & dom)
     return QRESULT_OK();
 }
 
-typedef struct _RIFF_EQUIP{
-    int id;
-    char name[64];
-}RIFF_EQUIP;
+/**
+  @brief Charge un schema depuis un fichier RIFF
+  @param mem Tampon mémoire
+  @return Résultat de procèdure
+*/
+bool QEquipmentView::fromRIFF(PTR* mem){
+    RIFF riff;
 
+    //supprime le contenu de la scene
+    scene.clear();
 
+    //lit l'entete
+    if(!riff_read(mem,&riff))
+        return false;
+
+    //Vérifie l'en-tete
+    if(!(riff.id[0] == 'R' && riff.id[1] == 'I' && riff.id[2] == 'F' && riff.id[3] == 'F'))
+        return QRESULT_DESC(Result::Failed, Result::RiffInvalidHeader);
+    if(mem->ptr+riff.size > mem->down)
+        return QRESULT_DESC(Result::Failed, Result::RiffInvalidTagSize);
+
+    //lit les chunk
+    char tag[4];
+    unsigned int tag_size;
+    while(mem->ptr<mem->down && riff_read_tag(mem,tag,&tag_size)){
+        qDebug() << "tag=" << tag[0] << tag[1] << tag[2] << tag[3];
+        qDebug() << "tag_size=" << tag_size;
+        if(mem->ptr+tag_size > mem->down)
+            return QRESULT_DESC(Result::Failed, Result::RiffInvalidTagSize);
+        if(memcmp("EQUIP",tag,sizeof(tag)) == 0 ){
+            qDebug() << "EQUIP tag...";
+            //Charge l'équipement
+            RIFF_EQUIP equip;
+            equip.id = btoi(mem);
+            bread(mem,equip.name,sizeof(equip.name));
+            //Ajoute l'équipement à la scene
+            Equipment qequip;
+            qequip.equipmentId = equip.id;
+            qequip.name = QString(equip.name);
+            qequip.posX = qequip.posY = qequip.posZ = 0;
+            this->addEquipment(qequip);
+        }
+        else{
+            qDebug() << "IGNORE tag";
+            mem->ptr += tag_size;
+        }
+        qDebug() << "offset=" << boffset(mem);
+    }
+
+    return QRESULT_OK();
+}
+
+/**
+  @brief Sauvegarde le schema dans un fichier RIFF
+  @param mem Tampon mémoire
+  @return Résultat de procèdure
+*/
 bool QEquipmentView::toRIFF(PTR* mem)
 {
     RIFF riff = {{'R','I','F','F'},sizeof(RIFF_HEADER)};
@@ -106,16 +148,17 @@ bool QEquipmentView::toRIFF(PTR* mem)
     QList<QGraphicsItem*> list = scene.items();
     QList<QGraphicsItem*>::iterator i;
 
-    //ecrit les donn�es
+    //ecrit les données
     if(!riff_write(mem,&riff))
         return false;
+
     for (i = list.begin(); i != list.end(); ++i){
         QEquipmentItem* item = (QEquipmentItem*)*i;
         //initialise la structure de l'item
         RIFF_EQUIP equip;
         equip.id = item->getEquipment().equipmentId;
         strcpy(equip.name,item->getEquipment().name.toLatin1().data());
-        //ecrit en m�moire
+        //ecrit en mémoire
         if(!riff_write_tag(mem,"EQUI",sizeof(RIFF_EQUIP)))
             return false;
         if(!itob(mem,equip.id))
