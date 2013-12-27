@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // initialise le menu principale
     connect( ui->actionSauvegrader_sous, SIGNAL(triggered()), this,SLOT(actionSauvegarder_sous()));
     connect( ui->actionOuvrir, SIGNAL(triggered()), this,SLOT(actionOuvrir()));
+    connect( ui->actionNouveau, SIGNAL(triggered()), this,SLOT(actionNouveau()));
 }
 
 MainWindow::~MainWindow()
@@ -121,6 +122,23 @@ void MainWindow::tbAddEquipement()
 void MainWindow::tbRearrange()
 {
     this->ui->graphicsView->rearrangeView();
+}
+
+/*
+ * ACTION MENU
+ * Nouveau ...
+*/
+void MainWindow::actionNouveau()
+{
+    // message d'avertissement
+    if(QMessageBox::warning(this, tr("Attention"),
+       tr("Les modifications seront perdues.\n"
+          "Voulez-vous vraiment effacer le schèma ?"),
+       QMessageBox::Ok | QMessageBox::Cancel, QMessageBox::Cancel )!=QMessageBox::Ok)
+        return;
+
+    // réinitialise la scene
+    this->ui->graphicsView->reset();
 }
 
 

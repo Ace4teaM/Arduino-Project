@@ -6,6 +6,7 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
+#include "QEquipmentScene.h"
 #include "../model/Equipment.h"
 #include "../model/Client.h"
 #include "../model/Pin.h"
@@ -17,9 +18,12 @@ class QEquipmentView : public QGraphicsView{
 
 public:
     QEquipmentView(QWidget *parent);
-    QGraphicsScene scene;
+    QEquipmentScene scene;
     QEquipmentItem* addEquipment(const Equipment & equip);
     bool rearrangeView();
+    /**
+      @brief Obtient le circuit principal
+    */
     QEquipmentItem* getCircuit();
     /**
       @brief Sauvegarde le schema dans un document XML
@@ -45,6 +49,10 @@ public:
       @return Résultat de procèdure
     */
     bool toRIFF(PTR* mem);
+    /**
+      @brief Réinitialise la scene
+    */
+    void reset();
 private slots:
     void onContextMenu(const QPoint & point);
     void scnSelectionChanged();
@@ -55,6 +63,7 @@ private slots:
 typedef struct _RIFF_EQUIP{
     int id;
     char name[64];
+    char type[32];
 }RIFF_EQUIP;
 
 #endif // QEQUIPMENTVIEW_H

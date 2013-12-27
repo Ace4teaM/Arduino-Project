@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QtNetwork>
 #include <QFileDialog>
+#include <QMessageBox>
 
 #include <l1/result.h>
 #include <l1/xarg.h>
@@ -31,6 +32,7 @@ private slots:
     //menu
     void actionSauvegarder_sous();
     void actionOuvrir();
+    void actionNouveau();
     //toolbar
     void tbAddEquipement();
     void tbRearrange();

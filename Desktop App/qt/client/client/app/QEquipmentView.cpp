@@ -62,6 +62,10 @@ bool QEquipmentView::toXML(QDomDocument & dom)
         //crée l'élément XML
         QDomElement el = dom.createElement(item->getEquipment().type);
         el.setAttribute("id",item->getEquipment().equipmentId);
+        //atualise la position
+        item->getEquipment().posX = item->pos().rx();
+        item->getEquipment().posY = item->pos().ry();
+        //
         item->getEquipment().bindXML(el);
         dom.documentElement().appendChild(el);
     }
@@ -71,7 +75,7 @@ bool QEquipmentView::toXML(QDomDocument & dom)
 bool QEquipmentView::fromXML(QDomDocument & dom)
 {
     //supprime le contenu en cours
-    scene.clear();
+    this->reset();
 
     //charge le contenu
     QDomElement el = dom.documentElement().firstChildElement();
@@ -93,7 +97,7 @@ bool QEquipmentView::fromRIFF(PTR* mem){
     RIFF riff;
 
     //supprime le contenu de la scene
-    scene.clear();
+    this->reset();
 
     //lit l'entete
     if(!riff_read(mem,&riff))
@@ -119,10 +123,13 @@ bool QEquipmentView::fromRIFF(PTR* mem){
             RIFF_EQUIP equip;
             equip.id = btoi(mem);
             bread(mem,equip.name,sizeof(equip.name));
+            bread(mem,equip.type,sizeof(equip.type));
             //Ajoute l'équipement à la scene
             Equipment qequip;
             qequip.equipmentId = equip.id;
             qequip.name = QString(equip.name);
+            qequip.type = QString(equip.type);
+            QPRINT(qequip.type);
             qequip.posX = qequip.posY = qequip.posZ = 0;
             this->addEquipment(qequip);
         }
@@ -158,12 +165,15 @@ bool QEquipmentView::toRIFF(PTR* mem)
         RIFF_EQUIP equip;
         equip.id = item->getEquipment().equipmentId;
         strcpy(equip.name,item->getEquipment().name.toLatin1().data());
+        strcpy(equip.type,item->getEquipment().type.toLatin1().data());
         //ecrit en mémoire
         if(!riff_write_tag(mem,"EQUI",sizeof(RIFF_EQUIP)))
             return false;
         if(!itob(mem,equip.id))
             return false;
         if(!bwrite(mem,equip.name,sizeof(equip.name)))
+            return false;
+        if(!bwrite(mem,equip.type,sizeof(equip.type)))
             return false;
     }
 
@@ -197,6 +207,17 @@ bool QEquipmentView::rearrangeView()
     return QRESULT_OK();
 }
 
+/**
+  @brief Réinitialise la scene
+*/
+void QEquipmentView::reset(){
+    //supprime le contenu de la scene
+    scene.clear();
+}
+
+/**
+  @brief Obtient le circuit principal
+*/
 QEquipmentItem* QEquipmentView::getCircuit()
 {
     QList<QGraphicsItem*> list = scene.items();

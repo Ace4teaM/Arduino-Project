@@ -101,6 +101,8 @@
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="actionNouveau"/>
+    <addaction name="separator"/>
     <addaction name="actionOuvrir"/>
     <addaction name="actionSauvegrader_sous"/>
     <addaction name="separator"/>
@@ -133,6 +135,11 @@
   <action name="actionSupprimer">
    <property name="text">
     <string>Supprimer</string>
+   </property>
+  </action>
+  <action name="actionNouveau">
+   <property name="text">
+    <string>Nouveau</string>
    </property>
   </action>
  </widget>

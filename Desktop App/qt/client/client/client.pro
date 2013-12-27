@@ -33,9 +33,13 @@ SOURCES += main.cpp\
         model/LedControler.cpp \
         model/Switcher.cpp \
         app/QEquipmentView.cpp \
-    app/qequipmentitem.cpp
+    app/qequipmentitem.cpp \
+    app/qequipmentscene.cpp \
+    equipprop_analogpin.cpp \
+    equipprop_digitalpin.cpp \
+    equipprop.cpp
 
-HEADERS  += mainwindow.h\
+HEADERS  += mainwindow.h \
         result.h\
         xarg.h \
         arduino_server_choice.h \
@@ -53,11 +57,18 @@ HEADERS  += mainwindow.h\
         model/LedControler.h \
         model/Switcher.h \
         app/QEquipmentView.h \
-    app/qequipmentitem.h
+    app/qequipmentitem.h \
+    app/qequipmentscene.h \
+    equipprop_analogpin.h \
+    equipprop_digitalpin.h \
+    equipprop.h
 
 FORMS    += mainwindow.ui \
     arduino_server_choice.ui \
-    newequipementdialog.ui
+    newequipementdialog.ui \
+    equipprop_analogpin.ui \
+    equipprop_digitalpin.ui \
+    equipprop.ui
 
 RESOURCES += \
     resource.qrc
