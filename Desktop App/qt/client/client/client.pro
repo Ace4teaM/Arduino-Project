@@ -27,17 +27,20 @@ SOURCES += main.cpp\
         app/qassoclist.cpp \
         app/database.cpp \
         app/qdelay.cpp \
+        app/QEquipmentView.cpp \
+        app/qequipmentitem.cpp \
+        app/qequipmentscene.cpp \
+        app/qserveritem.cpp \
+        model/Server.cpp \
         model/Client.cpp \
         model/Equipment.cpp \
-        model/Pin.cpp \
         model/LedControler.cpp \
         model/Switcher.cpp \
-        app/QEquipmentView.cpp \
-    app/qequipmentitem.cpp \
-    app/qequipmentscene.cpp \
-    equipprop_analogpin.cpp \
-    equipprop_digitalpin.cpp \
-    equipprop.cpp
+        equipprop_analogpin.cpp \
+        equipprop_digitalpin.cpp \
+        equipprop.cpp \
+        equipdialog.cpp \
+        equipmessagedialog.cpp
 
 HEADERS  += mainwindow.h \
         result.h\
@@ -51,24 +54,32 @@ HEADERS  += mainwindow.h \
         app/database.h \
         app/qdelay.h \
         app/iapplicationevent.h \
+        app/QEquipmentView.h \
+        app/qequipmentitem.h \
+        app/qequipmentscene.h \
+        app/qserveritem.h \
+        model/Server.h \
         model/Client.h \
         model/Equipment.h \
-        model/Pin.h \
         model/LedControler.h \
         model/Switcher.h \
-        app/QEquipmentView.h \
-    app/qequipmentitem.h \
-    app/qequipmentscene.h \
-    equipprop_analogpin.h \
-    equipprop_digitalpin.h \
-    equipprop.h
+        equipprop_analogpin.h \
+        equipprop_digitalpin.h \
+        equipprop.h \
+        equipdialog.h \
+        iequipprop.h \
+        riff.h \
+        equipmessagedialog.h \
+        equip_types.h
 
 FORMS    += mainwindow.ui \
     arduino_server_choice.ui \
     newequipementdialog.ui \
     equipprop_analogpin.ui \
     equipprop_digitalpin.ui \
-    equipprop.ui
+    equipprop.ui \
+    equipdialog.ui \
+    equipmessagedialog.ui
 
 RESOURCES += \
     resource.qrc

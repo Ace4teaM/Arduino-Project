@@ -1,7 +1,7 @@
 /***********************************************************************
  * Module:  LedControler.h
  * Author:  developpement
- * Modified: dimanche 22 décembre 2013 09:19:05
+ * Modified: lundi 30 décembre 2013 18:05:09
  * Purpose: Declaration of the class LedControler
  ***********************************************************************/
 

@@ -9,6 +9,7 @@
 
 #include "../EquipProp.h"
 #include "QEquipmentItem.h"
+#include "equipdialog.h"
 
 class QEquipmentScene : public QGraphicsScene
 {
@@ -16,6 +17,9 @@ class QEquipmentScene : public QGraphicsScene
 public:
     QEquipmentScene();
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent * mouseEvent);
+/*    void contextMenuEvent(QGraphicsSceneContextMenuEvent * contextMenuEvent);
+public slots:
+    void contextMenuTriggered(QAction * action);*/
 };
 
 #endif // QEQUIPMENTSCENE_H

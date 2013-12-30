@@ -1,16 +1,16 @@
-#include "qequipmentitem.h"
+#include "qserveritem.h"
 
-QEquipmentItem::QEquipmentItem(const Equipment & equipment,QGraphicsItem* parent) : QGraphicsRectItem(parent)
+QServerItem::QServerItem(const Server & server,QGraphicsItem* parent) : QGraphicsRectItem(parent)
 {
-    this->image = QPixmap(":/equipement/"+equipment.type);
-    this->equipment = equipment;
+    this->image = QPixmap(":/equipement/circuit");
+    this->server = server;
 
 
     //initilise le menu contextuel
-    contextMenu.addAction("Envoyer un message...");
+    contextMenu.addAction("Envoyer une commande...");
 }
 
-void QEquipmentItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void QServerItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     QGraphicsRectItem::paint(painter,option,widget);
 
@@ -22,18 +22,18 @@ void QEquipmentItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
     QPen pen(QColor("#000000"), 2.0, Qt::DotLine, Qt::FlatCap, Qt::RoundJoin);
     painter->setPen(pen);
     painter->setFont(QFont("Arial", 8, QFont::Bold));
-    painter->drawText(this->boundingRect(),this->equipment.name,QTextOption(Qt::AlignCenter));
+    painter->drawText(this->boundingRect(),this->server.ip,QTextOption(Qt::AlignCenter));
     pen.setColor(QColor("#ffffff"));
     painter->setPen(pen);
     painter->setFont(QFont("Arial", 8, QFont::Bold));
     QRectF rect=this->boundingRect();
     rect.adjust(1,1,1,1);
-    painter->drawText(rect,this->equipment.name,QTextOption(Qt::AlignCenter));
+    painter->drawText(rect,this->server.name,QTextOption(Qt::AlignCenter));
 }
 
-Equipment & QEquipmentItem::getEquipment()
+Server & QServerItem::getServer()
 {
-    return this->equipment;
+    return this->server;
 }
 
 /* NOT WORK
@@ -52,7 +52,7 @@ void QEquipmentItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
     event->accept();
 }*/
 
-void QEquipmentItem::mousePressEvent( QGraphicsSceneMouseEvent *event )
+void QServerItem::mousePressEvent( QGraphicsSceneMouseEvent *event )
 {
     if(event->button() == Qt::RightButton)
     {

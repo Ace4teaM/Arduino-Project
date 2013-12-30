@@ -1,19 +1,19 @@
-#ifndef QEQUIPEMENTITEM_H
-#define QEQUIPEMENTITEM_H
+#ifndef QSERVERITEM_H
+#define QSERVERITEM_H
 
 #include <QDebug>
 #include <QGraphicsItem>
 #include <QPainter>
 #include <QMenu>
 #include <QGraphicsSceneContextMenuEvent>
-#include "../model/Equipment.h"
+#include "../model/Server.h"
 
-class QEquipmentItem : public QGraphicsRectItem
+class QServerItem : public QGraphicsRectItem
 {
 public:
-    QEquipmentItem(const Equipment & equipment,QGraphicsItem* parent=0);
+    QServerItem(const Server & equipment,QGraphicsItem* parent=0);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-    Equipment & getEquipment();
+    Server & getServer();
 protected:
     /*void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
     bool sceneEvent(QEvent * event);*/
@@ -22,9 +22,9 @@ signals:
 
 public slots:
 protected:
-    Equipment equipment;
+    Server server;
     QPixmap image;
     QMenu contextMenu;
 };
 
-#endif // QEQUIPEMENTITEM_H
+#endif // QSERVERITEM_H

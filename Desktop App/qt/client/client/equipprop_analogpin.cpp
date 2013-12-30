@@ -1,7 +1,7 @@
 #include "equipprop_analogpin.h"
 #include "ui_equipprop_analogpin.h"
 
-EquipProp_AnalogPin::EquipProp_AnalogPin(QWidget *parent) :
+EquipProp_AnalogPin::EquipProp_AnalogPin(Equipment & equip,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::EquipProp_AnalogPin)
 {
@@ -15,4 +15,8 @@ EquipProp_AnalogPin::EquipProp_AnalogPin(QWidget *parent) :
 EquipProp_AnalogPin::~EquipProp_AnalogPin()
 {
     delete ui;
+}
+
+void EquipProp_AnalogPin::applyProp(Equipment & equip)
+{
 }

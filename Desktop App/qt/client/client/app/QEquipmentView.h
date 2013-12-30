@@ -3,13 +3,14 @@
 
 #include "result.h"
 #include "qequipmentitem.h"
+#include "qserveritem.h"
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
 #include "QEquipmentScene.h"
 #include "../model/Equipment.h"
 #include "../model/Client.h"
-#include "../model/Pin.h"
+#include "riff.h"
 #include <l1/riff.h>
 #include <l1/memory.h>
 
@@ -20,6 +21,7 @@ public:
     QEquipmentView(QWidget *parent);
     QEquipmentScene scene;
     QEquipmentItem* addEquipment(const Equipment & equip);
+    QServerItem* addServer(const Server & server);
     bool rearrangeView();
     /**
       @brief Obtient le circuit principal
@@ -59,11 +61,5 @@ private slots:
 //protected:
 //    QGraphicsScene scene;
 };
-
-typedef struct _RIFF_EQUIP{
-    int id;
-    char name[64];
-    char type[32];
-}RIFF_EQUIP;
 
 #endif // QEQUIPMENTVIEW_H

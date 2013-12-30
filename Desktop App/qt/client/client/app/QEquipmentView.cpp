@@ -7,14 +7,13 @@ QEquipmentView::QEquipmentView(QWidget *parent) : QGraphicsView(parent)
     scene.setSceneRect( -100.0, -100.0, 200.0, 200.0 );
 
     // ajoute le circuit arduino
-    Equipment arduinoEquipment;
-    arduinoEquipment.equipmentId = 1;
-    arduinoEquipment.name = "Arduino MEGA";
-    arduinoEquipment.type = "circuit";
-    arduinoEquipment.posX = 0;
-    arduinoEquipment.posY = 0;
-    arduinoEquipment.posZ = 0;
-    QEquipmentItem* item = this->addEquipment(arduinoEquipment);
+    Server arduinoServer;
+    arduinoServer.serverId = 1;
+    arduinoServer.name = "Arduino MEGA";
+    arduinoServer.posX = 0;
+    arduinoServer.posY = 0;
+    arduinoServer.posZ = 0;
+    QServerItem* item = this->addServer(arduinoServer);
 
     //initialise la scene
     this->setScene(&scene);
@@ -44,6 +43,19 @@ QEquipmentItem* QEquipmentView::addEquipment(const Equipment & equipment)
     item->setFlag(QGraphicsItem::ItemIsSelectable, true);
     item->setFlag(QGraphicsItem::ItemIsMovable, true);
     item->setPos(equipment.posX,equipment.posY);
+
+    scene.addItem( item );
+    return item;
+}
+
+QServerItem* QEquipmentView::addServer(const Server & server)
+{
+    //ajoute une image
+    QServerItem *item = new QServerItem(server);
+    item->setRect( -50.0, -50.0, 50.0, 50.0 );
+    item->setFlag(QGraphicsItem::ItemIsSelectable, true);
+    item->setFlag(QGraphicsItem::ItemIsMovable, true);
+    item->setPos(server.posX,server.posY);
 
     scene.addItem( item );
     return item;

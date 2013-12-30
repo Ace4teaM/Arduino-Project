@@ -4,6 +4,9 @@ QEquipmentScene::QEquipmentScene()
 {
 }
 
+/*
+ * Affiche le dialogue de propriétés sur l'équipement
+*/
 void QEquipmentScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent * mouseEvent){
     qDebug() << QString("mouseDoubleClickEvent");
     QGraphicsScene::mouseDoubleClickEvent(mouseEvent);
@@ -15,10 +18,25 @@ void QEquipmentScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent * mouseEven
     qDebug() << item->getEquipment().name;
 
     // initialise le dialogue de proprietes
-    QDialog *dialog = new QDialog();
-    dialog->setModal(true);
-//    dialog->setSizePolicy();
+    EquipDialog *dialog = new EquipDialog(item->getEquipment());
     dialog->exec();
-/*    EquipProp* baseProp = new EquipProp(dialog);
-    dialog->layout()->addWidget(baseProp);*/
 }
+
+/*
+ * Affiche le menu contextuel de l'équipement
+
+void QEquipmentScene::contextMenuEvent(QGraphicsSceneContextMenuEvent * contextMenuEvent){
+    qDebug() << "contextMenuEvent";
+    QMenu *menu = new QMenu();
+    menu->addAction("Action 1");
+    menu->addAction("Action 2");
+    menu->popup(contextMenuEvent->screenPos());
+
+    connect(menu, SIGNAL(triggered(QAction *)),this, SLOT(contextMenuTriggered(QAction *)));
+    contextMenuEvent->accept();
+}
+
+void QEquipmentScene::contextMenuTriggered(QAction * action){
+    qDebug() << "contextMenuTriggered";
+}
+*/

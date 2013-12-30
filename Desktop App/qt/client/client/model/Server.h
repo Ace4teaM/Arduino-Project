@@ -1,8 +1,8 @@
 /***********************************************************************
- * Module:  Controler.h
+ * Module:  Server.h
  * Author:  developpement
- * Modified: dimanche 22 décembre 2013 09:19:05
- * Purpose: Declaration of the class Controler
+ * Modified: lundi 30 décembre 2013 18:05:09
+ * Purpose: Declaration of the class Server
  ***********************************************************************/
 
 #include <QString>
@@ -12,20 +12,23 @@
 
 class DataBase;
 
-#if !defined(__DATA_Controler_h)
-#define __DATA_Controler_h
+#if !defined(__DATA_Server_h)
+#define __DATA_Server_h
 
-class Pin;
+class Equipment;
 
-class Controler
+class Server
 {
 public:
-   int controlerId;
+   int serverId;
    QString ip;
    QString mac;
+   QString name;
+   float posX;
+   float posY;
+   float posZ;
    
-   Pin** reserve;
-   Pin** libre;
+   Equipment** equipment;
 
    //SQL
    void bind(QSqlQuery & query);
