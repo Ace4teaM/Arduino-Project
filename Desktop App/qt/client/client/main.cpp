@@ -1,20 +1,18 @@
+#include "app/application.h"
 #include "mainwindow.h"
 #include <QApplication>
 #include <arduino_server_choice.h>
 
+Application* app;
+MainWindow* w;
+
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-/*
-    ArduinoServerChoice* arduinoServerChoice = new ArduinoServerChoice();
+    app = new Application(argc, argv);
+    w = new MainWindow();
+    app->initialise(w);
 
-    if(arduinoServerChoice->exec() == QDialog::Rejected){
-        a.quit();
-        return Result::getLast()->getCode();
-    }
-*/
-    MainWindow w;
-    w.show();
+    w->show();
 
-    return a.exec();
+    return app->exec();
 }

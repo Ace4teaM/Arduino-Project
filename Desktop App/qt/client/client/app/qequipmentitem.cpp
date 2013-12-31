@@ -1,14 +1,44 @@
 #include "qequipmentitem.h"
 
+/**
+ * @brief Constructeur
+ * @param equipment Instance de l'équipement
+ * @param parent Parent du widget
+ */
 QEquipmentItem::QEquipmentItem(const Equipment & equipment,QGraphicsItem* parent) : QGraphicsRectItem(parent)
 {
     this->image = QPixmap(":/equipement/"+equipment.type);
     this->equipment = equipment;
-
-
-    //initilise le menu contextuel
-    contextMenu.addAction("Envoyer un message...");
 }
+
+/**
+ * @brief Retourne le model de données
+ * @return Equipment
+ */
+Equipment & QEquipmentItem::getEquipment()
+{
+    return this->equipment;
+}
+
+/**
+ * @brief Obtient l'item du serveur associé
+ * @return Serveur
+*/
+QServerItem * QEquipmentItem::getServerItem( ) {
+    if(this->equipment.server == NULL)
+        return NULL;
+    QList<QWidget*> list = this->scene()->findChildren<QWidget*>();
+    for(int i=0; i<list.count(); i++){
+        QServerItem* item = dynamic_cast<QServerItem*>(list.at(i));
+        if(item && item->getServer().serverId == this->equipment.server->serverId)
+            qDebug() << "serverId=" << item->getServer().serverId;
+    }
+}
+
+
+/*-------------------------------------------------------------------------------
+ * EVENEMENTS
+ * ------------------------------------------------------------------------------*/
 
 void QEquipmentItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
@@ -29,35 +59,4 @@ void QEquipmentItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
     QRectF rect=this->boundingRect();
     rect.adjust(1,1,1,1);
     painter->drawText(rect,this->equipment.name,QTextOption(Qt::AlignCenter));
-}
-
-Equipment & QEquipmentItem::getEquipment()
-{
-    return this->equipment;
-}
-
-/* NOT WORK
-bool QEquipmentItem::sceneEvent(QEvent * event)
-{
-    qDebug() << "sceneEvent" << event->type();
-    QGraphicsItem::sceneEvent(event);
-}
-void QEquipmentItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
-{
-    qDebug() << "contextMenuEvent";
-    QMenu menu;
-    menu.addAction("Remove");
-    menu.addAction("Mark");
-    menu.exec(event->screenPos());
-    event->accept();
-}*/
-
-void QEquipmentItem::mousePressEvent( QGraphicsSceneMouseEvent *event )
-{
-    if(event->button() == Qt::RightButton)
-    {
-        contextMenu.exec(event->screenPos());
-        event->accept();
-    }
-    QGraphicsItem::mousePressEvent(event);
 }

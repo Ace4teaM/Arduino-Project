@@ -4,10 +4,6 @@ QServerItem::QServerItem(const Server & server,QGraphicsItem* parent) : QGraphic
 {
     this->image = QPixmap(":/equipement/circuit");
     this->server = server;
-
-
-    //initilise le menu contextuel
-    contextMenu.addAction("Envoyer une commande...");
 }
 
 void QServerItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -34,30 +30,4 @@ void QServerItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 Server & QServerItem::getServer()
 {
     return this->server;
-}
-
-/* NOT WORK
-bool QEquipmentItem::sceneEvent(QEvent * event)
-{
-    qDebug() << "sceneEvent" << event->type();
-    QGraphicsItem::sceneEvent(event);
-}
-void QEquipmentItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
-{
-    qDebug() << "contextMenuEvent";
-    QMenu menu;
-    menu.addAction("Remove");
-    menu.addAction("Mark");
-    menu.exec(event->screenPos());
-    event->accept();
-}*/
-
-void QServerItem::mousePressEvent( QGraphicsSceneMouseEvent *event )
-{
-    if(event->button() == Qt::RightButton)
-    {
-        contextMenu.exec(event->screenPos());
-        event->accept();
-    }
-    QGraphicsItem::mousePressEvent(event);
 }

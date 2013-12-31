@@ -20,7 +20,9 @@ QEquipmentView::QEquipmentView(QWidget *parent) : QGraphicsView(parent)
     this->setRenderHints( QPainter::Antialiasing );
     this->show();
 
-    this->setContextMenuPolicy(Qt::CustomContextMenu);
+    //this->setContextMenuPolicy(Qt::CustomContextMenu);
+    //this->setContextMenuPolicy(Qt::ActionsContextMenu);
+
 
    // connect(this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(onContextMenu(const QPoint &)));
    connect(&scene, SIGNAL(selectionChanged()), this, SLOT(scnSelectionChanged()));

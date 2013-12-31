@@ -40,7 +40,8 @@ SOURCES += main.cpp\
         equipprop_digitalpin.cpp \
         equipprop.cpp \
         equipdialog.cpp \
-        equipmessagedialog.cpp
+        equipmessagedialog.cpp \
+    cominterface.cpp
 
 HEADERS  += mainwindow.h \
         result.h\
@@ -70,7 +71,8 @@ HEADERS  += mainwindow.h \
         iequipprop.h \
         riff.h \
         equipmessagedialog.h \
-        equip_types.h
+        equip_types.h \
+    cominterface.h
 
 FORMS    += mainwindow.ui \
     arduino_server_choice.ui \

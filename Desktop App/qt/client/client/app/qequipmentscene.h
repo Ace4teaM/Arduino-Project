@@ -10,6 +10,9 @@
 #include "../EquipProp.h"
 #include "QEquipmentItem.h"
 #include "equipdialog.h"
+#include "equipmessagedialog.h"
+
+extern Application* app;
 
 class QEquipmentScene : public QGraphicsScene
 {
@@ -17,9 +20,10 @@ class QEquipmentScene : public QGraphicsScene
 public:
     QEquipmentScene();
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent * mouseEvent);
-/*    void contextMenuEvent(QGraphicsSceneContextMenuEvent * contextMenuEvent);
+    void contextMenuEvent(QGraphicsSceneContextMenuEvent * contextMenuEvent);
 public slots:
-    void contextMenuTriggered(QAction * action);*/
+    void on_deleteItem(bool);
+    void on_sendMessage(bool);
 };
 
 #endif // QEQUIPMENTSCENE_H

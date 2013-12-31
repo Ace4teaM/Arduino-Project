@@ -1,6 +1,7 @@
 #ifndef QSERVERITEM_H
 #define QSERVERITEM_H
 
+#include <QObject>
 #include <QDebug>
 #include <QGraphicsItem>
 #include <QPainter>
@@ -15,16 +16,12 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     Server & getServer();
 protected:
-    /*void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
-    bool sceneEvent(QEvent * event);*/
-    void mousePressEvent( QGraphicsSceneMouseEvent *event );
 signals:
 
 public slots:
 protected:
     Server server;
     QPixmap image;
-    QMenu contextMenu;
 };
 
 #endif // QSERVERITEM_H

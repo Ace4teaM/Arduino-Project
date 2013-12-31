@@ -7,6 +7,7 @@
 #include "result.h"
 #include "database.h"
 #include "qassoclist.h"
+#include "../cominterface.h"
 
 #include <QTableWidget>
 #include <QListWidget>
@@ -14,14 +15,14 @@
 #include <QDir>
 #include <QMessageBox>
 
-class Application : public QObject
+class Application : public QApplication
 {
     Q_OBJECT
 
 public:
 
     //général
-    Application(const QApplication* app );
+    Application( int & argc, char ** argv );
     bool initialise(QWidget* mainWnd);
     const QApplication* app;
     void printResult(Result* pResult=0,QWidget* parent=0);
@@ -33,6 +34,7 @@ public:
     //paths
     QString path;//chemin de base vers l'application
     QString configFileName;
+    ComInterface com;
 };
 
 #endif // APPLICATION_H

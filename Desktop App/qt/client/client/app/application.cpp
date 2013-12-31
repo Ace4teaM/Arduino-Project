@@ -2,11 +2,10 @@
 
 /*--------------------------------------------------------------------------------
   Application
---------------------------------------------------------------------------------*/
-
-Application::Application(const QApplication* app )
+--------------------------------------------------------------------------------
+*/
+Application::Application(int & argc, char ** argv ) : QApplication(argc,argv)
 {
-    this->app = app;
     this->wnd = 0;
     //sauvegarde le repertoire de travail
     this->path = QDir::currentPath();
