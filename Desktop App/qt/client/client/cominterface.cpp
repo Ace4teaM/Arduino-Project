@@ -21,6 +21,10 @@ bool ComInterface::begin( ){
     return true;
 }
 
+void ComInterface::end( ){
+    ptr.down = ptr.ptr;
+}
+
 void ComInterface::send( QHostAddress & address ){
 
     socket.writeDatagram(ptr.up,bsize(&ptr),address,ARDUINO_COM_PORT);
@@ -49,8 +53,8 @@ void ComInterface::sendText( const QByteArray & data, QHostAddress & address ){
 }
 
 
-void ComInterface::makeText( const QByteArray & data ){
-    bwrite(&ptr,data.data(),data.length());
+bool ComInterface::makeText( const QByteArray & data ){
+    return bwrite(&ptr,data.data(),data.size());
 }
 
 bool ComInterface::makeMessage( QAssocList & data ){

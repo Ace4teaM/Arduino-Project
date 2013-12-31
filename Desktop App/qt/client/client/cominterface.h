@@ -11,7 +11,7 @@
 #include <l1/xarg.h>
 #include <l1/str.h>
 
-#define ARDUINO_COM_PORT 12345
+#define ARDUINO_COM_PORT 8888
 
 class ComInterface
 {
@@ -25,7 +25,7 @@ public:
     bool put(QString title, QString value );
     static void sendText( const QByteArray & data, QHostAddress & address );
     bool makeMessage( QAssocList & data );
-    void makeText( const QByteArray & data );
+    bool makeText( const QByteArray & data );
 private:
     QUdpSocket socket;
     PTR ptr;

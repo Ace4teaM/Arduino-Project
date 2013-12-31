@@ -1,4 +1,4 @@
-#ifndef QEQUIPMENTSCENE_H
+﻿#ifndef QEQUIPMENTSCENE_H
 #define QEQUIPMENTSCENE_H
 
 #include <QGraphicsScene>

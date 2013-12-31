@@ -17,9 +17,11 @@ EquipMessageDialog::~EquipMessageDialog()
 void EquipMessageDialog::on_buttonBox_accepted()
 {
     qDebug() << "on_buttonBox_accepted";
-    app->com.begin();
+    if(!app->com.begin())
+        return;
     app->com.makeText(this->ui->plainTextEdit->toPlainText().toLatin1());
-    QHostAddress host("127.0.0.1");
+    QHostAddress host("192.168.1.29");
+    app->com.end();
     app->com.send(host);
     //app->com.send(equipment->server->ip);
 }

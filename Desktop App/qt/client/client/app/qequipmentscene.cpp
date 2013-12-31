@@ -1,4 +1,4 @@
-#include "qequipmentscene.h"
+﻿#include "qequipmentscene.h"
 
 QEquipmentScene::QEquipmentScene()
 {
