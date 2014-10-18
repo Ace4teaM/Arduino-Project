@@ -1,0 +1,1574 @@
+<graphml version="1.3" xmlns="http://graphml.graphdrawing.org/xmlns/graphml" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <key id="d0" for="port" attr.name="style" attr.type="complex"/>
+  <key id="d1" for="port" attr.name="geometry" attr.type="complex">
+    <y:Geometry x="0" y="0"/>
+  </key>
+  <key id="d2" for="port" attr.name="http://www.yworks.com/xml/yfiles-graphml/1.0/portviewstates" attr.type="complex"/>
+  <key id="d3" for="all" attr.name="usertags" attr.type="complex"/>
+  <key id="d4" for="node" attr.name="style" attr.type="complex"/>
+  <key id="d5" for="node" attr.name="labels" attr.type="complex"/>
+  <key id="d6" for="node" attr.name="node-2-id" attr.type="string"/>
+  <key id="d7" for="node" attr.name="geometry" attr.type="complex">
+    <y:Geometry x="-15" y="-15" width="30" height="30"/>
+  </key>
+  <key id="d8" for="node" attr.name="nodeinsets" attr.type="complex">
+    <y:Insets left="0" top="0" right="0" bottom="0"/>
+  </key>
+  <key id="d9" for="node" attr.name="node-description" attr.type="string"/>
+  <key id="d10" for="node" attr.name="node-url" attr.type="string"/>
+  <key id="d11" for="node" attr.name="http://www.yworks.com/xml/yfiles-graphml/1.0/nodeviewstates" attr.type="complex"/>
+  <key id="d12" for="node" attr.name="http://www.yworks.com/xml/yfiles-graphml/1.0/expansionstate" attr.type="boolean">
+    <default>true</default>
+  </key>
+  <key id="d13" for="graph" attr.name="sharedData" attr.type="complex"/>
+  <key id="d14" for="edge" attr.name="style" attr.type="complex"/>
+  <key id="d15" for="edge" attr.name="labels" attr.type="complex"/>
+  <key id="d16" for="edge" attr.name="edge-2-id" attr.type="string"/>
+  <key id="d17" for="edge" attr.name="geometry" attr.type="complex">
+    <y:Path/>
+  </key>
+  <key id="d18" for="edge" attr.name="edge-description" attr.type="string"/>
+  <key id="d19" for="edge" attr.name="edge-url" attr.type="string"/>
+  <key id="d20" for="edge" attr.name="http://www.yworks.com/xml/yfiles-graphml/1.0/edgeviewstates" attr.type="complex"/>
+  <key id="d21" for="graphml" yfiles.type="resources"/>
+  <graph id="G" edgedefault="directed">
+    <data key="d13">
+      <y:SharedData>
+        <y:ModelState id="1">
+          <y:Insets left="0" right="0" top="0" bottom="0"/>
+        </y:ModelState>
+        <y:InteriorLabelModel position="Center" id="2">
+          <y:ModelState refid="1"/>
+        </y:InteriorLabelModel>
+        <y:Brush name="LinearGradient" angle="45" id="3">
+          <y:GradientEntry color="#ffffdd88" ratio="0"/>
+          <y:GradientEntry color="#ffff9900" ratio="0.66"/>
+        </y:Brush>
+        <y:ExteriorLabelModel position="West" id="4">
+          <y:ModelState refid="5"/>
+        </y:ExteriorLabelModel>
+        <y:ModelState id="5">
+          <y:Insets left="0" right="0" top="0" bottom="0"/>
+        </y:ModelState>
+        <y:Pen name="SolidColor" color="Black" width="1" id="6"/>
+        <y:ExteriorLabelModel position="North" id="7">
+          <y:ModelState refid="5"/>
+        </y:ExteriorLabelModel>
+        <y:Pen name="SolidColor" color="Black" width="1" id="8"/>
+        <y:ExteriorLabelModel position="East" id="9">
+          <y:ModelState refid="5"/>
+        </y:ExteriorLabelModel>
+        <y:ISimpleLabelStyle clipText="true" autoFlip="true" id="10">
+          <y:Font refid="13"/>
+          <y:Brush name="SolidBrush" color="Black"/>
+        </y:ISimpleLabelStyle>
+        <y:ModelState id="11">
+          <y:Insets left="0" right="0" top="0" bottom="0"/>
+        </y:ModelState>
+        <y:InteriorLabelModel position="NorthWest" id="12">
+          <y:ModelState refid="11"/>
+        </y:InteriorLabelModel>
+        <y:Font family="Dialog" points="12" style="Regular" color="#000000" id="13"/>
+        <y:Brush name="SolidBrush" color="#ffcccccc" id="14"/>
+        <y:Pen name="SolidColor" color="Black" width="1" id="15"/>
+        <y:Pen name="SolidColor" color="Black" width="1" id="16"/>
+      </y:SharedData>
+    </data>
+    <node id="G:n0">
+      <port name="p0">
+        <data key="d1">
+          <y:Geometry x="-371" y="5.324024434216653"/>
+        </data>
+      </port>
+      <data key="d5">
+        <y:Labels>
+          <y:Label>
+            <y:ISimpleLabelStyle refid="10"/>
+            <y:ExteriorLabelModel refid="7"/>
+            <y:Text>Réseau Electrique</y:Text>
+            <y:PreferredSize width="105.7" height="15.95"/>
+          </y:Label>
+        </y:Labels>
+      </data>
+      <data key="d6">0</data>
+      <data key="d7">
+        <y:Geometry x="-652.1869289245697" y="-310.4378328363762" width="877" height="10.648048868433307"/>
+      </data>
+      <data key="d4">
+        <y:IShapeNodeStyle>
+          <y:Shape>Rectangle</y:Shape>
+          <y:Pen refid="8"/>
+        </y:IShapeNodeStyle>
+      </data>
+    </node>
+    <node id="G:n1">
+      <data key="d5">
+        <y:Labels>
+          <y:Label>
+            <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+              <y:Font refid="13"/>
+              <y:Brush name="SolidBrush" color="Black"/>
+            </y:ISimpleLabelStyle>
+            <y:ExteriorLabelModel position="South">
+              <y:ModelState refid="5"/>
+            </y:ExteriorLabelModel>
+            <y:Text>Réseau Informatique</y:Text>
+            <y:PreferredSize width="123.3" height="15.95"/>
+          </y:Label>
+        </y:Labels>
+      </data>
+      <data key="d6">1</data>
+      <data key="d7">
+        <y:Geometry x="-652.1869289245697" y="44.24223084029404" width="877" height="9.930627772741502"/>
+      </data>
+      <data key="d4">
+        <y:IShapeNodeStyle>
+          <y:Shape>Rectangle</y:Shape>
+          <y:Pen refid="8"/>
+        </y:IShapeNodeStyle>
+      </data>
+    </node>
+    <node id="G:n2">
+      <port name="p0"/>
+      <data key="d5">
+        <y:Labels>
+          <y:Label>
+            <y:ISimpleLabelStyle refid="10"/>
+            <y:InteriorLabelModel refid="2"/>
+            <y:Text>Equipement TOR</y:Text>
+            <y:PreferredSize width="100.8" height="15.95"/>
+          </y:Label>
+        </y:Labels>
+      </data>
+      <data key="d6">18</data>
+      <data key="d7">
+        <y:Geometry x="301.495294132917" y="-268.2183418335018" width="163.00000000000017" height="35"/>
+      </data>
+      <data key="d4">
+        <y:IShapeNodeStyle>
+          <y:Shape>Ellipse</y:Shape>
+          <y:Pen refid="16"/>
+          <y:Brush refid="3"/>
+        </y:IShapeNodeStyle>
+      </data>
+    </node>
+    <node id="G:n3">
+      <port name="p0"/>
+      <data key="d5">
+        <y:Labels>
+          <y:Label>
+            <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+              <y:Font refid="13"/>
+              <y:Brush name="SolidBrush" color="Black"/>
+            </y:ISimpleLabelStyle>
+            <y:InteriorLabelModel refid="2"/>
+            <y:Text>Equipement Analogique</y:Text>
+            <y:PreferredSize width="141.95" height="15.95"/>
+          </y:Label>
+        </y:Labels>
+      </data>
+      <data key="d6">33</data>
+      <data key="d7">
+        <y:Geometry x="303.76555425200826" y="-210.31781128525614" width="158.45947976181776" height="39.35114472734574"/>
+      </data>
+      <data key="d4">
+        <y:IShapeNodeStyle>
+          <y:Shape>Ellipse</y:Shape>
+          <y:Pen refid="16"/>
+          <y:Brush refid="3"/>
+        </y:IShapeNodeStyle>
+      </data>
+    </node>
+    <node id="G:n4">
+      <graph id="G:n4:" edgedefault="directed">
+        <node id="G:n4::n0">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="7"/>
+                <y:Text>Controleur</y:Text>
+                <y:PreferredSize width="66.05" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">34</data>
+          <data key="d7">
+            <y:Geometry x="-390.48727952612705" y="-95.75776915970596" width="158.45947976181776" height="85"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>RoundRectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="3"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n4::n1">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>PIN A1</y:Text>
+                <y:PreferredSize width="42.45" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">35</data>
+          <data key="d7">
+            <y:Geometry x="-264.73517988923857" y="-91.94871717601649" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n4::n2">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>PIN A2</y:Text>
+                <y:PreferredSize width="42.45" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">36</data>
+          <data key="d7">
+            <y:Geometry x="-264.73517988923857" y="-82.44000031969489" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n4::n3">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>PIN A3</y:Text>
+                <y:PreferredSize width="42.45" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">37</data>
+          <data key="d7">
+            <y:Geometry x="-264.73517988923857" y="-72.93128346337329" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n4::n4">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>PIN A4</y:Text>
+                <y:PreferredSize width="42.45" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">38</data>
+          <data key="d7">
+            <y:Geometry x="-264.73517988923857" y="-63.42256660705169" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n4::n5">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>...</y:Text>
+                <y:PreferredSize width="15.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">39</data>
+          <data key="d7">
+            <y:Geometry x="-264.73517988923857" y="-53.913849750730094" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n4::n6">
+          <port name="p0"/>
+          <port name="p1"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>PIN D1</y:Text>
+                <y:PreferredSize width="43.2" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">40</data>
+          <data key="d7">
+            <y:Geometry x="-383.0906548441262" y="-91.94871717601649" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n4::n7">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>PIN D2</y:Text>
+                <y:PreferredSize width="43.2" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">41</data>
+          <data key="d7">
+            <y:Geometry x="-383.0906548441262" y="-82.44000031969489" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n4::n8">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>PIN D3</y:Text>
+                <y:PreferredSize width="43.2" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">42</data>
+          <data key="d7">
+            <y:Geometry x="-383.0906548441262" y="-72.93128346337329" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n4::n9">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>PIN D4</y:Text>
+                <y:PreferredSize width="43.2" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">43</data>
+          <data key="d7">
+            <y:Geometry x="-383.0906548441262" y="-63.42256660705169" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n4::n10">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>...</y:Text>
+                <y:PreferredSize width="15.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">44</data>
+          <data key="d7">
+            <y:Geometry x="-383.0906548441262" y="-53.913849750730094" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <data key="d13"/>
+      </graph>
+      <data key="d6">45</data>
+      <data key="d7">
+        <y:Geometry x="-395.48727952612705" y="-111.75776915970596" width="168.45947976181776" height="106"/>
+      </data>
+      <data key="d8">
+        <y:Insets left="5" top="16" right="5" bottom="5"/>
+      </data>
+      <data key="d4">
+        <CollapsibleNodeStyleDecorator insets="5,16,5,5" xmlns="http://www.yworks.com/xml/yfiles-flex/1.0">
+          <CollapsibleNodeStyleDecorator.buttonLocationParameter>
+            <y:InteriorLabelModel refid="12"/>
+          </CollapsibleNodeStyleDecorator.buttonLocationParameter>
+          <CollapsibleNodeStyleDecorator.wrapped>
+            <y:FilterNodeStyleWrapper>
+              <y:Wrapped>
+                <y:IPanelNodeStyle color="Gray" labelInsetsColor="Silver">
+                  <y:InsetsRectangle x="5" y="5" width="5" height="5"/>
+                </y:IPanelNodeStyle>
+              </y:Wrapped>
+              <Filters xmlns:yflex="http://www.yworks.com/xml/yfiles-flex/1.0">
+                <Filter className="flash.filters::DropShadowFilter" params="5,45,3355443,0.4980392156862745,4,4,0.5,1"/>
+              </Filters>
+            </y:FilterNodeStyleWrapper>
+          </CollapsibleNodeStyleDecorator.wrapped>
+        </CollapsibleNodeStyleDecorator>
+      </data>
+    </node>
+    <node id="G:n5">
+      <graph id="G:n5:" edgedefault="directed">
+        <node id="G:n5::n0">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle refid="10"/>
+                <y:ExteriorLabelModel refid="7"/>
+                <y:Text>Tableau Electrique</y:Text>
+                <y:PreferredSize width="110.55" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">2</data>
+          <data key="d7">
+            <y:Geometry x="-633.1869289245697" y="-258.3531943797932" width="97" height="136.99791357706437"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>RoundRectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="3"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n5::n1">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>A</y:Text>
+                <y:PreferredSize width="12.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">4</data>
+          <data key="d7">
+            <y:Geometry x="-568.8943090494989" y="-254.54414239610372" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n5::n2">
+          <data key="d9">B</data>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>B</y:Text>
+                <y:PreferredSize width="10.9" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">5</data>
+          <data key="d7">
+            <y:Geometry x="-568.8943090494989" y="-245.03542553978212" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n5::n3">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>C</y:Text>
+                <y:PreferredSize width="12.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">6</data>
+          <data key="d7">
+            <y:Geometry x="-568.8943090494989" y="-235.52670868346053" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n5::n4">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>D</y:Text>
+                <y:PreferredSize width="13" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">7</data>
+          <data key="d7">
+            <y:Geometry x="-568.8943090494989" y="-226.01799182713893" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n5::n5">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>E</y:Text>
+                <y:PreferredSize width="10.45" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">8</data>
+          <data key="d7">
+            <y:Geometry x="-568.8943090494989" y="-216.50927497081733" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n5::n6">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>F</y:Text>
+                <y:PreferredSize width="10.45" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">9</data>
+          <data key="d7">
+            <y:Geometry x="-568.8943090494989" y="-207.00055811449573" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n5::n7">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>G</y:Text>
+                <y:PreferredSize width="12.6" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">10</data>
+          <data key="d7">
+            <y:Geometry x="-568.8943090494989" y="-197.49184125817413" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n5::n8">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>...</y:Text>
+                <y:PreferredSize width="15.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">11</data>
+          <data key="d7">
+            <y:Geometry x="-568.8943090494989" y="-187.3838244145782" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <data key="d13"/>
+      </graph>
+      <port name="p0"/>
+      <data key="d6">46</data>
+      <data key="d7">
+        <y:Geometry x="-638.1869289245697" y="-274.3531943797932" width="107" height="157.99791357706437"/>
+      </data>
+      <data key="d8">
+        <y:Insets left="5" top="16" right="5" bottom="5"/>
+      </data>
+      <data key="d4">
+        <CollapsibleNodeStyleDecorator insets="5,16,5,5" xmlns="http://www.yworks.com/xml/yfiles-flex/1.0">
+          <CollapsibleNodeStyleDecorator.buttonLocationParameter>
+            <y:InteriorLabelModel refid="12"/>
+          </CollapsibleNodeStyleDecorator.buttonLocationParameter>
+          <CollapsibleNodeStyleDecorator.wrapped>
+            <y:FilterNodeStyleWrapper>
+              <y:Wrapped>
+                <y:IPanelNodeStyle color="Gray" labelInsetsColor="Silver">
+                  <y:InsetsRectangle x="5" y="5" width="5" height="5"/>
+                </y:IPanelNodeStyle>
+              </y:Wrapped>
+              <Filters xmlns:yflex="http://www.yworks.com/xml/yfiles-flex/1.0">
+                <Filter className="flash.filters::DropShadowFilter" params="5,45,3355443,0.4980392156862745,4,4,0.5,1"/>
+              </Filters>
+            </y:FilterNodeStyleWrapper>
+          </CollapsibleNodeStyleDecorator.wrapped>
+        </CollapsibleNodeStyleDecorator>
+      </data>
+    </node>
+    <node id="G:n6">
+      <graph id="G:n6:" edgedefault="directed">
+        <node id="G:n6::n0">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="7"/>
+                <y:Text>Contacteur Digital</y:Text>
+                <y:PreferredSize width="109.35" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">3</data>
+          <data key="d7">
+            <y:Geometry x="-425.18692892456977" y="-258.3531943797932" width="153.00000000000006" height="49.495520534179775"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>RoundRectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="3"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n6::n1">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>A</y:Text>
+                <y:PreferredSize width="12.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">12</data>
+          <data key="d7">
+            <y:Geometry x="-413.34644990812853" y="-254.54414239610372" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n6::n2">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>B</y:Text>
+                <y:PreferredSize width="10.9" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">13</data>
+          <data key="d7">
+            <y:Geometry x="-413.34644990812853" y="-245.03542553978212" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n6::n3">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>...</y:Text>
+                <y:PreferredSize width="15.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">14</data>
+          <data key="d7">
+            <y:Geometry x="-413.34644990812853" y="-235.52670868346053" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n6::n4">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="7"/>
+                <y:Text>A</y:Text>
+                <y:PreferredSize width="12.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">15</data>
+          <data key="d7">
+            <y:Geometry x="-366.91411629293066" y="-231.13813932977752" width="8.148551977797126" height="17.16031798152551"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n6::n5">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="7"/>
+                <y:Text>B</y:Text>
+                <y:PreferredSize width="10.9" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">16</data>
+          <data key="d7">
+            <y:Geometry x="-354.7612049134683" y="-231.13813932977752" width="8.148551977797126" height="17.16031798152551"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n6::n6">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="7"/>
+                <y:Text>...</y:Text>
+                <y:PreferredSize width="15.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">17</data>
+          <data key="d7">
+            <y:Geometry x="-342.67658175847987" y="-231.13813932977752" width="8.148551977797126" height="17.16031798152551"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n6::n7">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>A</y:Text>
+                <y:PreferredSize width="12.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">19</data>
+          <data key="d7">
+            <y:Geometry x="-308.76556431513353" y="-254.54414239610372" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n6::n8">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>B</y:Text>
+                <y:PreferredSize width="10.9" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">20</data>
+          <data key="d7">
+            <y:Geometry x="-308.76556431513353" y="-245.03542553978212" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n6::n9">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>...</y:Text>
+                <y:PreferredSize width="15.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">21</data>
+          <data key="d7">
+            <y:Geometry x="-308.76556431513353" y="-235.52670868346053" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <data key="d13"/>
+      </graph>
+      <data key="d6">47</data>
+      <data key="d7">
+        <y:Geometry x="-430.18692892456977" y="-274.3531943797932" width="163.00000000000006" height="70.49552053417978"/>
+      </data>
+      <data key="d8">
+        <y:Insets left="5" top="16" right="5" bottom="5"/>
+      </data>
+      <data key="d4">
+        <CollapsibleNodeStyleDecorator insets="5,16,5,5" xmlns="http://www.yworks.com/xml/yfiles-flex/1.0">
+          <CollapsibleNodeStyleDecorator.buttonLocationParameter>
+            <y:InteriorLabelModel refid="12"/>
+          </CollapsibleNodeStyleDecorator.buttonLocationParameter>
+          <CollapsibleNodeStyleDecorator.wrapped>
+            <y:FilterNodeStyleWrapper>
+              <y:Wrapped>
+                <y:IPanelNodeStyle color="Gray" labelInsetsColor="Silver">
+                  <y:InsetsRectangle x="5" y="5" width="5" height="5"/>
+                </y:IPanelNodeStyle>
+              </y:Wrapped>
+              <Filters xmlns:yflex="http://www.yworks.com/xml/yfiles-flex/1.0">
+                <Filter className="flash.filters::DropShadowFilter" params="5,45,3355443,0.4980392156862745,4,4,0.5,1"/>
+              </Filters>
+            </y:FilterNodeStyleWrapper>
+          </CollapsibleNodeStyleDecorator.wrapped>
+        </CollapsibleNodeStyleDecorator>
+      </data>
+    </node>
+    <node id="G:n7">
+      <graph id="G:n7:" edgedefault="directed">
+        <node id="G:n7::n0">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="7"/>
+                <y:Text>Contacteur Analogique</y:Text>
+                <y:PreferredSize width="136.95" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">22</data>
+          <data key="d7">
+            <y:Geometry x="-248.69727609065973" y="-198.27709146787464" width="153.00000000000006" height="49.495520534179775"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>RoundRectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="3"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n7::n1">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>A</y:Text>
+                <y:PreferredSize width="12.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">23</data>
+          <data key="d7">
+            <y:Geometry x="-236.8567970742185" y="-194.46803948418523" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n7::n2">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>B</y:Text>
+                <y:PreferredSize width="10.9" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">24</data>
+          <data key="d7">
+            <y:Geometry x="-236.8567970742185" y="-184.95932262786363" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n7::n3">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="9"/>
+                <y:Text>...</y:Text>
+                <y:PreferredSize width="15.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">25</data>
+          <data key="d7">
+            <y:Geometry x="-236.8567970742185" y="-175.45060577154203" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n7::n4">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="7"/>
+                <y:Text>A</y:Text>
+                <y:PreferredSize width="12.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">26</data>
+          <data key="d7">
+            <y:Geometry x="-190.42446345902061" y="-171.06203641785902" width="8.148551977797126" height="17.16031798152551"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n7::n5">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="7"/>
+                <y:Text>B</y:Text>
+                <y:PreferredSize width="10.9" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">27</data>
+          <data key="d7">
+            <y:Geometry x="-178.27155207955826" y="-171.06203641785902" width="8.148551977797126" height="17.16031798152551"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n7::n6">
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="7"/>
+                <y:Text>...</y:Text>
+                <y:PreferredSize width="15.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">28</data>
+          <data key="d7">
+            <y:Geometry x="-166.18692892456983" y="-171.06203641785902" width="8.148551977797126" height="17.16031798152551"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n7::n7">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>A</y:Text>
+                <y:PreferredSize width="12.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">29</data>
+          <data key="d7">
+            <y:Geometry x="-132.2759114812235" y="-194.46803948418523" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n7::n8">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>B</y:Text>
+                <y:PreferredSize width="10.9" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">30</data>
+          <data key="d7">
+            <y:Geometry x="-132.2759114812235" y="-184.95932262786363" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <node id="G:n7::n9">
+          <port name="p0"/>
+          <data key="d5">
+            <y:Labels>
+              <y:Label>
+                <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+                  <y:Font refid="13"/>
+                  <y:Brush name="SolidBrush" color="Black"/>
+                </y:ISimpleLabelStyle>
+                <y:ExteriorLabelModel refid="4"/>
+                <y:Text>...</y:Text>
+                <y:PreferredSize width="15.25" height="15.95"/>
+              </y:Label>
+            </y:Labels>
+          </data>
+          <data key="d6">31</data>
+          <data key="d7">
+            <y:Geometry x="-132.2759114812235" y="-175.45060577154203" width="26.500621839671794" height="7.651601125203911"/>
+          </data>
+          <data key="d4">
+            <y:IShapeNodeStyle>
+              <y:Shape>Rectangle</y:Shape>
+              <y:Pen refid="15"/>
+              <y:Brush refid="14"/>
+            </y:IShapeNodeStyle>
+          </data>
+        </node>
+        <data key="d13"/>
+      </graph>
+      <data key="d6">48</data>
+      <data key="d7">
+        <y:Geometry x="-253.69727609065973" y="-214.27709146787464" width="163.00000000000006" height="70.49552053417978"/>
+      </data>
+      <data key="d8">
+        <y:Insets left="5" top="16" right="5" bottom="5"/>
+      </data>
+      <data key="d4">
+        <CollapsibleNodeStyleDecorator insets="5,16,5,5" xmlns="http://www.yworks.com/xml/yfiles-flex/1.0">
+          <CollapsibleNodeStyleDecorator.buttonLocationParameter>
+            <y:InteriorLabelModel refid="12"/>
+          </CollapsibleNodeStyleDecorator.buttonLocationParameter>
+          <CollapsibleNodeStyleDecorator.wrapped>
+            <y:FilterNodeStyleWrapper>
+              <y:Wrapped>
+                <y:IPanelNodeStyle color="Gray" labelInsetsColor="Silver">
+                  <y:InsetsRectangle x="5" y="5" width="5" height="5"/>
+                </y:IPanelNodeStyle>
+              </y:Wrapped>
+              <Filters xmlns:yflex="http://www.yworks.com/xml/yfiles-flex/1.0">
+                <Filter className="flash.filters::DropShadowFilter" params="5,45,3355443,0.4980392156862745,4,4,0.5,1"/>
+              </Filters>
+            </y:FilterNodeStyleWrapper>
+          </CollapsibleNodeStyleDecorator.wrapped>
+        </CollapsibleNodeStyleDecorator>
+      </data>
+    </node>
+    <node id="G:n8">
+      <port name="p0"/>
+      <data key="d5">
+        <y:Labels>
+          <y:Label>
+            <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+              <y:Font refid="13"/>
+              <y:Brush name="SolidBrush" color="Black"/>
+            </y:ISimpleLabelStyle>
+            <y:ExteriorLabelModel refid="4"/>
+            <y:Text/>
+            <y:PreferredSize width="0" height="0"/>
+          </y:Label>
+        </y:Labels>
+      </data>
+      <data key="d6">49</data>
+      <data key="d7">
+        <y:Geometry x="-320.50785056505407" y="27.081912858768533" width="18.500621839671794" height="17.16031798152551"/>
+      </data>
+      <data key="d4">
+        <y:IShapeNodeStyle>
+          <y:Shape>Rectangle</y:Shape>
+          <y:Pen refid="15"/>
+          <y:Brush refid="14"/>
+        </y:IShapeNodeStyle>
+      </data>
+    </node>
+    <node id="G:n9">
+      <port name="p0"/>
+      <data key="d5">
+        <y:Labels>
+          <y:Label>
+            <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+              <y:Font refid="13"/>
+              <y:Brush name="SolidBrush" color="Black"/>
+            </y:ISimpleLabelStyle>
+            <y:ExteriorLabelModel refid="4"/>
+            <y:Text/>
+            <y:PreferredSize width="0" height="0"/>
+          </y:Label>
+        </y:Labels>
+      </data>
+      <data key="d6">50</data>
+      <data key="d7">
+        <y:Geometry x="205.25369638355926" y="27.081912858768533" width="18.500621839671794" height="17.16031798152551"/>
+      </data>
+      <data key="d4">
+        <y:IShapeNodeStyle>
+          <y:Shape>Rectangle</y:Shape>
+          <y:Pen refid="15"/>
+          <y:Brush refid="14"/>
+        </y:IShapeNodeStyle>
+      </data>
+    </node>
+    <node id="G:n10">
+      <port name="p0"/>
+      <data key="d5">
+        <y:Labels>
+          <y:Label>
+            <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+              <y:Font refid="13"/>
+              <y:Brush name="SolidBrush" color="Black"/>
+            </y:ISimpleLabelStyle>
+            <y:InteriorLabelModel refid="2"/>
+            <y:Text>Equipement Informatique</y:Text>
+            <y:PreferredSize width="151.05" height="15.95"/>
+          </y:Label>
+        </y:Labels>
+      </data>
+      <data key="d6">51</data>
+      <data key="d7">
+        <y:Geometry x="306.0358143710994" y="-50.1089138870517" width="158.45947976181776" height="39.35114472734574"/>
+      </data>
+      <data key="d4">
+        <y:IShapeNodeStyle>
+          <y:Shape>Ellipse</y:Shape>
+          <y:Pen refid="16"/>
+          <y:Brush refid="3"/>
+        </y:IShapeNodeStyle>
+      </data>
+    </node>
+    <node id="G:n11">
+      <port name="p0"/>
+      <port name="p1">
+        <data key="d1">
+          <y:Geometry x="-5.684341886080802e-14" y="0"/>
+        </data>
+      </port>
+      <data key="d5">
+        <y:Labels>
+          <y:Label>
+            <y:ISimpleLabelStyle clipText="true" autoFlip="true">
+              <y:Font refid="13"/>
+              <y:Brush name="SolidBrush" color="Black"/>
+            </y:ISimpleLabelStyle>
+            <y:ExteriorLabelModel refid="9"/>
+            <y:Text>Ethernet</y:Text>
+            <y:PreferredSize width="52.4" height="15.95"/>
+          </y:Label>
+        </y:Labels>
+      </data>
+      <data key="d6">52</data>
+      <data key="d7">
+        <y:Geometry x="-324.507850565054" y="-24.788399194490978" width="26.500621839671794" height="7.651601125203911"/>
+      </data>
+      <data key="d4">
+        <y:IShapeNodeStyle>
+          <y:Shape>Rectangle</y:Shape>
+          <y:Pen refid="15"/>
+          <y:Brush refid="14"/>
+        </y:IShapeNodeStyle>
+      </data>
+    </node>
+    <edge id="G:e0" source="G:n5::n1" target="G:n6::n1" sourceport="p0" targetport="p0">
+      <data key="d16">0</data>
+      <data key="d14">
+        <y:IPolylineEdgeStyle>
+          <y:Pen refid="6"/>
+        </y:IPolylineEdgeStyle>
+      </data>
+    </edge>
+    <edge id="G:e1" source="G:n6::n4" target="G:n4::n6" sourceport="p0" targetport="p1">
+      <data key="d16">6</data>
+      <data key="d17">
+        <y:Path>
+          <y:Point x="-362.8398403040321" y="-145.17213620105056"/>
+          <y:Point x="-424.69304265409073" y="-145.17213620105056"/>
+          <y:Point x="-424.69304265409073" y="-88.12291661341453"/>
+        </y:Path>
+      </data>
+      <data key="d14">
+        <y:IPolylineEdgeStyle>
+          <y:Pen refid="6"/>
+        </y:IPolylineEdgeStyle>
+      </data>
+    </edge>
+    <edge id="G:e2" source="G:n4::n1" target="G:n7::n4" sourceport="p0" targetport="p0">
+      <data key="d16">9</data>
+      <data key="d17">
+        <y:Path>
+          <y:Point x="-186.35018747012205" y="-88.12291661341453"/>
+        </y:Path>
+      </data>
+      <data key="d14">
+        <y:IPolylineEdgeStyle>
+          <y:Pen refid="6"/>
+        </y:IPolylineEdgeStyle>
+      </data>
+    </edge>
+    <edge id="G:e3" source="G:n6::n7" target="G:n2" sourceport="p0" targetport="p0">
+      <data key="d16">10</data>
+      <data key="d14">
+        <y:IPolylineEdgeStyle>
+          <y:Pen refid="6"/>
+        </y:IPolylineEdgeStyle>
+      </data>
+    </edge>
+    <edge id="G:e4" source="G:n7::n7" target="G:n3" sourceport="p0" targetport="p0">
+      <data key="d16">11</data>
+      <data key="d17">
+        <y:Path>
+          <y:Point x="176.95502769164608" y="-190.64223892158327"/>
+        </y:Path>
+      </data>
+      <data key="d14">
+        <y:IPolylineEdgeStyle>
+          <y:Pen refid="6"/>
+        </y:IPolylineEdgeStyle>
+      </data>
+    </edge>
+    <edge id="G:e5" source="G:n8" target="G:n11" sourceport="p0" targetport="p1">
+      <data key="d16">12</data>
+      <data key="d14">
+        <y:IPolylineEdgeStyle>
+          <y:Pen refid="6"/>
+        </y:IPolylineEdgeStyle>
+      </data>
+    </edge>
+    <edge id="G:e6" source="G:n9" target="G:n10" sourceport="p0" targetport="p0">
+      <data key="d16">13</data>
+      <data key="d17">
+        <y:Path>
+          <y:Point x="233.9879849585816" y="-30.433341523378825"/>
+        </y:Path>
+      </data>
+      <data key="d14">
+        <y:IPolylineEdgeStyle>
+          <y:Pen refid="6"/>
+        </y:IPolylineEdgeStyle>
+      </data>
+    </edge>
+    <edge id="G:e7" source="G:n5" target="G:n0" sourceport="p0" targetport="p0">
+      <data key="d16">14</data>
+      <data key="d14">
+        <y:IPolylineEdgeStyle>
+          <y:Pen refid="6"/>
+        </y:IPolylineEdgeStyle>
+      </data>
+    </edge>
+    <edge id="G:e8" source="G:n7::n1" target="G:n5::n7" sourceport="p0" targetport="p0">
+      <data key="d16">15</data>
+      <data key="d14">
+        <y:IPolylineEdgeStyle>
+          <y:Pen refid="6"/>
+        </y:IPolylineEdgeStyle>
+      </data>
+    </edge>
+  </graph>
+  <data key="d21">
+    <y:Resources/>
+  </data>
+</graphml>
