@@ -44,6 +44,28 @@ char* MessageTexte::LireType(char* ofs, int* type){
         return 0;
 }
 
+// ecrit le type de message
+char* MessageTexte::EcrireType(char* ofs, int type){
+	if (ofs < buf || ofs + 3 > endOfBuf)
+		return 0;
+
+        switch(type){
+          case MessageTypeCommande:
+             strcpy(ofs,"CMD");
+             break;
+          case MessageTypeRetourCommande:
+             strcpy(ofs,"CRT");
+             break;
+          case MessageTypeConfiguration:
+             strcpy(ofs,"CFG");
+             break;
+          default:
+             return 0;
+        }
+        
+        return ofs+3;
+}
+
 // ecrit la signature
 char* MessageTexte::EcrireSignature(char* ofs){
 	if (ofs < buf || ofs + 3 > endOfBuf)
@@ -86,6 +108,22 @@ char* MessageTexte::EcrireParam(char* ofs, const char* nom, const char* valeur){
 	ofs += valeurSize;
 
 	*ofs++ = this->endOfParamValue;
+
+	return ofs;
+}
+
+// ecrit la signature
+char* MessageTexte::EcrireParam(char* ofs, const char* nom, int valeur){
+	int nomSize = strlen(nom);
+	int valeurSize = 1;//fixit
+
+	if (ofs < buf || ofs > endOfBuf)
+		return 0;
+
+	if (nomSize < 1 || valeurSize < 1 || ofs + (nomSize + valeurSize + 2) >= endOfBuf)
+		return 0;
+
+        ofs += sprintf(ofs,"%s%c%d%c",nom,this->endOfParamName,valeur,this->endOfParamValue);
 
 	return ofs;
 }

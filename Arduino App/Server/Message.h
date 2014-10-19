@@ -5,7 +5,8 @@
 
 typedef enum MessageType{
   MessageTypeCommande = 0,
-  MessageTypeConfiguration
+  MessageTypeConfiguration,
+  MessageTypeRetourCommande
 };
 
 class MessageTexte{
@@ -27,6 +28,9 @@ public:
 
 	// lit le type de message
 	char* LireType(char* ofs, int* type);
+        
+        // ecrit le type de message
+        char* EcrireType(char* ofs, int type);
 
 	// ecrit la signature
 	char* EcrireSignature(char* ofs);
@@ -36,6 +40,9 @@ public:
 
 	// ecrit la signature
 	char* EcrireParam(char* ofs, const char* nom, const char* valeur);
+
+	// ecrit la signature
+	char* EcrireParam(char* ofs, const char* nom, int valeur);
 
 	// lit un parametre
 	char* LireParam(char* ofs, char* nom, char* valeur);

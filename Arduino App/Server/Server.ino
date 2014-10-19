@@ -70,6 +70,15 @@ public:
 	// initialise le programme
 	void Initialise(){
 		this->InitialiseSerial();
+
+	          Serial.println("CRC Commandes:");
+	          Serial.println(Commande::DigitalOut,HEX);
+	          Serial.println(Commande::DigitalIn,HEX);
+	          Serial.println(Commande::AnalogOut,HEX);
+	          Serial.println(Commande::AnalogIn,HEX);
+	          Serial.println(Commande::LedHigh,HEX);
+	          Serial.println(Commande::LedLow,HEX);
+
 #ifdef WIFI
 		this->InitialiseWifi();
 #endif
@@ -112,33 +121,7 @@ public:
 
                         // initialise le message actuel
                         this->message = MessageTexte(this->packetBuffer, packetSize);
-                        if(this->message.Verifier()){
-                          char* ofs = this->message.GetBuffer();
-                          int type = -1;
-			  Serial.println("message valide");
-                          ofs=this->message.LireSignature(ofs);
-                          ofs=this->message.LireType(ofs,&type);
-                          
-                          switch(type){
-                            case MessageTypeCommande:
-			      Serial.print("read command\n");
-                              this->commande.LireParam(&this->message, ofs);
-			      Serial.print(this->commande.CodeCmd);
-			      Serial.print(this->commande.EquipId);
-                              break;
-                            case MessageTypeConfiguration:
-			      Serial.print("read config\n");
-                              this->configuration.LireParam(&this->message, ofs);
-                              break;
-                            default:
-			      Serial.print("uknown message type\n");
-                              return 0;
-                          }
-                        }
-                        else{
-			  Serial.println("message invalide");
-                          this->message = MessageTexte();
-                        }
+                        
                         return 1;
 		}
                 return 0;
@@ -148,16 +131,95 @@ public:
 	void EcrireMessageTexte(){
 		// send a reply, to the IP address and port that sent us the packet we received
 		Udp.beginPacket(Udp.remoteIP(), OUTPUT_PORT);
-		Udp.write(replyBuffer);
+		Udp.write(this->message.GetBuffer());
 		Udp.endPacket();
 	}
 
 	// Parser un message texte 
-	void ParserMessageTexte(){
+	int ParserMessageTexte(){
+
+              if(this->message.Verifier()){
+                char* ofs = this->message.GetBuffer();
+                int type = -1;
+                ofs=this->message.LireSignature(ofs);
+                ofs=this->message.LireType(ofs,&type);
+                
+                switch(type){
+                  case MessageTypeCommande:
+	            Serial.print("Read command\n");
+                    this->commande.LireParam(&this->message, ofs);
+                    return type;
+                  case MessageTypeConfiguration:
+	            Serial.print("Read config\n");
+                    this->configuration.LireParam(&this->message, ofs);
+                    return type;
+                  default:
+	            Serial.println("Unknown message type");
+                    return 0;
+                }
+              }
+              
+              
+	     Serial.println("Message invalide !");
+              this->message = MessageTexte();
+              return 0;
 	}
 
 	// Exécuter une commande
-	void ExecuterCommande(){
+	int ExecuterCommande(){
+            if(!this->commande.Valide()){
+	      Serial.println("paramètres de commande invalide");
+              return 0;
+            }
+            
+              //execute l'action
+              if(this->commande.CodeCmd == Commande::DigitalOut){
+	          Serial.print("Turn ");
+	          Serial.print((this->commande.Value ? "HIGH" : "LOW"));
+	          Serial.print(" Digital Pin ");
+	          Serial.println(this->commande.PinNum,DEC);
+
+                  pinMode(this->commande.PinNum, OUTPUT);
+                  digitalWrite(this->commande.PinNum, (this->commande.Value ? HIGH : LOW));
+                  return 1;
+              }
+              else if(this->commande.CodeCmd == Commande::DigitalIn){
+	          Serial.print("Read Digital Pin ");
+	          Serial.print(this->commande.PinNum,DEC);
+	          Serial.print(" : ");
+
+                  pinMode(this->commande.PinNum, INPUT);
+                  this->commande.Value = digitalRead(this->commande.PinNum);
+	          Serial.println(this->commande.Value,DEC);
+                  
+                  //initialise le message de retour
+                  char buf[1024];
+                  char* ofs = buf;
+                  this->message = MessageTexte(buf,sizeof(buf));
+                  ofs = this->message.EcrireSignature(ofs);
+                  ofs = this->message.EcrireType(ofs,MessageTypeRetourCommande);//Command Return
+                  ofs = this->message.EcrireParam(ofs,"VALUE",this->commande.Value);
+                  *ofs = 0;
+                  
+                  // envoi le message
+                  EcrireMessageTexte();
+                  
+                  return 1;
+              }
+              else if(this->commande.CodeCmd == Commande::LedHigh){
+	          Serial.println("Turn ON onboard LED");
+                  pinMode(LED_BUILTIN, OUTPUT);
+                  digitalWrite(LED_BUILTIN, HIGH);
+                  return 1;
+              }
+              else if(this->commande.CodeCmd == Commande::LedLow){
+	          Serial.println("Turn OFF onboard LED");
+                  pinMode(LED_BUILTIN, OUTPUT);
+                  digitalWrite(LED_BUILTIN, LOW);
+                  return 1;
+              }
+            
+            return 0;
 	}
 
 	// Transmettre une commande
@@ -289,99 +351,15 @@ void setup() {
 
 void loop() {
     if(app.LireMessageTexte()){
-      //..
+       switch(app.ParserMessageTexte()){
+         case MessageTypeCommande:
+           app.ExecuterCommande();
+           break;
+         case MessageTypeConfiguration:
+           app.ExecuterConfiguration();
+           break;
+       }
     }
-	/*
-	char * buf;
-	// if there's data available, read a packet
-	int packetSize = Udp.parsePacket();
-	if(packetSize)
-	{
-	Serial.print("Received packet of size ");
-	Serial.println(packetSize);
-	Serial.print("From ");
-	IPAddress remote = Udp.remoteIP();
-	for (int i =0; i < 4; i++)
-	{
-	Serial.print(remote[i], DEC);
-	if (i < 3)
-	{
-	Serial.print(".");
-	}
-	}
-	Serial.print(", port ");
-	Serial.println(Udp.remotePort());
-
-	// vérifie la limite du tempon
-	if( packetSize >= UDP_TX_PACKET_MAX_SIZE ){
-	Serial.print("Too big UDP packet");
-	return;
-	}
-
-	// vérifie la limite du tempon
-	if( packetSize > UDP_TX_PACKET_MAX_SIZE-1 )
-	packetSize = UDP_TX_PACKET_MAX_SIZE-1;
-
-	// read the packet into packetBufffer
-	Udp.read(packetBuffer,UDP_TX_PACKET_MAX_SIZE);
-	packetBuffer[packetSize] = 0;
-
-	//parse la commande
-	CMD cmd;
-	memset(&cmd,0,sizeof(CMD));
-	PTR mem = {packetBuffer,packetBuffer+sizeof(packetBuffer),packetBuffer};
-	char name[80],*pname;
-	char value[80],*pvalue;
-	while(*mem.ptr != '\0'){
-	xarg_decode_field(&mem,name,value);
-	// supprime les eventuels Retour-Chariot '\r' ou saut de ligne '\n'
-	pname = str_trimz(name);
-	pvalue = str_trimz(value);
-	//
-	if(strcmp(name,"cmd")==0){
-	if(strcmp(value,"on")==0){
-	cmd.type = CMD_TYPE_SWITCH;
-	}
-	}
-	else if(strcmp(name,"pin")==0){
-	sscanf(value,"%d",&cmd.pin);
-	}
-	else if(strcmp(name,"val")==0){
-	sscanf(value,"%d",&cmd.val);
-	}
-	}
-
-	Serial.print("cmd=");
-	Serial.println(cmd.type);
-	Serial.print("pin=");
-	Serial.println(cmd.pin);
-	Serial.print("val=");
-	Serial.println(cmd.val);
-
-	//execute la commande
-	switch(cmd.type){
-	case CMD_TYPE_SWITCH:
-	pinMode(cmd.pin, OUTPUT);
-	digitalWrite(cmd.pin,(cmd.val ? HIGH : LOW));
-	//resultat
-	bptr(&mem,replyBuffer,sizeof(replyBuffer));
-	xarg_encode_field(&mem,"error","ERR_OK");
-	xarg_encode_field(&mem,"msg","SUCCESS");
-	break;
-	default:
-	//resultat
-	bptr(&mem,replyBuffer,sizeof(replyBuffer));
-	xarg_encode_field(&mem,"error","ERR_FAILED");
-	xarg_encode_field(&mem,"msg","UNKNOWN_CMD");
-	break;
-	}
-
-	// send a reply, to the IP address and port that sent us the packet we received
-	Udp.beginPacket(Udp.remoteIP(), OUTPUT_PORT);
-	Udp.write(replyBuffer);
-	Udp.endPacket();
-
-	}*/
-	delay(10);
+    delay(10);
 }
 
