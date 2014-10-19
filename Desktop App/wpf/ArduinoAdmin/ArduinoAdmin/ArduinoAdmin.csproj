@@ -49,6 +49,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Equipements\Model\InternalLed.cs" />
+    <Compile Include="Equipements\Model\Server.cs" />
+    <Compile Include="Equipements\Model\Switch.cs" />
+    <Compile Include="Equipements\Server.xaml.cs">
+      <DependentUpon>Server.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Equipements\Switch.xaml.cs">
+      <DependentUpon>Switch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Model.cs" />
+    <Compile Include="Vues\Synoptique.xaml.cs">
+      <DependentUpon>Synoptique.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Equipements\Server.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Equipements\Switch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +84,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Vues\Synoptique.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -91,8 +116,18 @@
   <ItemGroup>
     <Folder Include="Fenetres\" />
     <Folder Include="Model\" />
+    <Folder Include="Ressources\Serveurs\" />
     <Folder Include="VueModels\" />
-    <Folder Include="Vues\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Equipements\computer.png" />
+    <Resource Include="Ressources\Equipements\rec_off.png" />
+    <Resource Include="Ressources\Equipements\rec_on.png" />
+    <Resource Include="Ressources\Equipements\switch_off.png" />
+    <Resource Include="Ressources\Equipements\switch_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Equipements\arduino.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

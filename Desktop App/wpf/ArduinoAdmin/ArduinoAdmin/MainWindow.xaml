@@ -1,10 +1,11 @@
 ﻿<Window x:Class="ArduinoAdmin.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vue="clr-namespace:ArduinoAdmin.Vues"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Button Click="Button_Click">Test</Button>
+            <vue:Synoptique Width="200" Height="200"></vue:Synoptique>
         </StackPanel>
     </Grid>
 </Window>

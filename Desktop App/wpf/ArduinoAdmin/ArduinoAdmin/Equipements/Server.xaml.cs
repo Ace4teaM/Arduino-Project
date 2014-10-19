@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,18 +11,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ArduinoAdmin.Lib;
 
-namespace ArduinoAdmin
+namespace ArduinoAdmin.Equipements
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour Server.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Server : UserControl
     {
-        public MainWindow()
+        public Server(Equipements.Model.Server context)
         {
             InitializeComponent();
+            this.DataContext = context;
         }
     }
 }

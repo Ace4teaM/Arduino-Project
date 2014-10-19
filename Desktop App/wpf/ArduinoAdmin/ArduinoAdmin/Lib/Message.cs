@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ArduinoAdmin.Lib
 {
-    class Message
+    public class Message
     {
         private string buf;
         public Dictionary<string, string> Parameters{get;set;}

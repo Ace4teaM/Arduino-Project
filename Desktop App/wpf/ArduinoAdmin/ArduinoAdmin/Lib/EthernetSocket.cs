@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ArduinoAdmin.Lib
 {
-    class EthernetSocket
+    public class EthernetSocket
     {
         private UdpClient udpClient;
         private readonly int InputPort = 12345;
