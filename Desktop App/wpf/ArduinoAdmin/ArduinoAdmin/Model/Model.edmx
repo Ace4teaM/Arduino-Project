@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="arduinoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="Commande_Id" />
+          </Key>
+          <Property Name="Commande_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Equipement_Id" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="CodeCmd" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="CmdParams" Type="varchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="Equipement">
+          <Key>
+            <PropertyRef Name="Equipement_Id" />
+          </Key>
+          <Property Name="Equipement_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Serveur_Id" Type="int" />
+          <Property Name="Nom" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="256" />
+          <Property Name="RxPinNum" Type="int" />
+          <Property Name="TxPinNum" Type="int" />
+          <Property Name="Px" Type="int" />
+          <Property Name="Py" Type="int" />
+          <Property Name="Pz" Type="int" />
+        </EntityType>
+        <EntityType Name="Etat">
+          <Key>
+            <PropertyRef Name="Etat_Id" />
+          </Key>
+          <Property Name="Etat_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Equipement_Id" Type="int" />
+          <Property Name="Nom" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Valeur" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Serveur">
+          <Key>
+            <PropertyRef Name="Serveur_Id" />
+          </Key>
+          <Property Name="Serveur_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdressePhysique" Type="varchar" MaxLength="17" Nullable="false" />
+          <Property Name="Jeton" Type="varchar" MaxLength="17" Nullable="false" />
+          <Property Name="AdresseIP" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK_COMMANDE_R2_EQUIPEMENT">
+          <End Role="Equipement" Type="Self.Equipement" Multiplicity="0..1" />
+          <End Role="Commande" Type="Self.Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipement">
+              <PropertyRef Name="Equipement_Id" />
+            </Principal>
+            <Dependent Role="Commande">
+              <PropertyRef Name="Equipement_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPEMENT_R4_SERVEUR">
+          <End Role="Serveur" Type="Self.Serveur" Multiplicity="0..1" />
+          <End Role="Equipement" Type="Self.Equipement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serveur">
+              <PropertyRef Name="Serveur_Id" />
+            </Principal>
+            <Dependent Role="Equipement">
+              <PropertyRef Name="Serveur_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETAT_R1_EQUIPEMENT">
+          <End Role="Equipement" Type="Self.Equipement" Multiplicity="0..1" />
+          <End Role="Etat" Type="Self.Etat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipement">
+              <PropertyRef Name="Equipement_Id" />
+            </Principal>
+            <Dependent Role="Etat">
+              <PropertyRef Name="Equipement_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="arduinoModelStoreContainer">
+          <EntitySet Name="Commande" EntityType="Self.Commande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipement" EntityType="Self.Equipement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Etat" EntityType="Self.Etat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Serveur" EntityType="Self.Serveur" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_COMMANDE_R2_EQUIPEMENT" Association="Self.FK_COMMANDE_R2_EQUIPEMENT">
+            <End Role="Equipement" EntitySet="Equipement" />
+            <End Role="Commande" EntitySet="Commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPEMENT_R4_SERVEUR" Association="Self.FK_EQUIPEMENT_R4_SERVEUR">
+            <End Role="Serveur" EntitySet="Serveur" />
+            <End Role="Equipement" EntitySet="Equipement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETAT_R1_EQUIPEMENT" Association="Self.FK_ETAT_R1_EQUIPEMENT">
+            <End Role="Equipement" EntitySet="Equipement" />
+            <End Role="Etat" EntitySet="Etat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="arduinoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="arduinoEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Commande" EntityType="arduinoModel.Commande" />
+          <EntitySet Name="Equipement" EntityType="arduinoModel.Equipement" />
+          <EntitySet Name="Etat" EntityType="arduinoModel.Etat" />
+          <EntitySet Name="Serveur" EntityType="arduinoModel.Serveur" />
+          <AssociationSet Name="FK_COMMANDE_R2_EQUIPEMENT" Association="arduinoModel.FK_COMMANDE_R2_EQUIPEMENT">
+            <End Role="Equipement" EntitySet="Equipement" />
+            <End Role="Commande" EntitySet="Commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPEMENT_R4_SERVEUR" Association="arduinoModel.FK_EQUIPEMENT_R4_SERVEUR">
+            <End Role="Serveur" EntitySet="Serveur" />
+            <End Role="Equipement" EntitySet="Equipement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETAT_R1_EQUIPEMENT" Association="arduinoModel.FK_ETAT_R1_EQUIPEMENT">
+            <End Role="Equipement" EntitySet="Equipement" />
+            <End Role="Etat" EntitySet="Etat" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="Commande_Id" />
+          </Key>
+          <Property Name="Commande_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Equipement_Id" Type="Int32" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CodeCmd" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="CmdParams" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipement" Relationship="arduinoModel.FK_COMMANDE_R2_EQUIPEMENT" FromRole="Commande" ToRole="Equipement" />
+        </EntityType>
+        <EntityType Name="Equipement">
+          <Key>
+            <PropertyRef Name="Equipement_Id" />
+          </Key>
+          <Property Name="Equipement_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Serveur_Id" Type="Int32" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="RxPinNum" Type="Int32" />
+          <Property Name="TxPinNum" Type="Int32" />
+          <Property Name="Px" Type="Int32" />
+          <Property Name="Py" Type="Int32" />
+          <Property Name="Pz" Type="Int32" />
+          <NavigationProperty Name="Commande" Relationship="arduinoModel.FK_COMMANDE_R2_EQUIPEMENT" FromRole="Equipement" ToRole="Commande" />
+          <NavigationProperty Name="Serveur" Relationship="arduinoModel.FK_EQUIPEMENT_R4_SERVEUR" FromRole="Equipement" ToRole="Serveur" />
+          <NavigationProperty Name="Etat" Relationship="arduinoModel.FK_ETAT_R1_EQUIPEMENT" FromRole="Equipement" ToRole="Etat" />
+        </EntityType>
+        <EntityType Name="Etat">
+          <Key>
+            <PropertyRef Name="Etat_Id" />
+          </Key>
+          <Property Name="Etat_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Equipement_Id" Type="Int32" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Valeur" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipement" Relationship="arduinoModel.FK_ETAT_R1_EQUIPEMENT" FromRole="Etat" ToRole="Equipement" />
+        </EntityType>
+        <EntityType Name="Serveur">
+          <Key>
+            <PropertyRef Name="Serveur_Id" />
+          </Key>
+          <Property Name="Serveur_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdressePhysique" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="Jeton" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="AdresseIP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipement" Relationship="arduinoModel.FK_EQUIPEMENT_R4_SERVEUR" FromRole="Serveur" ToRole="Equipement" />
+        </EntityType>
+        <Association Name="FK_COMMANDE_R2_EQUIPEMENT">
+          <End Type="arduinoModel.Equipement" Role="Equipement" Multiplicity="0..1" />
+          <End Type="arduinoModel.Commande" Role="Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipement">
+              <PropertyRef Name="Equipement_Id" />
+            </Principal>
+            <Dependent Role="Commande">
+              <PropertyRef Name="Equipement_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPEMENT_R4_SERVEUR">
+          <End Type="arduinoModel.Serveur" Role="Serveur" Multiplicity="0..1" />
+          <End Type="arduinoModel.Equipement" Role="Equipement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serveur">
+              <PropertyRef Name="Serveur_Id" />
+            </Principal>
+            <Dependent Role="Equipement">
+              <PropertyRef Name="Serveur_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETAT_R1_EQUIPEMENT">
+          <End Type="arduinoModel.Equipement" Role="Equipement" Multiplicity="0..1" />
+          <End Type="arduinoModel.Etat" Role="Etat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipement">
+              <PropertyRef Name="Equipement_Id" />
+            </Principal>
+            <Dependent Role="Etat">
+              <PropertyRef Name="Equipement_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="arduinoModelStoreContainer" CdmEntityContainer="arduinoEntities1">
+          <EntitySetMapping Name="Commande">
+            <EntityTypeMapping TypeName="arduinoModel.Commande">
+              <MappingFragment StoreEntitySet="Commande">
+                <ScalarProperty Name="CmdParams" ColumnName="CmdParams" />
+                <ScalarProperty Name="CodeCmd" ColumnName="CodeCmd" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Equipement_Id" ColumnName="Equipement_Id" />
+                <ScalarProperty Name="Commande_Id" ColumnName="Commande_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipement">
+            <EntityTypeMapping TypeName="arduinoModel.Equipement">
+              <MappingFragment StoreEntitySet="Equipement">
+                <ScalarProperty Name="Pz" ColumnName="Pz" />
+                <ScalarProperty Name="Py" ColumnName="Py" />
+                <ScalarProperty Name="Px" ColumnName="Px" />
+                <ScalarProperty Name="TxPinNum" ColumnName="TxPinNum" />
+                <ScalarProperty Name="RxPinNum" ColumnName="RxPinNum" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Serveur_Id" ColumnName="Serveur_Id" />
+                <ScalarProperty Name="Equipement_Id" ColumnName="Equipement_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Etat">
+            <EntityTypeMapping TypeName="arduinoModel.Etat">
+              <MappingFragment StoreEntitySet="Etat">
+                <ScalarProperty Name="Valeur" ColumnName="Valeur" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Equipement_Id" ColumnName="Equipement_Id" />
+                <ScalarProperty Name="Etat_Id" ColumnName="Etat_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Serveur">
+            <EntityTypeMapping TypeName="arduinoModel.Serveur">
+              <MappingFragment StoreEntitySet="Serveur">
+                <ScalarProperty Name="AdresseIP" ColumnName="AdresseIP" />
+                <ScalarProperty Name="Jeton" ColumnName="Jeton" />
+                <ScalarProperty Name="AdressePhysique" ColumnName="AdressePhysique" />
+                <ScalarProperty Name="Serveur_Id" ColumnName="Serveur_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -9,7 +9,8 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-namespace ArduinoAdmin.View
+using ArduinoAdmin.Fenetres;
+namespace ArduinoAdmin.Vues
 {
     /// <summary>
     /// Logique d'interaction pour Edit_Serveur.xaml
@@ -50,23 +51,27 @@ namespace ArduinoAdmin.View
              string[] _args = me.EnabledItems.Split(new char[]{','},StringSplitOptions.RemoveEmptyEntries);
 
              // desactive tout
-             me.itemGroup_SERVEUR_ID.IsEnabled = false;
-             me.itemGroup_ADDRESS_MAC.IsEnabled = false;
-             me.itemGroup_TOKEN.IsEnabled = false;             
+             me.itemGroup_Serveur_Id.IsEnabled = false;
+             me.itemGroup_AdressePhysique.IsEnabled = false;
+             me.itemGroup_Jeton.IsEnabled = false;
+             me.itemGroup_AdresseIP.IsEnabled = false;             
 
              // active les éléments demandés
              foreach (string s in _args)
              {
                  switch (s.Trim())
                  {
-                     case "SERVEUR_ID":
-                         me.itemGroup_SERVEUR_ID.IsEnabled = true;
+                     case "Serveur_Id":
+                         me.itemGroup_Serveur_Id.IsEnabled = true;
                          break;
-                     case "ADDRESS_MAC":
-                         me.itemGroup_ADDRESS_MAC.IsEnabled = true;
+                     case "AdressePhysique":
+                         me.itemGroup_AdressePhysique.IsEnabled = true;
                          break;
-                     case "TOKEN":
-                         me.itemGroup_TOKEN.IsEnabled = true;
+                     case "Jeton":
+                         me.itemGroup_Jeton.IsEnabled = true;
+                         break;
+                     case "AdresseIP":
+                         me.itemGroup_AdresseIP.IsEnabled = true;
                          break;
                }
             }
@@ -90,9 +95,10 @@ namespace ArduinoAdmin.View
              string[] _args = me.VisibleItems.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
              // desactive tout
-             me.itemGroup_SERVEUR_ID.Visibility = Visibility.Collapsed;
-             me.itemGroup_ADDRESS_MAC.Visibility = Visibility.Collapsed;
-             me.itemGroup_TOKEN.Visibility = Visibility.Collapsed;             
+             me.itemGroup_Serveur_Id.Visibility = Visibility.Collapsed;
+             me.itemGroup_AdressePhysique.Visibility = Visibility.Collapsed;
+             me.itemGroup_Jeton.Visibility = Visibility.Collapsed;
+             me.itemGroup_AdresseIP.Visibility = Visibility.Collapsed;             
 
 
              // active les éléments demandés
@@ -100,23 +106,29 @@ namespace ArduinoAdmin.View
              {
                  switch (s.Trim())
                  {
-                     case "SERVEUR_ID":
-                         me.itemGroup_SERVEUR_ID.Visibility = Visibility.Visible;
+                     case "Serveur_Id":
+                         me.itemGroup_Serveur_Id.Visibility = Visibility.Visible;
                          // place l'élément en bas de la pile (permet le tri par visibilité)
-                         me.itemGroups.Children.Remove(me.itemGroup_SERVEUR_ID);
-                         me.itemGroups.Children.Add(me.itemGroup_SERVEUR_ID);
+                         me.itemGroups.Children.Remove(me.itemGroup_Serveur_Id);
+                         me.itemGroups.Children.Add(me.itemGroup_Serveur_Id);
                          break;
-                     case "ADDRESS_MAC":
-                         me.itemGroup_ADDRESS_MAC.Visibility = Visibility.Visible;
+                     case "AdressePhysique":
+                         me.itemGroup_AdressePhysique.Visibility = Visibility.Visible;
                          // place l'élément en bas de la pile (permet le tri par visibilité)
-                         me.itemGroups.Children.Remove(me.itemGroup_ADDRESS_MAC);
-                         me.itemGroups.Children.Add(me.itemGroup_ADDRESS_MAC);
+                         me.itemGroups.Children.Remove(me.itemGroup_AdressePhysique);
+                         me.itemGroups.Children.Add(me.itemGroup_AdressePhysique);
                          break;
-                     case "TOKEN":
-                         me.itemGroup_TOKEN.Visibility = Visibility.Visible;
+                     case "Jeton":
+                         me.itemGroup_Jeton.Visibility = Visibility.Visible;
                          // place l'élément en bas de la pile (permet le tri par visibilité)
-                         me.itemGroups.Children.Remove(me.itemGroup_TOKEN);
-                         me.itemGroups.Children.Add(me.itemGroup_TOKEN);
+                         me.itemGroups.Children.Remove(me.itemGroup_Jeton);
+                         me.itemGroups.Children.Add(me.itemGroup_Jeton);
+                         break;
+                     case "AdresseIP":
+                         me.itemGroup_AdresseIP.Visibility = Visibility.Visible;
+                         // place l'élément en bas de la pile (permet le tri par visibilité)
+                         me.itemGroups.Children.Remove(me.itemGroup_AdresseIP);
+                         me.itemGroups.Children.Add(me.itemGroup_AdresseIP);
                          break;
               }
             }
@@ -137,22 +149,25 @@ namespace ArduinoAdmin.View
                this.editMode = value;
                
                 // rend les éléments visibles
-                this.itemGroup_SERVEUR_ID.Visibility = Visibility.Visible;
-                this.itemGroup_ADDRESS_MAC.Visibility = Visibility.Visible;
-                this.itemGroup_TOKEN.Visibility = Visibility.Visible;                
+                this.itemGroup_Serveur_Id.Visibility = Visibility.Visible;
+                this.itemGroup_AdressePhysique.Visibility = Visibility.Visible;
+                this.itemGroup_Jeton.Visibility = Visibility.Visible;
+                this.itemGroup_AdresseIP.Visibility = Visibility.Visible;                
 
                 // active / desactive l'édition
                 switch (value as EditWnd.EditMode?)
                 {
                     case EditWnd.EditMode.ReadOnly:
-                        this.itemGroup_SERVEUR_ID.IsEnabled = false;
-                        this.itemGroup_ADDRESS_MAC.IsEnabled = false;
-                        this.itemGroup_TOKEN.IsEnabled = false;
+                        this.itemGroup_Serveur_Id.IsEnabled = false;
+                        this.itemGroup_AdressePhysique.IsEnabled = false;
+                        this.itemGroup_Jeton.IsEnabled = false;
+                        this.itemGroup_AdresseIP.IsEnabled = false;
                       break;
                     default:
-                        this.itemGroup_SERVEUR_ID.IsEnabled = false; //<< par defaut les identifiants ne sont pas editable
-                        this.itemGroup_ADDRESS_MAC.IsEnabled = true;
-                        this.itemGroup_TOKEN.IsEnabled = true;
+                        this.itemGroup_Serveur_Id.IsEnabled = false; //<< par defaut les identifiants ne sont pas editable
+                        this.itemGroup_AdressePhysique.IsEnabled = true;
+                        this.itemGroup_Jeton.IsEnabled = true;
+                        this.itemGroup_AdresseIP.IsEnabled = true;
                       break;
                 }
             }

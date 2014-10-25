@@ -30,8 +30,10 @@ namespace ArduinoAdmin.Model
             {
                 string all_mess = "";
                 string msg;
-                all_mess += ((msg = this["COMMANDE_ID"]) != String.Empty) ? (GetPropertyDesc("COMMANDE_ID") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
-                all_mess += ((msg = this["DESCRIPTION"]) != String.Empty) ? (GetPropertyDesc("DESCRIPTION") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["Commande_Id"]) != String.Empty) ? (GetPropertyDesc("Commande_Id") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["Description"]) != String.Empty) ? (GetPropertyDesc("Description") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["CodeCmd"]) != String.Empty) ? (GetPropertyDesc("CodeCmd") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["CmdParams"]) != String.Empty) ? (GetPropertyDesc("CmdParams") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
                 return all_mess;
             }
         }
@@ -44,17 +46,31 @@ namespace ArduinoAdmin.Model
                 string msg = String.Empty;
                 switch (propertyName)
                 {
-                    case "COMMANDE_ID":
-                          if(this.COMMANDE_ID == null){
+                    case "Commande_Id":
+                          if(this.Commande_Id == null){
                               msg = "NOT_NULL_RESTRICTION";
                               break;
                             }
                            // Pas de test
                         break;
-                    case "DESCRIPTION":
-                          if(this.DESCRIPTION == null)
+                    case "Description":
+                          if(this.Description == null){
+                              msg = "NOT_NULL_RESTRICTION";
                               break;
+                            }
+                           ArduinoAdmin.Formats.NotEmpty.Validate(this.Description.ToString(),ref msg);
+                        break;
+                    case "CodeCmd":
+                          if(this.CodeCmd == null){
+                              msg = "NOT_NULL_RESTRICTION";
+                              break;
+                            }
                            // Pas de test
+                        break;
+                    case "CmdParams":
+                          if(this.CmdParams == null)
+                              break;
+                           ArduinoAdmin.Formats.StringParam.Validate(this.CmdParams.ToString(),ref msg);
                         break;
                 }
                 
@@ -74,11 +90,17 @@ namespace ArduinoAdmin.Model
             switch (propertyName)
             {
 
-                    case "COMMANDE_ID":
-                        return "";
+                    case "Commande_Id":
+                        return "Identifiant de la commande";
 
-                    case "DESCRIPTION":
-                        return "";
+                    case "Description":
+                        return "Description";
+
+                    case "CodeCmd":
+                        return "Code commande";
+
+                    case "CmdParams":
+                        return "Paramètres de la commande";
             }
             return "";
         }

@@ -9,7 +9,8 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-namespace ArduinoAdmin.View
+using ArduinoAdmin.Fenetres;
+namespace ArduinoAdmin.Vues
 {
     /// <summary>
     /// Logique d'interaction pour Edit_Commande.xaml
@@ -50,19 +51,27 @@ namespace ArduinoAdmin.View
              string[] _args = me.EnabledItems.Split(new char[]{','},StringSplitOptions.RemoveEmptyEntries);
 
              // desactive tout
-             me.itemGroup_COMMANDE_ID.IsEnabled = false;
-             me.itemGroup_DESCRIPTION.IsEnabled = false;             
+             me.itemGroup_Commande_Id.IsEnabled = false;
+             me.itemGroup_Description.IsEnabled = false;
+             me.itemGroup_CodeCmd.IsEnabled = false;
+             me.itemGroup_CmdParams.IsEnabled = false;             
 
              // active les éléments demandés
              foreach (string s in _args)
              {
                  switch (s.Trim())
                  {
-                     case "COMMANDE_ID":
-                         me.itemGroup_COMMANDE_ID.IsEnabled = true;
+                     case "Commande_Id":
+                         me.itemGroup_Commande_Id.IsEnabled = true;
                          break;
-                     case "DESCRIPTION":
-                         me.itemGroup_DESCRIPTION.IsEnabled = true;
+                     case "Description":
+                         me.itemGroup_Description.IsEnabled = true;
+                         break;
+                     case "CodeCmd":
+                         me.itemGroup_CodeCmd.IsEnabled = true;
+                         break;
+                     case "CmdParams":
+                         me.itemGroup_CmdParams.IsEnabled = true;
                          break;
                }
             }
@@ -86,8 +95,10 @@ namespace ArduinoAdmin.View
              string[] _args = me.VisibleItems.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
              // desactive tout
-             me.itemGroup_COMMANDE_ID.Visibility = Visibility.Collapsed;
-             me.itemGroup_DESCRIPTION.Visibility = Visibility.Collapsed;             
+             me.itemGroup_Commande_Id.Visibility = Visibility.Collapsed;
+             me.itemGroup_Description.Visibility = Visibility.Collapsed;
+             me.itemGroup_CodeCmd.Visibility = Visibility.Collapsed;
+             me.itemGroup_CmdParams.Visibility = Visibility.Collapsed;             
 
 
              // active les éléments demandés
@@ -95,17 +106,29 @@ namespace ArduinoAdmin.View
              {
                  switch (s.Trim())
                  {
-                     case "COMMANDE_ID":
-                         me.itemGroup_COMMANDE_ID.Visibility = Visibility.Visible;
+                     case "Commande_Id":
+                         me.itemGroup_Commande_Id.Visibility = Visibility.Visible;
                          // place l'élément en bas de la pile (permet le tri par visibilité)
-                         me.itemGroups.Children.Remove(me.itemGroup_COMMANDE_ID);
-                         me.itemGroups.Children.Add(me.itemGroup_COMMANDE_ID);
+                         me.itemGroups.Children.Remove(me.itemGroup_Commande_Id);
+                         me.itemGroups.Children.Add(me.itemGroup_Commande_Id);
                          break;
-                     case "DESCRIPTION":
-                         me.itemGroup_DESCRIPTION.Visibility = Visibility.Visible;
+                     case "Description":
+                         me.itemGroup_Description.Visibility = Visibility.Visible;
                          // place l'élément en bas de la pile (permet le tri par visibilité)
-                         me.itemGroups.Children.Remove(me.itemGroup_DESCRIPTION);
-                         me.itemGroups.Children.Add(me.itemGroup_DESCRIPTION);
+                         me.itemGroups.Children.Remove(me.itemGroup_Description);
+                         me.itemGroups.Children.Add(me.itemGroup_Description);
+                         break;
+                     case "CodeCmd":
+                         me.itemGroup_CodeCmd.Visibility = Visibility.Visible;
+                         // place l'élément en bas de la pile (permet le tri par visibilité)
+                         me.itemGroups.Children.Remove(me.itemGroup_CodeCmd);
+                         me.itemGroups.Children.Add(me.itemGroup_CodeCmd);
+                         break;
+                     case "CmdParams":
+                         me.itemGroup_CmdParams.Visibility = Visibility.Visible;
+                         // place l'élément en bas de la pile (permet le tri par visibilité)
+                         me.itemGroups.Children.Remove(me.itemGroup_CmdParams);
+                         me.itemGroups.Children.Add(me.itemGroup_CmdParams);
                          break;
               }
             }
@@ -126,19 +149,25 @@ namespace ArduinoAdmin.View
                this.editMode = value;
                
                 // rend les éléments visibles
-                this.itemGroup_COMMANDE_ID.Visibility = Visibility.Visible;
-                this.itemGroup_DESCRIPTION.Visibility = Visibility.Visible;                
+                this.itemGroup_Commande_Id.Visibility = Visibility.Visible;
+                this.itemGroup_Description.Visibility = Visibility.Visible;
+                this.itemGroup_CodeCmd.Visibility = Visibility.Visible;
+                this.itemGroup_CmdParams.Visibility = Visibility.Visible;                
 
                 // active / desactive l'édition
                 switch (value as EditWnd.EditMode?)
                 {
                     case EditWnd.EditMode.ReadOnly:
-                        this.itemGroup_COMMANDE_ID.IsEnabled = false;
-                        this.itemGroup_DESCRIPTION.IsEnabled = false;
+                        this.itemGroup_Commande_Id.IsEnabled = false;
+                        this.itemGroup_Description.IsEnabled = false;
+                        this.itemGroup_CodeCmd.IsEnabled = false;
+                        this.itemGroup_CmdParams.IsEnabled = false;
                       break;
                     default:
-                        this.itemGroup_COMMANDE_ID.IsEnabled = false; //<< par defaut les identifiants ne sont pas editable
-                        this.itemGroup_DESCRIPTION.IsEnabled = true;
+                        this.itemGroup_Commande_Id.IsEnabled = false; //<< par defaut les identifiants ne sont pas editable
+                        this.itemGroup_Description.IsEnabled = true;
+                        this.itemGroup_CodeCmd.IsEnabled = true;
+                        this.itemGroup_CmdParams.IsEnabled = true;
                       break;
                 }
             }

@@ -14,13 +14,21 @@
              d:DesignWidth="300">
     <Grid>
         <StackPanel Name="itemGroups" Orientation="Vertical">
-            <DockPanel Name="itemGroup_COMMANDE_ID">
-               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5"></TextBlock>
-               <xctk:IntegerUpDown Name="COMMANDE_ID" Text="{Binding Path=COMMANDE_ID, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            <DockPanel Name="itemGroup_Commande_Id">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Identifiant de la commande</TextBlock>
+               <xctk:IntegerUpDown Name="Commande_Id" Text="{Binding Path=Commande_Id, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
             </DockPanel>
-            <DockPanel Name="itemGroup_DESCRIPTION">
-               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5"></TextBlock>
-               <TextBox Name="DESCRIPTION" MaxLength="256" Text="{Binding Path=DESCRIPTION, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True}" />
+            <DockPanel Name="itemGroup_Description">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Description</TextBlock>
+               <TextBox Name="Description" MaxLength="256" Text="{Binding Path=Description, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_CodeCmd">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Code commande</TextBlock>
+               <TextBox Name="CodeCmd" MaxLength="4" Text="{Binding Path=CodeCmd, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_CmdParams">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Paramètres de la commande</TextBlock>
+               <TextBox Name="CmdParams" MaxLength="1024" Text="{Binding Path=CmdParams, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" />
             </DockPanel>
          </StackPanel>
     </Grid>

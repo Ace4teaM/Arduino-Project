@@ -1,171 +1,593 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     21/10/2014 20:43:33                          */
+/* Created on:     25/10/2014 18:00:01                          */
 /*==============================================================*/
 
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('COMMANDE') and o.name = 'FK_COMMANDE_R2_EQUIPEMENT')
-alter table COMMANDE
+   where r.fkeyid = object_id('Commande') and o.name = 'FK_COMMANDE_R2_EQUIPEMENT')
+alter table Commande
    drop constraint FK_COMMANDE_R2_EQUIPEMENT
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('COMMANDE_ARGUMENT') and o.name = 'FK_COMMANDE_ARGUMENT_R1_COMMANDE')
-alter table COMMANDE_ARGUMENT
-   drop constraint FK_COMMANDE_ARGUMENT_R1_COMMANDE
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('EQUIPEMENT') and o.name = 'FK_EQUIPEMENT_R4_SERVEUR')
-alter table EQUIPEMENT
+   where r.fkeyid = object_id('Equipement') and o.name = 'FK_EQUIPEMENT_R4_SERVEUR')
+alter table Equipement
    drop constraint FK_EQUIPEMENT_R4_SERVEUR
 go
 
 if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('Etat') and o.name = 'FK_ETAT_R1_EQUIPEMENT')
+alter table Etat
+   drop constraint FK_ETAT_R1_EQUIPEMENT
+go
+
+if exists (select 1
             from  sysindexes
-           where  id    = object_id('COMMANDE')
+           where  id    = object_id('Commande')
             and   name  = 'R2_FK'
             and   indid > 0
             and   indid < 255)
-   drop index COMMANDE.R2_FK
+   drop index Commande.R2_FK
 go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('COMMANDE')
+           where  id = object_id('Commande')
             and   type = 'U')
-   drop table COMMANDE
+   drop table Commande
 go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('COMMANDE_ARGUMENT')
-            and   name  = 'R1_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index COMMANDE_ARGUMENT.R1_FK
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('COMMANDE_ARGUMENT')
-            and   type = 'U')
-   drop table COMMANDE_ARGUMENT
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('EQUIPEMENT')
+           where  id    = object_id('Equipement')
             and   name  = 'R4_FK'
             and   indid > 0
             and   indid < 255)
-   drop index EQUIPEMENT.R4_FK
+   drop index Equipement.R4_FK
 go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('EQUIPEMENT')
+           where  id = object_id('Equipement')
             and   type = 'U')
-   drop table EQUIPEMENT
+   drop table Equipement
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('Etat')
+            and   name  = 'R1_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index Etat.R1_FK
 go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('SERVEUR')
+           where  id = object_id('Etat')
             and   type = 'U')
-   drop table SERVEUR
+   drop table Etat
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('Serveur')
+            and   type = 'U')
+   drop table Serveur
 go
 
 /*==============================================================*/
-/* Table: COMMANDE                                              */
+/* Table: Commande                                              */
 /*==============================================================*/
-create table COMMANDE (
-   COMMANDE_ID          int                  identity,
-   EQUIPEMENT_ID        int                  null,
-   DESCRIPTION          varchar(256)         null,
-   constraint PK_COMMANDE primary key nonclustered (COMMANDE_ID)
+create table Commande (
+   Commande_Id          int                  identity,
+   Equipement_Id        int                  null,
+   Description          varchar(256)         not null,
+   CodeCmd              char(4)              not null,
+   CmdParams            varchar(1024)        null,
+   constraint PK_COMMANDE primary key nonclustered (Commande_Id)
 )
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Commande')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Commande_Id')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Commande', 'column', 'Commande_Id'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Identifiant de la commande',
+   'user', @CurrentUser, 'table', 'Commande', 'column', 'Commande_Id'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Commande')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Equipement_Id')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Commande', 'column', 'Equipement_Id'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Identifiant de l''équipement',
+   'user', @CurrentUser, 'table', 'Commande', 'column', 'Equipement_Id'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Commande')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Description')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Commande', 'column', 'Description'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Description',
+   'user', @CurrentUser, 'table', 'Commande', 'column', 'Description'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Commande')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CodeCmd')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Commande', 'column', 'CodeCmd'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Code commande',
+   'user', @CurrentUser, 'table', 'Commande', 'column', 'CodeCmd'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Commande')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CmdParams')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Commande', 'column', 'CmdParams'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Paramètres de la commande',
+   'user', @CurrentUser, 'table', 'Commande', 'column', 'CmdParams'
 go
 
 /*==============================================================*/
 /* Index: R2_FK                                                 */
 /*==============================================================*/
-create index R2_FK on COMMANDE (
-EQUIPEMENT_ID ASC
+create index R2_FK on Commande (
+Equipement_Id ASC
 )
 go
 
 /*==============================================================*/
-/* Table: COMMANDE_ARGUMENT                                     */
+/* Table: Equipement                                            */
 /*==============================================================*/
-create table COMMANDE_ARGUMENT (
-   COMMANDE_ARGUMENT_ID int                  identity,
-   COMMANDE_ID          int                  null,
-   DESCRIPTION          varchar(256)         not null,
-   TYPEVALEUR           varchar(32)          not null,
-   NOM                  varchar(32)          not null,
-   constraint PK_COMMANDE_ARGUMENT primary key nonclustered (COMMANDE_ARGUMENT_ID)
+create table Equipement (
+   Equipement_Id        int                  identity,
+   Serveur_Id           int                  null,
+   Nom                  varchar(64)          not null,
+   Description          varchar(256)         null,
+   RxPinNum             int                  null,
+   TxPinNum             int                  null,
+   Px                   int                  null,
+   Py                   int                  null,
+   Pz                   int                  null,
+   constraint PK_EQUIPEMENT primary key nonclustered (Equipement_Id)
 )
 go
 
-/*==============================================================*/
-/* Index: R1_FK                                                 */
-/*==============================================================*/
-create index R1_FK on COMMANDE_ARGUMENT (
-COMMANDE_ID ASC
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Equipement')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Equipement_Id')
 )
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Equipement_Id'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Identifiant de l''équipement',
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Equipement_Id'
 go
 
-/*==============================================================*/
-/* Table: EQUIPEMENT                                            */
-/*==============================================================*/
-create table EQUIPEMENT (
-   EQUIPEMENT_ID        int                  identity,
-   SERVEUR_ID           int                  null,
-   DESCRIPTION          varchar(256)         not null,
-   RXPINNUM             int                  not null,
-   TXPINNUM             int                  not null,
-   constraint PK_EQUIPEMENT primary key nonclustered (EQUIPEMENT_ID)
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Equipement')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Serveur_Id')
 )
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Serveur_Id'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Identifiant du serveur',
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Serveur_Id'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Equipement')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Nom')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Nom'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Nom',
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Nom'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Equipement')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Description')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Description'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Description',
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Description'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Equipement')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'RxPinNum')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'RxPinNum'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Numéro PIN (RX)',
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'RxPinNum'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Equipement')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'TxPinNum')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'TxPinNum'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Numéro PIN (TX)',
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'TxPinNum'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Equipement')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Px')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Px'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Position X',
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Px'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Equipement')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Py')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Py'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Position Y',
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Py'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Equipement')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Pz')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Pz'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Position Z',
+   'user', @CurrentUser, 'table', 'Equipement', 'column', 'Pz'
 go
 
 /*==============================================================*/
 /* Index: R4_FK                                                 */
 /*==============================================================*/
-create index R4_FK on EQUIPEMENT (
-SERVEUR_ID ASC
+create index R4_FK on Equipement (
+Serveur_Id ASC
 )
 go
 
 /*==============================================================*/
-/* Table: SERVEUR                                               */
+/* Table: Etat                                                  */
 /*==============================================================*/
-create table SERVEUR (
-   SERVEUR_ID           int                  identity,
-   ADDRESS_MAC          tinyint              not null,
-   TOKEN                varchar(8)           not null,
-   constraint PK_SERVEUR primary key nonclustered (SERVEUR_ID),
-   constraint AK_ADDRESS_MAC_SERVEUR unique (ADDRESS_MAC),
-   constraint AK_TOKEN_SERVEUR unique (TOKEN)
+create table Etat (
+   Etat_Id              int                  identity,
+   Equipement_Id        int                  null,
+   Nom                  varchar(64)          not null,
+   Valeur               varchar(64)          null,
+   constraint PK_ETAT primary key nonclustered (Etat_Id)
 )
 go
 
-alter table COMMANDE
-   add constraint FK_COMMANDE_R2_EQUIPEMENT foreign key (EQUIPEMENT_ID)
-      references EQUIPEMENT (EQUIPEMENT_ID)
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('Etat') and minor_id = 0)
+begin 
+   declare @CurrentUser sysname 
+select @CurrentUser = user_name() 
+execute sp_dropextendedproperty 'MS_Description',  
+   'user', @CurrentUser, 'table', 'Etat' 
+ 
+end 
+
+
+select @CurrentUser = user_name() 
+execute sp_addextendedproperty 'MS_Description',  
+   'Propriété d''un équipement', 
+   'user', @CurrentUser, 'table', 'Etat'
 go
 
-alter table COMMANDE_ARGUMENT
-   add constraint FK_COMMANDE_ARGUMENT_R1_COMMANDE foreign key (COMMANDE_ID)
-      references COMMANDE (COMMANDE_ID)
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Etat')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Equipement_Id')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Etat', 'column', 'Equipement_Id'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Identifiant de l''équipement',
+   'user', @CurrentUser, 'table', 'Etat', 'column', 'Equipement_Id'
 go
 
-alter table EQUIPEMENT
-   add constraint FK_EQUIPEMENT_R4_SERVEUR foreign key (SERVEUR_ID)
-      references SERVEUR (SERVEUR_ID)
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Etat')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Nom')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Etat', 'column', 'Nom'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Nom',
+   'user', @CurrentUser, 'table', 'Etat', 'column', 'Nom'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Etat')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Valeur')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Etat', 'column', 'Valeur'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Valeur',
+   'user', @CurrentUser, 'table', 'Etat', 'column', 'Valeur'
+go
+
+/*==============================================================*/
+/* Index: R1_FK                                                 */
+/*==============================================================*/
+create index R1_FK on Etat (
+Equipement_Id ASC
+)
+go
+
+/*==============================================================*/
+/* Table: Serveur                                               */
+/*==============================================================*/
+create table Serveur (
+   Serveur_Id           int                  identity,
+   AdressePhysique      varchar(17)          not null,
+   Jeton                varchar(17)          not null,
+   AdresseIP            varchar(15)          null,
+   constraint PK_SERVEUR primary key nonclustered (Serveur_Id),
+   constraint AK_ADDRESS_MAC_SERVEUR unique (AdressePhysique),
+   constraint AK_TOKEN_SERVEUR unique (Jeton)
+)
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Serveur')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Serveur_Id')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Serveur', 'column', 'Serveur_Id'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Identifiant du serveur',
+   'user', @CurrentUser, 'table', 'Serveur', 'column', 'Serveur_Id'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Serveur')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'AdressePhysique')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Serveur', 'column', 'AdressePhysique'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Adresse Physique',
+   'user', @CurrentUser, 'table', 'Serveur', 'column', 'AdressePhysique'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Serveur')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Jeton')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Serveur', 'column', 'Jeton'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Jeton',
+   'user', @CurrentUser, 'table', 'Serveur', 'column', 'Jeton'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Serveur')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'AdresseIP')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Serveur', 'column', 'AdresseIP'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Adresse IP',
+   'user', @CurrentUser, 'table', 'Serveur', 'column', 'AdresseIP'
+go
+
+alter table Commande
+   add constraint FK_COMMANDE_R2_EQUIPEMENT foreign key (Equipement_Id)
+      references Equipement (Equipement_Id)
+go
+
+alter table Equipement
+   add constraint FK_EQUIPEMENT_R4_SERVEUR foreign key (Serveur_Id)
+      references Serveur (Serveur_Id)
+go
+
+alter table Etat
+   add constraint FK_ETAT_R1_EQUIPEMENT foreign key (Equipement_Id)
+      references Equipement (Equipement_Id)
 go
 

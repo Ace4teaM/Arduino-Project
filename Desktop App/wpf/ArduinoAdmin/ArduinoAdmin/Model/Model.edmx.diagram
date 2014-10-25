@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="25bb96b483f74c4cafc415597837fe27" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="arduinoModel.Commande" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="arduinoModel.Equipement" Width="1.5" PointX="3" PointY="1.875" />
+        <EntityTypeShape EntityType="arduinoModel.Etat" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="arduinoModel.Serveur" Width="1.5" PointX="0.75" PointY="2.5" />
+        <AssociationConnector Association="arduinoModel.FK_COMMANDE_R2_EQUIPEMENT" />
+        <AssociationConnector Association="arduinoModel.FK_EQUIPEMENT_R4_SERVEUR" />
+        <AssociationConnector Association="arduinoModel.FK_ETAT_R1_EQUIPEMENT" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

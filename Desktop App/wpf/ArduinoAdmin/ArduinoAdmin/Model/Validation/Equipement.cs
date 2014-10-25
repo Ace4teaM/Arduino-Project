@@ -30,10 +30,14 @@ namespace ArduinoAdmin.Model
             {
                 string all_mess = "";
                 string msg;
-                all_mess += ((msg = this["EQUIPEMENT_ID"]) != String.Empty) ? (GetPropertyDesc("EQUIPEMENT_ID") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
-                all_mess += ((msg = this["DESCRIPTION"]) != String.Empty) ? (GetPropertyDesc("DESCRIPTION") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
-                all_mess += ((msg = this["RXPINNUM"]) != String.Empty) ? (GetPropertyDesc("RXPINNUM") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
-                all_mess += ((msg = this["TXPINNUM"]) != String.Empty) ? (GetPropertyDesc("TXPINNUM") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["Equipement_Id"]) != String.Empty) ? (GetPropertyDesc("Equipement_Id") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["Nom"]) != String.Empty) ? (GetPropertyDesc("Nom") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["Description"]) != String.Empty) ? (GetPropertyDesc("Description") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["RxPinNum"]) != String.Empty) ? (GetPropertyDesc("RxPinNum") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["TxPinNum"]) != String.Empty) ? (GetPropertyDesc("TxPinNum") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["Px"]) != String.Empty) ? (GetPropertyDesc("Px") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["Py"]) != String.Empty) ? (GetPropertyDesc("Py") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["Pz"]) != String.Empty) ? (GetPropertyDesc("Pz") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
                 return all_mess;
             }
         }
@@ -46,32 +50,48 @@ namespace ArduinoAdmin.Model
                 string msg = String.Empty;
                 switch (propertyName)
                 {
-                    case "EQUIPEMENT_ID":
-                          if(this.EQUIPEMENT_ID == null){
+                    case "Equipement_Id":
+                          if(this.Equipement_Id == null){
                               msg = "NOT_NULL_RESTRICTION";
                               break;
                             }
                            // Pas de test
                         break;
-                    case "DESCRIPTION":
-                          if(this.DESCRIPTION == null){
+                    case "Nom":
+                          if(this.Nom == null){
                               msg = "NOT_NULL_RESTRICTION";
                               break;
                             }
                            // Pas de test
                         break;
-                    case "RXPINNUM":
-                          if(this.RXPINNUM == null){
-                              msg = "NOT_NULL_RESTRICTION";
+                    case "Description":
+                          if(this.Description == null)
                               break;
-                            }
+                           ArduinoAdmin.Formats.NotEmpty.Validate(this.Description.ToString(),ref msg);
+                        break;
+                    case "RxPinNum":
+                          if(this.RxPinNum == null)
+                              break;
                            // Pas de test
                         break;
-                    case "TXPINNUM":
-                          if(this.TXPINNUM == null){
-                              msg = "NOT_NULL_RESTRICTION";
+                    case "TxPinNum":
+                          if(this.TxPinNum == null)
                               break;
-                            }
+                           // Pas de test
+                        break;
+                    case "Px":
+                          if(this.Px == null)
+                              break;
+                           // Pas de test
+                        break;
+                    case "Py":
+                          if(this.Py == null)
+                              break;
+                           // Pas de test
+                        break;
+                    case "Pz":
+                          if(this.Pz == null)
+                              break;
                            // Pas de test
                         break;
                 }
@@ -92,17 +112,29 @@ namespace ArduinoAdmin.Model
             switch (propertyName)
             {
 
-                    case "EQUIPEMENT_ID":
-                        return "";
+                    case "Equipement_Id":
+                        return "Identifiant de l'équipement";
 
-                    case "DESCRIPTION":
-                        return "";
+                    case "Nom":
+                        return "Nom";
 
-                    case "RXPINNUM":
-                        return "";
+                    case "Description":
+                        return "Description";
 
-                    case "TXPINNUM":
-                        return "";
+                    case "RxPinNum":
+                        return "Numéro PIN (RX)";
+
+                    case "TxPinNum":
+                        return "Numéro PIN (TX)";
+
+                    case "Px":
+                        return "Position X";
+
+                    case "Py":
+                        return "Position Y";
+
+                    case "Pz":
+                        return "Position Z";
             }
             return "";
         }

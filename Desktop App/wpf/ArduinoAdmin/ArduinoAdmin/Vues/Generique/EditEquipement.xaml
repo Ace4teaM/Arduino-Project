@@ -14,21 +14,37 @@
              d:DesignWidth="300">
     <Grid>
         <StackPanel Name="itemGroups" Orientation="Vertical">
-            <DockPanel Name="itemGroup_EQUIPEMENT_ID">
-               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5"></TextBlock>
-               <xctk:IntegerUpDown Name="EQUIPEMENT_ID" Text="{Binding Path=EQUIPEMENT_ID, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            <DockPanel Name="itemGroup_Equipement_Id">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Identifiant de l'équipement</TextBlock>
+               <xctk:IntegerUpDown Name="Equipement_Id" Text="{Binding Path=Equipement_Id, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
             </DockPanel>
-            <DockPanel Name="itemGroup_DESCRIPTION">
-               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5"></TextBlock>
-               <TextBox Name="DESCRIPTION" MaxLength="256" Text="{Binding Path=DESCRIPTION, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True}" />
+            <DockPanel Name="itemGroup_Nom">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Nom</TextBlock>
+               <TextBox Name="Nom" MaxLength="64" Text="{Binding Path=Nom, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" />
             </DockPanel>
-            <DockPanel Name="itemGroup_RXPINNUM">
-               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5"></TextBlock>
-               <xctk:IntegerUpDown Name="RXPINNUM" Text="{Binding Path=RXPINNUM, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            <DockPanel Name="itemGroup_Description">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Description</TextBlock>
+               <TextBox Name="Description" MaxLength="256" Text="{Binding Path=Description, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" />
             </DockPanel>
-            <DockPanel Name="itemGroup_TXPINNUM">
-               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5"></TextBlock>
-               <xctk:IntegerUpDown Name="TXPINNUM" Text="{Binding Path=TXPINNUM, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            <DockPanel Name="itemGroup_RxPinNum">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Numéro PIN (RX)</TextBlock>
+               <xctk:IntegerUpDown Name="RxPinNum" Text="{Binding Path=RxPinNum, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_TxPinNum">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Numéro PIN (TX)</TextBlock>
+               <xctk:IntegerUpDown Name="TxPinNum" Text="{Binding Path=TxPinNum, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_Px">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Position X</TextBlock>
+               <xctk:IntegerUpDown Name="Px" Text="{Binding Path=Px, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_Py">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Position Y</TextBlock>
+               <xctk:IntegerUpDown Name="Py" Text="{Binding Path=Py, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_Pz">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Position Z</TextBlock>
+               <xctk:IntegerUpDown Name="Pz" Text="{Binding Path=Pz, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
             </DockPanel>
          </StackPanel>
     </Grid>

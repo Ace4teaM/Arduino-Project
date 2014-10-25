@@ -30,9 +30,10 @@ namespace ArduinoAdmin.Model
             {
                 string all_mess = "";
                 string msg;
-                all_mess += ((msg = this["SERVEUR_ID"]) != String.Empty) ? (GetPropertyDesc("SERVEUR_ID") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
-                all_mess += ((msg = this["ADDRESS_MAC"]) != String.Empty) ? (GetPropertyDesc("ADDRESS_MAC") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
-                all_mess += ((msg = this["TOKEN"]) != String.Empty) ? (GetPropertyDesc("TOKEN") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["Serveur_Id"]) != String.Empty) ? (GetPropertyDesc("Serveur_Id") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["AdressePhysique"]) != String.Empty) ? (GetPropertyDesc("AdressePhysique") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["Jeton"]) != String.Empty) ? (GetPropertyDesc("Jeton") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
+                all_mess += ((msg = this["AdresseIP"]) != String.Empty) ? (GetPropertyDesc("AdresseIP") + " :\n\t" + App.TranslateAppErrorCode(msg) + "\n") : String.Empty;
                 return all_mess;
             }
         }
@@ -45,25 +46,30 @@ namespace ArduinoAdmin.Model
                 string msg = String.Empty;
                 switch (propertyName)
                 {
-                    case "SERVEUR_ID":
-                          if(this.SERVEUR_ID == null){
+                    case "Serveur_Id":
+                          if(this.Serveur_Id == null){
                               msg = "NOT_NULL_RESTRICTION";
                               break;
                             }
                            // Pas de test
                         break;
-                    case "ADDRESS_MAC":
-                          if(this.ADDRESS_MAC == null){
+                    case "AdressePhysique":
+                          if(this.AdressePhysique == null){
                               msg = "NOT_NULL_RESTRICTION";
                               break;
                             }
                            // Pas de test
                         break;
-                    case "TOKEN":
-                          if(this.TOKEN == null){
+                    case "Jeton":
+                          if(this.Jeton == null){
                               msg = "NOT_NULL_RESTRICTION";
                               break;
                             }
+                           // Pas de test
+                        break;
+                    case "AdresseIP":
+                          if(this.AdresseIP == null)
+                              break;
                            // Pas de test
                         break;
                 }
@@ -84,14 +90,17 @@ namespace ArduinoAdmin.Model
             switch (propertyName)
             {
 
-                    case "SERVEUR_ID":
-                        return "";
+                    case "Serveur_Id":
+                        return "Identifiant du serveur";
 
-                    case "ADDRESS_MAC":
-                        return "";
+                    case "AdressePhysique":
+                        return "Adresse Physique";
 
-                    case "TOKEN":
-                        return "";
+                    case "Jeton":
+                        return "Jeton";
+
+                    case "AdresseIP":
+                        return "Adresse IP";
             }
             return "";
         }

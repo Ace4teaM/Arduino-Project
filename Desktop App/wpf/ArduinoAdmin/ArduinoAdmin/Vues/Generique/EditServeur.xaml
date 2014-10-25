@@ -14,16 +14,21 @@
              d:DesignWidth="300">
     <Grid>
         <StackPanel Name="itemGroups" Orientation="Vertical">
-            <DockPanel Name="itemGroup_SERVEUR_ID">
-               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5"></TextBlock>
-               <xctk:IntegerUpDown Name="SERVEUR_ID" Text="{Binding Path=SERVEUR_ID, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            <DockPanel Name="itemGroup_Serveur_Id">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Identifiant du serveur</TextBlock>
+               <xctk:IntegerUpDown Name="Serveur_Id" Text="{Binding Path=Serveur_Id, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
             </DockPanel>
-            <DockPanel Name="itemGroup_ADDRESS_MAC">
-               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5"></TextBlock>
+            <DockPanel Name="itemGroup_AdressePhysique">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Adresse Physique</TextBlock>
+               <TextBox Name="AdressePhysique" MaxLength="17" Text="{Binding Path=AdressePhysique, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" />
             </DockPanel>
-            <DockPanel Name="itemGroup_TOKEN">
-               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5"></TextBlock>
-               <TextBox Name="TOKEN" MaxLength="8" Text="{Binding Path=TOKEN, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True}" />
+            <DockPanel Name="itemGroup_Jeton">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Jeton</TextBlock>
+               <TextBox Name="Jeton" MaxLength="17" Text="{Binding Path=Jeton, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_AdresseIP">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Adresse IP</TextBlock>
+               <TextBox Name="AdresseIP" MaxLength="15" Text="{Binding Path=AdresseIP, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" />
             </DockPanel>
          </StackPanel>
     </Grid>
