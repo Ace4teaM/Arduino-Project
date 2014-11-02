@@ -13,3 +13,4 @@ int Configuration::LireParam(MessageTexte* message, char* ofs){
     
     return 1;
 }
+

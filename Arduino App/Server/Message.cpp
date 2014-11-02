@@ -26,8 +26,15 @@ int MessageTexte::Verifier(){
 	return 1;
 }
 
+char* MessageTexte::LireCrc(char* ofs, int length, unsigned int* crc){
+	if (ofs < buf || ofs + length > endOfBuf)
+		return 0;
+  *crc = crc32(0,ofs,length);
+  return ofs + length;
+}
+
 // lit le type de message
-char* MessageTexte::LireType(char* ofs, int* type){
+char* MessageTexte::LireType(char* ofs, unsigned int* type){
 	if (ofs < buf || ofs + 3 > endOfBuf)
 		return 0;
 
@@ -45,23 +52,18 @@ char* MessageTexte::LireType(char* ofs, int* type){
 }
 
 // ecrit le type de message
-char* MessageTexte::EcrireType(char* ofs, int type){
+char* MessageTexte::EcrireType(char* ofs, unsigned int type){
 	if (ofs < buf || ofs + 3 > endOfBuf)
 		return 0;
 
-        switch(type){
-          case MessageTypeCommande:
+        if(type == MessageTypeCommande)
              strcpy(ofs,"CMD");
-             break;
-          case MessageTypeRetourCommande:
-             strcpy(ofs,"CRT");
-             break;
-          case MessageTypeConfiguration:
+        else if(type == MessageTypeEtat)
+             strcpy(ofs,"ETA");
+        else if(type == MessageTypeConfiguration)
              strcpy(ofs,"CFG");
-             break;
-          default:
+        else
              return 0;
-        }
         
         return ofs+3;
 }
@@ -81,9 +83,11 @@ char* MessageTexte::EcrireSignature(char* ofs){
 char* MessageTexte::LireSignature(char* ofs){
 	if (ofs < buf || ofs > endOfBuf)
 		return 0;
+
 	//lit la signature
 	if (ofs[0] == 'M' && ofs[1] == 'S' && ofs[2] == 'G')
 		return ofs + 3;
+
 	return 0;
 }
 
@@ -124,6 +128,49 @@ char* MessageTexte::EcrireParam(char* ofs, const char* nom, int valeur){
 		return 0;
 
         ofs += sprintf(ofs,"%s%c%d%c",nom,this->endOfParamName,valeur,this->endOfParamValue);
+
+	return ofs;
+}
+
+// lit un texte
+char* MessageTexte::LireTexte(char* ofs, char separator, char* texte)
+{
+        char* max_texte = texte + MESSAGE_MAX_STRING;
+
+	if (ofs < buf || ofs > endOfBuf)
+		return 0;
+
+	//lit le nom
+	while (ofs < endOfBuf && *ofs != separator){
+                if(texte >= max_texte)
+                  return 0;
+		*(texte++) = *(ofs++);
+	}
+	*texte = '\0';
+	*ofs++;
+
+	return ofs;
+}
+
+// lit le crc d'un texte
+char* MessageTexte::LireStrCrc(char* ofs, char separator, unsigned int* crc){
+        char nom[MESSAGE_MAX_STRING];
+        char* pnom = nom;
+        char* maxnom = nom + (sizeof(nom)-1);
+
+	if (ofs < buf || ofs > endOfBuf)
+		return 0;
+
+	//lit le nom
+	while (ofs < endOfBuf && *ofs != separator){
+                if(pnom >= maxnom)
+                  return 0;
+		*(pnom++) = *(ofs++);
+	}
+	*pnom = '\0';
+	*ofs++;
+
+        *crc = crc32(0,nom,strlen(nom));
 
 	return ofs;
 }

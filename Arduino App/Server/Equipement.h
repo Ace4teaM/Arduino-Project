@@ -2,14 +2,31 @@
 #define equipement_h
 #include <Arduino.h>
 #include <inttypes.h>
-#include "Commande.h"
+#include "Objet.h"
+
+#define EQUIPEMENT_MAX_OBJET 10
 
 class Equipement{
 public:
-        Equipement();
-        virtual int ExecuterCommande(Commande* cmd);
-	virtual int LireMessageTexte();
-	virtual void EcrireMessageTexte();
+        unsigned int id;//crc
+public:
+        Equipement(const char* id);
+        // Obtient un objet par son identifiant
+        Objet* GetObjet(unsigned int objetId);
+        // Obtient la liste des objets
+        virtual int Objets(Objet** list) = 0;
+        // Lit un message sur le port serie
+	virtual int LireMessageSerie() = 0;
+        // Ecrit un message sur le port serie
+	virtual void EcrireMessageSerie() = 0;
+        // Lit un message
+	virtual int LireMessage(MessageTexte* message);
+        // Execute une commande
+	virtual void ExecuterCommande() = 0;
+        // Execute une commande
+	virtual void ExecuterConfiguration() = 0;
+        // Evenement periodique
+        virtual void Periode() = 0;
 };
 
 #endif
