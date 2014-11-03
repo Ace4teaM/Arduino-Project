@@ -2,36 +2,34 @@
   
 // Execute la commande
 LedStripPinChangeEvent::LedStripPinChangeEvent(){
-    this->self=0;
+    this->obj=0;
 }
 
 LedStripPinChangeEvent::LedStripPinChangeEvent(LedStripObjet*  ptr){
-    this->self=ptr;
+    this->obj=ptr;
 }
 
 // Execute la commande
 int LedStripPinChangeEvent::Executer(){
-    if(self==0)
+    if(obj==0)
       return 0;
-    Serial.println("LedStripPinChangeEvent::Executer");
       
     //réinitialise les membres
-    self->ledValeur = LOW;
-    self->curLed = 0;
-    self->incLed = 1;
+    obj->ledValeur = LOW;
+    obj->curLed = 0;
+    obj->incLed = 1;
     
     // définit le mode des pins utilisés
-    if(self->FirstPin.valeur && self->PinCount.valeur)
-      for(int i=0; i<self->PinCount.valeur; i++)
-        pinMode(self->FirstPin.valeur+i, OUTPUT);
-     
+    if(obj->FirstPin.valeur && obj->PinCount.valeur)
+      for(int i=0; i<obj->PinCount.valeur; i++)
+        pinMode(obj->FirstPin.valeur+i, OUTPUT);
+   
     return 1;
 }
 
 
 // Lit la valeur du paramètre
 int AnimationModeParam::LireValeur(const char* val){
-      Serial.println("AnimationModeParam::LireValeur");
     byte old_valeur = this->valeur;  
     
     if(!ByteParam::LireValeur(val))
@@ -52,29 +50,29 @@ LedStripObjet::LedStripObjet() : Objet(){
   this->ledValeur = LOW;
   this->curLed = 0;
   this->incLed = 1;
-  this->changeEvent = LedStripPinChangeEvent(this);
+  this->changeEvent = new LedStripPinChangeEvent(this);
 }
 
 LedStripObjet::LedStripObjet(const char* id) : Objet(id){
   this->ledValeur = LOW;
   this->curLed = 0;
   this->incLed = 1;
-  this->changeEvent = LedStripPinChangeEvent(this);
+  this->changeEvent = new LedStripPinChangeEvent(this);
 }
 
 LedStripObjet::LedStripObjet(const char* id, byte firstPin, byte pinCount, byte mode) : Objet(id){
   this->ledValeur = LOW;
   this->curLed = 0;
   this->incLed = 1;
-  this->changeEvent = LedStripPinChangeEvent(this);
+  this->changeEvent = new LedStripPinChangeEvent(this);
   
   this->FirstPin       = ByteParam("FirstPin",firstPin);
-  this->FirstPin.changeValeurEvent = &this->changeEvent;
+  this->FirstPin.changeValeurEvent = this->changeEvent;
   this->PinCount       = ByteParam("PinCount",pinCount);
-  this->PinCount.changeValeurEvent = &this->changeEvent;
+  this->PinCount.changeValeurEvent = this->changeEvent;
   this->AnimationMode  = AnimationModeParam("AnimationMode",mode);
   
-  this->changeEvent.Executer();
+  this->changeEvent->Executer();
 }
 
 int LedStripObjet::Etats(Parametre** list){

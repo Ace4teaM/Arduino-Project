@@ -16,7 +16,6 @@ int Parametre::LireValeur(const char* val){
 
 // Definit la valeur du paramètre
 int Parametre::DefinirValeur(const char* val){
-      Serial.print("DefinirValeur");
     int r = this->LireValeur(val);
 
     if(!r){
@@ -24,8 +23,10 @@ int Parametre::DefinirValeur(const char* val){
       Serial.println(val);
       return 0;
     }
-    //if(this->changeValeurEvent != 0)//<<bug
-    //  this->changeValeurEvent->Executer();
+    
+    if(this->changeValeurEvent != 0)
+       this->changeValeurEvent->Executer();
+       
     return r;
 }
 
