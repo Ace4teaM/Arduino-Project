@@ -21,10 +21,6 @@ public:
 	virtual void EcrireMessageSerie(MessageTexte* msg) = 0;
 	// Execute un message
 	virtual int ExecuterMessage(MessageTexte* message);
-	// Execute une commande
-	virtual void ExecuterCommande() = 0;
-	// Execute une commande
-	virtual void ExecuterConfiguration() = 0;
 	// Evenement periodique
 	virtual void Periode() = 0;
 };

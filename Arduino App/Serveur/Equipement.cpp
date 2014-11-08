@@ -6,11 +6,9 @@ Equipement::Equipement(const char* id){
 }
 
 // Execute un message
+// "[Type][EquipId];[ObjetId];..."
 int Equipement::ExecuterMessage(MessageTexte* message){
-	Commande *cmd = 0;
-	Parametre *cfg = 0;
 	unsigned int id = 0;
-	char valeur[MESSAGE_MAX_STRING];
 	char* ofs = message->GetBuffer();
 
 	if (0 == (ofs = message->LireSignature(ofs))){
@@ -49,38 +47,13 @@ int Equipement::ExecuterMessage(MessageTexte* message){
 	}
 
 	if (type == MessageTypeCommande){
-		Serial.println("Read command");
-		if (0 == (ofs = message->LireStrCrc(ofs, ';', &id))){
-			Serial.println("Command not specified");
-			return 0;
-		}
-		// obtient puis execute la commande
-		cmd = objet->GetCommande(id);
-		if (cmd != 0 && cmd->Executable(objet))
-			return cmd->Executer(objet);
-
-		Serial.println("Command not found");
-		return 0;
+		return objet->ExecuterCommande(message, ofs);
 	}
 	else if (type == MessageTypeConfiguration){
-		Serial.println("Read config");
-		if (0 == (ofs = message->LireStrCrc(ofs, '=', &id))){
-			Serial.println("Config not specified");
-			return 0;
-		}
-
-		// obtient puis execute la commande
-		cfg = objet->GetConfiguration(id);
-		if (cfg != 0 && 0 != (ofs = message->LireTexte(ofs, ';', valeur))){
-			return cfg->DefinirValeur(valeur);
-		}
-
-		Serial.println("Value not specified");
-		return 0;
+		return objet->ExecuterConfiguration(message, ofs);
 	}
 	else if (type == MessageTypeEtat){
-		Serial.println("Read state");
-		return 0;
+		return objet->ExecuterEtat(message, ofs);
 	}
 	else{
 		Serial.println("Unknown message type");
@@ -92,6 +65,7 @@ int Equipement::ExecuterMessage(MessageTexte* message){
 
 }
 
+// Obtient un objet
 Objet* Equipement::GetObjet(unsigned int objetId){
 	Objet* list[EQUIPEMENT_MAX_OBJET];
 	int maxObjet = Objets(list);

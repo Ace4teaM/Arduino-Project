@@ -27,10 +27,6 @@ public:
 	virtual int LireMessageSerie(MessageTexte* msg);
 	// Ecrit un message sur le port serie
 	virtual void EcrireMessageSerie(MessageTexte* msg);
-	// Execute une commande
-	virtual void ExecuterCommande();
-	// Execute une commande
-	virtual void ExecuterConfiguration();
 	// Connexion au réseau
 	virtual int ConnexionReseau() = 0;
 };

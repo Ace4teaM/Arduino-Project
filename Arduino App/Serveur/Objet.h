@@ -25,6 +25,12 @@ public:
 	Commande* GetCommande(unsigned int Id);
 	// Obtient un parametre de configuration par son identifiant
 	Parametre* GetConfiguration(unsigned int Id);
+	// Execute une commande
+	virtual int ExecuterCommande(MessageTexte* message, char* ofs);
+	// Execute une commande
+	virtual int ExecuterConfiguration(MessageTexte* message, char* ofs);
+	// Execute un état
+	virtual int ExecuterEtat(MessageTexte* message, char* ofs);
 };
 
 #endif

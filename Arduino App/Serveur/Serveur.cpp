@@ -31,11 +31,3 @@ int Serveur::LireMessageSerie(MessageTexte* msg){
 // Ecrit un message sur le port serie
 void Serveur::EcrireMessageSerie(MessageTexte* msg){
 }
-
-// Execute une commande
-void Serveur::ExecuterCommande(){
-}
-
-// Execute une commande
-void Serveur::ExecuterConfiguration(){
-}
