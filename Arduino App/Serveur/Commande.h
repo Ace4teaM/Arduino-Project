@@ -12,10 +12,10 @@ class Commande{
 public:
 	unsigned int id;
 public:
-        // Constructeur
-        Commande(const char* CodeCmd);
-        virtual int Executer(Objet* objet)=0;
-        virtual int Executable(Objet* objet)=0;
+	// Constructeur
+	Commande(const char* CodeCmd);
+	virtual int Executer(Objet* objet) = 0;
+	virtual int Executable(Objet* objet) = 0;
 };
 
 

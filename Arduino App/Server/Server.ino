@@ -1,4 +1,3 @@
-
 /*
 ---------------------------------------------------------------------------------------------------------------------------------------
 (C)2013 Thomas AUGUEY <contact@aceteam.org>
@@ -20,7 +19,7 @@ along with WebFrameWork.  If not, see <http://www.gnu.org/licenses/>.
 ---------------------------------------------------------------------------------------------------------------------------------------
 */
 
-#define WIFI
+#define ETHERNET
 
 /*
 
@@ -29,12 +28,11 @@ Exemple de commande transmisible par paquet UDP (active la pin 9):  "cmd=on;pin=
 
 */
 
-#include <SPI.h>
-#include <WiFi.h>
-#include <WiFiClient.h>
-#include <WiFiServer.h>
-#include <WiFiUdp.h>
-
+#include <Arduino.h>
+#include <inttypes.h>
+// Librairie 'Serveur'
+#include "Serveur.h"
+#ifdef ETHERNET
 #include <Dhcp.h>
 #include <Dns.h>
 #include <Ethernet.h>
@@ -42,27 +40,39 @@ Exemple de commande transmisible par paquet UDP (active la pin 9):  "cmd=on;pin=
 #include <EthernetServer.h>
 #include <EthernetUdp.h>
 #include <util.h>
-
+#include "EthernetServeur.h"
+#elif defined WIFI
 #include <SPI.h>
-#include "Serveur.h"
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <WiFiServer.h>
+#include <WiFiUdp.h>
+#include "WifiServeur.h"
+#endif
 #include "SwitchObjet.h"
 #include "BuiltObjet.h"
+
+// Librairie additionnelles
 #include "LedStripObjet.h"
 
-const byte mac[] = { 0x90, 0xA2, 0xDA, 0x0D, 0xB8, 0xE1 };
+#ifdef ETHERNET
+const byte _mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+#elif defined WIFI
+const byte _mac[] = { 0x90, 0xA2, 0xDA, 0x0D, 0xB8, 0xE1 };
+#endif
+const byte _ip[] = { 192, 168, 1, 33 };
 const char * serverId = "LedStrip";
 const char * wifi_ssid = "AceTeaM";
 const char * wifi_pwd = "emyleplusbeaudesbebes";
-const IPAddress static_ip = (192,168,1,50);
 
 #ifdef ETHERNET
 class ServerApp : public EthernetServeur{
   public:
-	ServerApp() : EthernetServeur(serverId, mac, &static_ip){}
+	ServerApp() : EthernetServeur(serverId){}
 #elif defined WIFI
 class ServerApp : public WifiServeur{
   public:
-	ServerApp() : WifiServeur(serverId, mac, &static_ip){}
+	ServerApp() : WifiServeur(serverId){}
 #endif
 public:
         // objets
@@ -85,9 +95,9 @@ public:
 	    this->InitialiseSerial();
             this->InitialiseObjets();
 #ifdef ETHERNET
-            this->InitialiseConnexion(true);
+            this->InitialiseConnexion(_mac, _ip, false);
 #elif defined WIFI
-            this->InitialiseConnexion(wifi_ssid, wifi_pwd);
+            this->InitialiseConnexion(_mac, _ip, wifi_ssid, wifi_pwd);
 #endif
 	    this->ConnexionReseau();
 	}
@@ -100,7 +110,7 @@ public:
             //execute les messages reseau
             MessageTexte message;
             if(this->LireMessageReseau(&message))
-              this->LireMessage(&message);
+              this->ExecuterMessage(&message);
         }
 
         // Obtient la liste des objets
@@ -144,19 +154,6 @@ public:
         // Obtient la liste des equipements
         int Equipements(Equipement** list){
           return 0;
-        }
-        // Lit un message sur le port serie
-	int LireMessageSerie(){
-          return 0;
-        }
-        // Ecrit un message sur le port serie
-	void EcrireMessageSerie(){
-        }
-        // Execute une commande
-	void ExecuterCommande(){
-        }
-        // Execute une commande
-	void ExecuterConfiguration(){
         }
 };
 

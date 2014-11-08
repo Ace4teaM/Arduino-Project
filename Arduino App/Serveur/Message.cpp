@@ -5,32 +5,32 @@ const char MessageTexte::endOfParamValue = ';';
 
 //constructeur
 MessageTexte::MessageTexte(){
-  this->buf = NULL;
-  this->endOfBuf = NULL;
+	this->buf = NULL;
+	this->endOfBuf = NULL;
 }
 
 MessageTexte::MessageTexte(char * buf, int sizeOfBuf){
-  this->buf = buf;
-  this->endOfBuf = buf + sizeOfBuf;
+	this->buf = buf;
+	this->endOfBuf = buf + sizeOfBuf;
 }
 
 // obtient l'offset de base
 char* MessageTexte::GetBuffer(){
-  return this->buf;
+	return this->buf;
 }
 
 // vérifie la structure du message
 int MessageTexte::Verifier(){
-        if(this->LireSignature(this->buf) == 0)
-          return 0;
+	if (this->LireSignature(this->buf) == 0)
+		return 0;
 	return 1;
 }
 
 char* MessageTexte::LireCrc(char* ofs, int length, unsigned int* crc){
 	if (ofs < buf || ofs + length > endOfBuf)
 		return 0;
-  *crc = crc32(0,ofs,length);
-  return ofs + length;
+	*crc = crc32(0, ofs, length);
+	return ofs + length;
 }
 
 // lit le type de message
@@ -39,16 +39,16 @@ char* MessageTexte::LireType(char* ofs, unsigned int* type){
 		return 0;
 
 	if (ofs[0] == 'C' && ofs[1] == 'M' && ofs[2] == 'D'){
-                *type = MessageTypeCommande;
+		*type = MessageTypeCommande;
 		return ofs + 3;
-        }
-        
+	}
+
 	if (ofs[0] == 'C' && ofs[1] == 'F' && ofs[2] == 'G'){
-                *type = MessageTypeConfiguration;
+		*type = MessageTypeConfiguration;
 		return ofs + 3;
-        }
-        
-        return 0;
+	}
+
+	return 0;
 }
 
 // ecrit le type de message
@@ -56,16 +56,16 @@ char* MessageTexte::EcrireType(char* ofs, unsigned int type){
 	if (ofs < buf || ofs + 3 > endOfBuf)
 		return 0;
 
-        if(type == MessageTypeCommande)
-             strcpy(ofs,"CMD");
-        else if(type == MessageTypeEtat)
-             strcpy(ofs,"ETA");
-        else if(type == MessageTypeConfiguration)
-             strcpy(ofs,"CFG");
-        else
-             return 0;
-        
-        return ofs+3;
+	if (type == MessageTypeCommande)
+		strcpy(ofs, "CMD");
+	else if (type == MessageTypeEtat)
+		strcpy(ofs, "ETA");
+	else if (type == MessageTypeConfiguration)
+		strcpy(ofs, "CFG");
+	else
+		return 0;
+
+	return ofs + 3;
 }
 
 // ecrit la signature
@@ -127,7 +127,7 @@ char* MessageTexte::EcrireParam(char* ofs, const char* nom, int valeur){
 	if (nomSize < 1 || valeurSize < 1 || ofs + (nomSize + valeurSize + 2) >= endOfBuf)
 		return 0;
 
-        ofs += sprintf(ofs,"%s%c%d%c",nom,this->endOfParamName,valeur,this->endOfParamValue);
+	ofs += sprintf(ofs, "%s%c%d%c", nom, this->endOfParamName, valeur, this->endOfParamValue);
 
 	return ofs;
 }
@@ -135,15 +135,15 @@ char* MessageTexte::EcrireParam(char* ofs, const char* nom, int valeur){
 // lit un texte
 char* MessageTexte::LireTexte(char* ofs, char separator, char* texte)
 {
-        char* max_texte = texte + MESSAGE_MAX_STRING;
+	char* max_texte = texte + MESSAGE_MAX_STRING;
 
 	if (ofs < buf || ofs > endOfBuf)
 		return 0;
 
 	//lit le nom
 	while (ofs < endOfBuf && *ofs != separator){
-                if(texte >= max_texte)
-                  return 0;
+		if (texte >= max_texte)
+			return 0;
 		*(texte++) = *(ofs++);
 	}
 	*texte = '\0';
@@ -154,23 +154,23 @@ char* MessageTexte::LireTexte(char* ofs, char separator, char* texte)
 
 // lit le crc d'un texte
 char* MessageTexte::LireStrCrc(char* ofs, char separator, unsigned int* crc){
-        char nom[MESSAGE_MAX_STRING];
-        char* pnom = nom;
-        char* maxnom = nom + (sizeof(nom)-1);
+	char nom[MESSAGE_MAX_STRING];
+	char* pnom = nom;
+	char* maxnom = nom + (sizeof(nom)-1);
 
 	if (ofs < buf || ofs > endOfBuf)
 		return 0;
 
 	//lit le nom
 	while (ofs < endOfBuf && *ofs != separator){
-                if(pnom >= maxnom)
-                  return 0;
+		if (pnom >= maxnom)
+			return 0;
 		*(pnom++) = *(ofs++);
 	}
 	*pnom = '\0';
 	*ofs++;
 
-        *crc = crc32(0,nom,strlen(nom));
+	*crc = crc32(0, nom, strlen(nom));
 
 	return ofs;
 }

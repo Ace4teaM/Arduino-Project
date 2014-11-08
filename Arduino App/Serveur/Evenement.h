@@ -3,9 +3,8 @@
 #include <inttypes.h>
 
 class Evenement{
-  public:
-     virtual int Executer()=0;
+public:
+	virtual int Executer() = 0;
 };
-
 
 #endif
