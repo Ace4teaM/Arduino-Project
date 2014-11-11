@@ -3,20 +3,18 @@
 #include <Arduino.h>
 #include <inttypes.h>
 #include "Equipement.h"
-#include "SwitchObjet.h"
 #include "LedStripObjet.h"
 
 class LedStripEquipement : public Equipement{
-  public:
+public:
 	LedStripEquipement() : Equipement("LedStrip"){}
-  public:
-        // objets
-        SwitchObjet led[4];
-        LedStripObjet strip;
-        
-        // liste des objets
-        Objet* pObjets[EQUIPEMENT_MAX_OBJET];
-        int nObjets;
+public:
+	// objets
+	LedStripObjet strip;
+
+	// liste des objets
+	Objet* pObjets[EQUIPEMENT_MAX_OBJET];
+	int nObjets;
 
 	/*
 	------------------------------------------
@@ -27,26 +25,14 @@ class LedStripEquipement : public Equipement{
 	// Initialise
 	void Initialise();
 
-        // Execute 
+	// Execute 
 	void Periode();
 
-        // Obtient la liste des objets
-        int Objets(Objet** list);
-        
-        // Initialise la liste des objets
+	// Obtient la liste des objets
+	int Objets(Objet** list);
+
+	// Initialise la liste des objets
 	void InitialiseObjets();
-
-        // Lit un message sur le port serie
-	int LireMessageSerie(MessageTexte* msg);
-
-        // Ecrit un message sur le port serie
-	void EcrireMessageSerie(MessageTexte* msg);
-
-        // Execute une commande
-	void ExecuterCommande();
-
-        // Execute une commande
-	void ExecuterConfiguration();
 };
 
 #endif

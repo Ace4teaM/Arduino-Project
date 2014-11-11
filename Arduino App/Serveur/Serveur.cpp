@@ -22,7 +22,7 @@ Equipement* Serveur::GetEquipement(unsigned int equipId){
 	}
 	return 0;
 }
-
+/*
 // Lit un message sur le port serie
 // Note: Terminer la chaine par le caractère de fin '$' pour optimiser la detection de fin de chaine
 int Serveur::LireMessageSerie(MessageTexte* msg){
@@ -54,3 +54,4 @@ int Serveur::LireMessageSerie(MessageTexte* msg){
 void Serveur::EcrireMessageSerie(MessageTexte* msg){
 	Serial.print(msg->GetBuffer());
 }
+*/

@@ -21,7 +21,6 @@ along with WebFrameWork.  If not, see <http://www.gnu.org/licenses/>.
 
 // Librairie 'Serveur'
 #include "Serveur.h"
-#include "SwitchObjet.h"
 // Librairie Additionnelles
 #include "LedStripEquipement.h"
 

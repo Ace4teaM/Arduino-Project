@@ -32,6 +32,7 @@ Exemple de commande transmisible par paquet UDP (active la pin 9):  "cmd=on;pin=
 #include <inttypes.h>
 // Librairie 'Serveur'
 #include "Serveur.h"
+#include <SoftwareSerial.h>
 #ifdef ETHERNET
 #include <Dhcp.h>
 #include <Dns.h>
@@ -92,7 +93,7 @@ public:
 
 	// initialise le programme
 	void Initialise(){
-	    this->InitialiseSerial();
+	    this->InitialiseSerie();
             this->InitialiseObjets();
 #ifdef ETHERNET
             this->InitialiseConnexion(_mac, _ip, false);
@@ -150,13 +151,6 @@ public:
             this->nObjets = Objets(this->pObjets);
 	}
 
-	void InitialiseSerial(){
-		// Open serial communications and wait for port to open:
-		Serial.begin(9600);
-		while (!Serial) {
-			; // wait for serial port to connect. Needed for Leonardo only
-		}
-	}
         // Obtient la liste des equipements
         int Equipements(Equipement** list){
           return 0;
