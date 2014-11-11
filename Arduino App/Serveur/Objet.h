@@ -26,11 +26,11 @@ public:
 	// Obtient un parametre de configuration par son identifiant
 	Parametre* GetConfiguration(unsigned int Id);
 	// Execute une commande
-	virtual int ExecuterCommande(MessageTexte* message, char* ofs);
+	virtual int ExecuterCommande(MessageTexte* message, char* ofs /*, MessageTexte* responseMessage, char* responseOfs*/);
 	// Execute une commande
-	virtual int ExecuterConfiguration(MessageTexte* message, char* ofs);
+	virtual int ExecuterConfiguration(MessageTexte* message, char* ofs /*, MessageTexte* responseMessage, char* responseOfs*/);
 	// Execute un état
-	virtual int ExecuterEtat(MessageTexte* message, char* ofs);
+	virtual int ExecuterEtat(MessageTexte* message, char* ofs /*, MessageTexte* responseMessage, char* responseOfs*/);
 };
 
 #endif

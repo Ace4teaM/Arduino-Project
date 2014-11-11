@@ -104,12 +104,18 @@ public:
 
         // Execute 
 	void Periode(){
+            MessageTexte message;
+            
             //actualise les objets
             for(int i=0; i<nObjets; i++)
               this->pObjets[i]->Periode();
+            
             //execute les messages reseau
-            MessageTexte message;
             if(this->LireMessageReseau(&message))
+              this->ExecuterMessage(&message);
+              
+            //execute les messages series
+            if(this->LireMessageSerie(&message))
               this->ExecuterMessage(&message);
         }
 

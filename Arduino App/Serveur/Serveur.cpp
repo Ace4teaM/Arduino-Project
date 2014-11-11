@@ -24,10 +24,33 @@ Equipement* Serveur::GetEquipement(unsigned int equipId){
 }
 
 // Lit un message sur le port serie
+// Note: Terminer la chaine par le caractère de fin '$' pour optimiser la detection de fin de chaine
 int Serveur::LireMessageSerie(MessageTexte* msg){
+	int packetSize=0;
+
+	// Lit les données du port série
+	if (Serial.available()){
+		packetSize = Serial.readBytesUntil(SERIAL_AND_OF_STRING_CHAR, this->serialBuffer, SERIAL_BUFFER_MAX_SIZE-1);
+	}
+	
+	// initialise le message
+	if (packetSize){
+		Serial.print("Received packet of size ");
+		Serial.print(packetSize, DEC);
+		Serial.println(" from serial");
+		serialBuffer[packetSize] = 0;
+		Serial.println(serialBuffer);
+
+		// initialise le message actuel
+		*msg = MessageTexte(this->serialBuffer, packetSize);
+
+		return 1;
+	}
+
 	return 0;
 }
 
 // Ecrit un message sur le port serie
 void Serveur::EcrireMessageSerie(MessageTexte* msg){
+	Serial.print(msg->GetBuffer());
 }

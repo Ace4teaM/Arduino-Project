@@ -33,7 +33,7 @@ Parametre* Objet::GetConfiguration(unsigned int Id){
 
 // Execute une commande
 // "[CmdId];"
-int Objet::ExecuterCommande(MessageTexte* message, char* ofs){
+int Objet::ExecuterCommande(MessageTexte* message, char* ofs /*, MessageTexte* responseMessage, char* responseOfs*/){
 	Commande *cmd = 0;
 	unsigned int id = 0;
 
@@ -53,7 +53,7 @@ int Objet::ExecuterCommande(MessageTexte* message, char* ofs){
 
 // Execute une configuration
 // "[ConfigId]=[Valeur];"
-int Objet::ExecuterConfiguration(MessageTexte* message, char* ofs)
+int Objet::ExecuterConfiguration(MessageTexte* message, char* ofs /*, MessageTexte* responseMessage, char* responseOfs*/)
 {
 	Parametre *cfg = 0;
 	unsigned int id = 0;
@@ -76,7 +76,7 @@ int Objet::ExecuterConfiguration(MessageTexte* message, char* ofs)
 }
 
 // Execute une configuration
-int Objet::ExecuterEtat(MessageTexte* message, char* ofs)
+int Objet::ExecuterEtat(MessageTexte* message, char* ofs /*, MessageTexte* responseMessage, char* responseOfs*/)
 {
 	Serial.println("Not suported");
 	return 0;

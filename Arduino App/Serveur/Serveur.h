@@ -6,6 +6,8 @@
 #include "Equipement.h"
 
 #define SERVEUR_MAX_EQUIPEMENT 4
+#define SERIAL_BUFFER_MAX_SIZE 128
+#define SERIAL_AND_OF_STRING_CHAR '$'
 
 class Serveur : public Equipement{
 protected:
@@ -13,6 +15,8 @@ protected:
 	byte mac[6];
 	//Adresse Statique de l'arduino (optionnelle)
 	byte ip[4];
+	// Tampon du port serie
+	char serialBuffer[SERIAL_BUFFER_MAX_SIZE];
 public:
 	Serveur(const char* id);
 	// Obtient un equipement par son identifiant
