@@ -2,7 +2,7 @@
 #define ledstripobjet_h
 #include <Arduino.h>
 #include <inttypes.h>
-#include "Objet.h"
+#include <Objet.h>
 
 #define LEDSTRIP_MODE_LINEAR 0
 #define LEDSTRIP_MODE_DECALE 1
@@ -29,6 +29,7 @@ public:
 	LedStripObjet();
 	LedStripObjet(const char* id);
 	LedStripObjet(const char* id, byte firstPin, byte pinCount, byte mode);
+	inline virtual unsigned int GetType(){ return crc32("LedStripObjet"); }
 	virtual int Etats(Parametre** list);
 	virtual int Commandes(Commande** list);
 	virtual int Configurations(Parametre** list);
