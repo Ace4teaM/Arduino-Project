@@ -21,7 +21,7 @@ namespace ArduinoAdmin.Model
     /// <summary>
     /// Implémente la validation des propriétés
     /// </summary>
-    public partial class Equipement : IDataErrorInfo
+    public class Equipement : IDataErrorInfo
     {
         // Validation globale de l'entité
         public string Error

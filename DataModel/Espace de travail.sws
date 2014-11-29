@@ -4,8 +4,8 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{0E37549A-2D8F-41EF-968F-36A35CF35A32}" Loaded="No" Name="CSharp" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="CSharp.oom"/>
-		<Model Expanded="Yes" ID="{52988833-A22C-4F1A-A18F-30D18520B53B}" Name="Model" Selected="Yes" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="Model.cdm"/>
+		<Model Expanded="Yes" ID="{0E37549A-2D8F-41EF-968F-36A35CF35A32}" Name="CSharp" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="CSharp.oom"/>
+		<Model Expanded="Yes" ID="{52988833-A22C-4F1A-A18F-30D18520B53B}" Name="Model" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="Model.cdm"/>
 		<Model Expanded="Yes" ID="{EA2E443E-3D3B-43BA-BCC7-694EECCF64F8}" Loaded="No" Name="SqlServer2012" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="SqlServer2012.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
