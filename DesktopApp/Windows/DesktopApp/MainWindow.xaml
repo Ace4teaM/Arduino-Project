@@ -1,0 +1,28 @@
+﻿<Window x:Class="DesktopApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:DesktopApp.View"
+        Title="Arduino Project" Height="515.134" Width="798.145">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" IsMainMenu="True">
+            <MenuItem Header="_Fichier">
+                <MenuItem Header="Ouvrir..."></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Quitter"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Edition">
+                <MenuItem Header="Couper"></MenuItem>
+                <MenuItem Header="Copier"></MenuItem>
+                <MenuItem Header="Coller"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Border DockPanel.Dock="Left" BorderThickness="3" Padding="3">
+            <v:ProjectTreeView Width="200" SelectedItemChanged="ProjectTreeView_SelectedItemChanged"></v:ProjectTreeView>
+        </Border>
+        <Border BorderThickness="3" Padding="3">
+            <TabControl>
+                <!-- vues des éléments ouverts -->
+            </TabControl>
+        </Border>
+    </DockPanel>
+</Window>
