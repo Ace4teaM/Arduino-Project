@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\developpement\Documents\GitHub\Arduino-Project\DesktopApp\Windows\DesktopApp\App.xaml
-3-104397333
+774778370
 
-26-290984310
-1152876042
-MainWindow.xaml;View\EditView.xaml;View\ProjectTreeView.xaml;
+35-752114424
+17-1731451813
+AppData\View\Edit_ArduinoServer.xaml;AppData\View\Edit_DisplayContent.xaml;AppData\View\Edit_DisplayElement.xaml;AppData\View\Edit_Project.xaml;MainWindow.xaml;View\EditView.xaml;View\ProjectTreeView.xaml;
 
 True
 

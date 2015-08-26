@@ -10,10 +10,10 @@ namespace Lib
     public interface IEntityFactory
     {
         string Name { get; }
-        IEntity GetReference(IEntity e);
-        IEnumerable Factory<T>() where T : IEntity, new();
-        void Commit(IEntity[] entities);
-        List<IEntity> GetReferences();
+        IEntityPersistent GetReference(IEntityPersistent e);
+        IEnumerable Factory<T>() where T : IEntityPersistent, new();
+        void Commit(IEntityPersistent[] entities);
+        List<IEntityPersistent> GetReferences();
         object QueryScalar(string query);
         int Query(string query);
         void Query(string query, Func<DbDataReader, int> act);

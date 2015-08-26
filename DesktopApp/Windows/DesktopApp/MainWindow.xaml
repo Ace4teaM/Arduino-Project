@@ -6,9 +6,9 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top" IsMainMenu="True">
             <MenuItem Header="_Fichier">
-                <MenuItem Header="Ouvrir..."></MenuItem>
+                <MenuItem Header="Ouvrir..." Command="{Binding OpenFile}"></MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Quitter"></MenuItem>
+                <MenuItem Header="Quitter" Command="{Binding Exit}"></MenuItem>
             </MenuItem>
             <MenuItem Header="_Edition">
                 <MenuItem Header="Couper"></MenuItem>
@@ -17,7 +17,7 @@
             </MenuItem>
         </Menu>
         <Border DockPanel.Dock="Left" BorderThickness="3" Padding="3">
-            <v:ProjectTreeView Width="200" SelectedItemChanged="ProjectTreeView_SelectedItemChanged"></v:ProjectTreeView>
+            <v:ProjectTreeView x:Name="ProjectView" Width="200" SelectedItemChanged="ProjectTreeView_SelectedItemChanged"></v:ProjectTreeView>
         </Border>
         <Border BorderThickness="3" Padding="3">
             <TabControl>

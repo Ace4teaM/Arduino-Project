@@ -1,0 +1,40 @@
+﻿<!--
+   Vue d'édition de la classe DisplayElement
+
+   !!Attention!!
+   Ce code source est généré automatiquement, toutes modifications seront perdues
+-->
+<UserControl x:Class="AppData.View.Edit_DisplayElement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:v="clr-namespace:AppData.View" 
+             mc:Ignorable="d" 
+             d:DesignWidth="300">
+    <Grid>
+        <StackPanel Name="itemGroups" Orientation="Vertical">
+            <DockPanel Name="itemGroup_w">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Largeur</TextBlock>
+               <xctk:IntegerUpDown Name="w" Text="{Binding Path=W, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_h">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Hauteur</TextBlock>
+               <xctk:IntegerUpDown Name="h" Text="{Binding Path=H, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_x">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Position X</TextBlock>
+               <xctk:IntegerUpDown Name="x" Text="{Binding Path=X, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_y">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Position Y</TextBlock>
+               <xctk:IntegerUpDown Name="y" Text="{Binding Path=Y, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            </DockPanel>
+            <DockPanel Name="itemGroup_z">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Profondeur</TextBlock>
+               <xctk:IntegerUpDown Name="z" Text="{Binding Path=Z, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+            </DockPanel>
+         </StackPanel>
+    </Grid>
+</UserControl>

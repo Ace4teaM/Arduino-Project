@@ -1,0 +1,24 @@
+﻿<!--
+   Vue d'édition de la classe Project
+
+   !!Attention!!
+   Ce code source est généré automatiquement, toutes modifications seront perdues
+-->
+<UserControl x:Class="AppData.View.Edit_Project"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:v="clr-namespace:AppData.View" 
+             mc:Ignorable="d" 
+             d:DesignWidth="300">
+    <Grid>
+        <StackPanel Name="itemGroups" Orientation="Vertical">
+            <DockPanel Name="itemGroup_name">
+               <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,5,0,5">Nom du projet</TextBlock>
+               <TextBox Name="name" Text="{Binding Path=Name, TargetNullValue='', UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True}" />
+            </DockPanel>
+         </StackPanel>
+    </Grid>
+</UserControl>

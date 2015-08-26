@@ -6,7 +6,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <TreeViewItem Name="projetItem" Header="Projet" IsExpanded="True">
-        <TreeViewItem Name="serversItem" Header="Serveurs" IsExpanded="True"></TreeViewItem>
-        <TreeViewItem Name="viewsItem" Header="Vues" IsExpanded="True"></TreeViewItem>
+        <TreeViewItem Name="serversItem" Header="Serveurs" IsExpanded="True">
+            <TreeViewItem.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Insérer..." Command="{Binding CreateArduinoServer}"></MenuItem>
+                </ContextMenu>
+            </TreeViewItem.ContextMenu>
+        </TreeViewItem>
+        <TreeViewItem Name="viewsItem" Header="Vues" IsExpanded="True">
+            <TreeViewItem.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Insérer..." Command="{Binding CreateDisplayContent}"></MenuItem>
+                </ContextMenu>
+            </TreeViewItem.ContextMenu>
+        </TreeViewItem>
     </TreeViewItem>
 </TreeView>

@@ -27,7 +27,7 @@ namespace AppData.Entity
     /// </summary>
    [Serializable]
 
-    public partial class DisplayElement : ISerializable, IEntitySerializable    {
+    public partial class DisplayElement : IEntity, ISerializable, IEntitySerializable    {
          #region Constructor
          public DisplayElement(){
             // w
@@ -50,6 +50,8 @@ namespace AppData.Entity
             this.z = z;
          }
          #endregion // Constructor
+         
+          public string EntityName { get{ return "DisplayElement"; } }
 
          #region State
         private EntityState entityState;
